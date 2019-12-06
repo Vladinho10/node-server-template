@@ -24,18 +24,18 @@ Mongoose | ^5.7.13 | see in this app package.json\
 Mocha | 6.2.2 | see in this app package.json\
 Yarn | 1.19.1 | `yarn -v`
 
-### Setup (Run)
+### Setup
 1. At first clone this repository\
 `git clone https://github.com/Vladinho10/node-server-template.git` 
 2. After it you should write your git credentials (if it needs)
 3. enter downloaded directory\
-`cd node-server-template`\
+`cd node-server-template`
 
 for npm
 * install packages\
    `npm i` 
 * run server\
-   `npm run start` \
+   `npm run start`\
    or \
    `npm start`
 * if you want your server stay always running\
@@ -46,10 +46,10 @@ for yarn
 * install packages\
  `yarn`
 * run server\
- `yarn run start` \
+ `yarn run start`\
  or\
   `yarn start`
 * if you want your server stay always running\
-`yarn run nodemon` \
+`yarn run nodemon`\
 or\
  `yarn nodemon` 
