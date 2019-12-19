@@ -1,25 +1,19 @@
 {
-  "extends": [
-//    "standard",
-//    "prettier",
-//    "prettier/standard"
-  ],
+  "root": true,
+  "env": {
+    "node": true,
+    "es6": true,
+    "es2017": true
+  },
   "plugins": [
 //    "prettier",
 //    "standard"
   ],
   "rules": {
-//    "prettier/prettier": [
-//      "error",
-//      { "singleQuote": true, "tabWidth": 4, "printWidth": 115 }
-//    ]
-  },
-  "env": {
-    "es6": true,
-    "node": true
-  },
-  "parserOptions": {
-    "ecmaVersion": 8,
-    "sourceType": "module"
+
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "no-console": "off",
+    "prefer-const": "error"
   }
 }

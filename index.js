@@ -1,16 +1,19 @@
+'use strict';
+
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 const _port = 3000;
+require('dotenv').config();
 
 app.use(express.json());
-const indexRouter = require('./Routers');
+const indexRouter = require('./routers');
 
-mongoose.connect('mongodb://localhost:27017/test',
+mongoose.connect(`${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
     { useNewUrlParser: true, useUnifiedTopology: true }
     )
-    .then(()=>console.log("DB server connect"))
-    .catch(e => console.log("DB error", e));
+    .then(()=>console.info('DB server connect'))
+    .catch(e => console.info('DB error', e));
 
 app.use('/', indexRouter);
 

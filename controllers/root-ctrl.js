@@ -1,4 +1,6 @@
-class RootController {
+'use strict';
+
+class RootCtrl {
     static actionReadAll(req, res) {
         res.send('get all data');
     };
@@ -8,4 +10,4 @@ class RootController {
     }
 }
 
-module.exports = RootController;
+module.exports = RootCtrl;
