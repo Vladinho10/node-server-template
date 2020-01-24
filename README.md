@@ -35,7 +35,7 @@ for npm
 * install packages\
    `npm i` 
 * run server\
-   `npm run start`\
+   `npm run start`
    or \
    `npm start`
 * if you want your server stay always running\
@@ -46,10 +46,10 @@ for yarn
 * install packages\
  `yarn`
 * run server\
- `yarn run start`\
+ `yarn run start`
  or\
   `yarn start`
 * if you want your server stay always running\
-`yarn run nodemon`\
+`yarn run nodemon`
 or\
  `yarn nodemon` 

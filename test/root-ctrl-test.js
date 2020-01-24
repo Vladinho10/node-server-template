@@ -5,7 +5,7 @@ const mock = require('mock-fs');
 const { assert } = require('chai');
 
 const min = (a, b) => a < b ? a : b;
-function max(a, b) {return a > b ? a : b }
+function max(a, b) { return a > b ? a : b; }
 
 // beforeEach(function() {
 //     let a = Math.floor(Math.random()*10);

@@ -1,19 +1,26 @@
 {
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "impliedStrict": true
+  },
   "root": true,
   "env": {
     "node": true,
     "es6": true,
-    "es2017": true
+    "es2017": true,
+    "mocha": true,
+    "mongo": true
   },
   "plugins": [
 //    "prettier",
 //    "standard"
   ],
   "rules": {
-
     "semi": ["error", "always"],
     "quotes": ["error", "single"],
     "no-console": "off",
-    "prefer-const": "error"
+    "prefer-const": "error",
+    "eqeqeq": ["error"],
+    "curly": ["error"]
   }
 }

@@ -81,8 +81,8 @@ class UserCtrl {
     static async actionUpdateOne(req, res) {
 
         const { nModified } = (await User.updateOne(
-            {_id: req.params._id},
-            req.body));
+            {_id: req.params._id}, // find criteria
+            req.body)); // change data
 
         res.json({
             statusCode: 202,
