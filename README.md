@@ -30,6 +30,7 @@ Yarn | 1.19.1 | `yarn -v`
 2. After it you should write your git credentials (if it needs)
 3. enter downloaded directory\
 `cd node-server-template`
+4. create your .env file like .env.example file
 
 for npm
 * install packages\

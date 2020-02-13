@@ -10,7 +10,8 @@ class UserCtrl {
         res.json({
             statusCode: 200,
             message: 'get all users',
-            data : users
+            data : users,
+            limit : users.length
         });
     };
 
