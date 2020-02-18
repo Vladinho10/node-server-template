@@ -1,0 +1,29 @@
+{
+  "post": {
+    "summary": "Create a new user",
+    "tags": ["Users"],
+    "parameters": [
+      {
+        "in": "query",
+        "name": "limit",
+        "description": "this is limit",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": " a desc",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#components/schemas/userSchema"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -13,7 +13,7 @@ class UserCtrl {
             data : users,
             limit : users.length
         });
-    };
+    }
 
     static async actionReadOne(req, res) {
         const user = await User.findOne({_id: req.params._id});
@@ -23,36 +23,7 @@ class UserCtrl {
             message: 'get user by id',
             data : user
         });
-    };
-
-    /**
-     * @swagger
-     * tags:
-     *   name: Users
-     *   description: User management
-     */
-
-    /**
-     * @swagger
-     * path:
-     *  /users/:
-     *    post:
-     *      summary: Create a new user
-     *      tags: [Users]
-     *      requestBody:
-     *        required: true
-     *        content:
-     *          application/json:
-     *            schema:
-     *              $ref: '#/components/schemas/User'
-     *      responses:
-     *        "200":
-     *          description: A user schema
-     *          content:
-     *            application/json:
-     *              schema:
-     *                $ref: '#/components/schemas/User'
-     */
+    }
 
     static async actionCreate(req, res) {
         try {

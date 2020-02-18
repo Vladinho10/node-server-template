@@ -1,0 +1,14 @@
+{
+  "properties": {
+    "age": {
+      "type": "number"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "example": {
+    "name": "Anna",
+    "age": 1111
+  }
+}
