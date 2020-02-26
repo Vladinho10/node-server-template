@@ -1,20 +1,18 @@
 'use strict';
 
+const app = require('express')();
 const mongoose = require('mongoose');
-const express = require('express');
-const app = express();
+const logger = require('log4js').getLogger('ENTRY.index');
+
+const config = require('./config');
 const _port = 4000;
-require('dotenv').config();
 
-app.use(express.json());
-const indexRouter = require('./routers');
+try {
+    (async () => await mongoose.connect(config.db.url, config.db.options))();
+} catch (err) {
+    logger.error(err);
+}
 
-mongoose.connect(`${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
-    { useNewUrlParser: true, useUnifiedTopology: true }
-    )
-    .then(()=>console.info('DB server connect'))
-    .catch(e => console.info('DB error', e));
+app.use('/', require('./routers'));
 
-app.use('/', indexRouter);
-
-app.listen(_port, () => console.log(`app listen ${_port} port`) );
+app.listen(_port, () => logger.info(`app listen ${_port} port`));

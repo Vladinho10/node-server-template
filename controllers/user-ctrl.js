@@ -5,23 +5,22 @@ const User = require('../data/models/user-model');
 class UserCtrl {
     static async actionReadAll(req, res) {
         const users = await User.find();
-        console.log('user', users);
 
         res.json({
             statusCode: 200,
             message: 'get all users',
-            data : users,
-            limit : users.length
+            data: users,
+            limit: users.length
         });
     }
 
     static async actionReadOne(req, res) {
-        const user = await User.findOne({_id: req.params._id});
+        const user = await User.findOne({ _id: req.params._id });
 
         res.json({
             statusCode: 200,
             message: 'get user by id',
-            data : user
+            data: user
         });
     }
 
@@ -32,11 +31,11 @@ class UserCtrl {
             res.json({
                 statusCode: 201,
                 message: 'created new user',
-                data : user
+                data: user
             });
         } catch (e) {
             // TODO create error ctrl middleware
-            res.json({e});
+            res.json({ e });
         }
     }
 
@@ -46,14 +45,13 @@ class UserCtrl {
         res.json({
             statusCode: 201,
             message: 'created user users',
-            data : user
+            data: user
         });
     }
 
     static async actionUpdateOne(req, res) {
-
         const { nModified } = (await User.updateOne(
-            {_id: req.params._id}, // find criteria
+            { _id: req.params._id }, // find criteria
             req.body)); // change data
 
         res.json({
@@ -64,7 +62,7 @@ class UserCtrl {
     }
 
     static async actionDeleteOne(req, res) {
-        const { deletedCount } = (await User.deleteOne({_id: req.params._id}));
+        const { deletedCount } = (await User.deleteOne({ _id: req.params._id }));
 
         res.json({
             statusCode: 204,

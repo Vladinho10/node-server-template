@@ -1,26 +1,99 @@
 {
   "extends": "eslint:recommended",
   "parserOptions": {
-    "impliedStrict": true
+    "ecmaFeatures": {
+      "impliedStrict": true
+    }
   },
   "root": true,
   "env": {
     "node": true,
-    "es6": true,
-    "es2017": true,
+    "es2020": true,
     "mocha": true,
     "mongo": true
   },
   "plugins": [
-//    "prettier",
-//    "standard"
+    //    "prettier",
+    //    "standard"
   ],
   "rules": {
-    "semi": ["error", "always"],
+    "semi": "error",
     "quotes": ["error", "single"],
-    "no-console": "off",
+    "no-console": "warn",
     "prefer-const": "error",
-    "eqeqeq": ["error"],
-    "curly": ["error"]
+    "eqeqeq": "error",
+    "curly": "error",
+    "quote-props": ["error", "as-needed"],
+    "object-shorthand": "error",
+    "array-callback-return": "error",
+    "prefer-destructuring": "error",
+    "prefer-template": "error",
+    "template-curly-spacing": ["error", "never"],
+    "no-loop-func": "error",
+    "prefer-rest-params": "error",
+    "space-before-function-paren": ["error", {
+      "anonymous": "always",
+      "named": "never",
+      "asyncArrow": "always"
+    }],
+    "space-before-blocks": "error",
+    "no-param-reassign": "error",
+    "prefer-arrow-callback": ["error"],
+    "arrow-spacing": "error",
+    "arrow-body-style": ["error", "as-needed"],
+    "implicit-arrow-linebreak": ["error", "beside"],
+    "no-useless-constructor": "error",
+    "dot-notation": "error",
+    "no-multi-assign": "error",
+    "max-len": ["error", {
+      "code": 140,
+      "tabWidth": 4,
+      "ignoreUrls": true,
+      "ignoreRegExpLiterals": true,
+      "ignoreTemplateLiterals": true
+    }],
+    "max-params": ["error", 4],
+    "operator-linebreak": ["error", "none"],
+    "no-unneeded-ternary": "error",
+    "no-mixed-operators": "error",
+    "brace-style": "error",
+    "no-else-return": "error",
+    "indent": ["error", 4, {}],
+    "keyword-spacing": ["error", { "before": true, "after": true }],
+    "space-infix-ops": "error",
+    "eol-last": ["error", "always"],
+    "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
+    "no-whitespace-before-property": "error",
+    "padded-blocks": ["error", "never"],
+    "no-multiple-empty-lines": ["error", {"max": 1, "maxEOF": 1}],
+    "space-in-parens": ["error", "never"],
+    "array-bracket-spacing": ["error", "never"],
+    "object-curly-spacing": ["error", "always"],
+    "block-spacing": "error",
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "computed-property-spacing": ["error", "never"],
+    "func-call-spacing": ["error", "never"],
+    "key-spacing": ["error", { "beforeColon": false }],
+    "comma-style": ["error", "last"],
+    "comma-dangle": ["error", "only-multiline"],
+    "new-cap": ["error", {"capIsNew": false}],
+    "no-restricted-globals": [
+      "error",
+      {
+        "name": "isNaN",
+        "message": "Use Number.isNaN instead."
+      },
+      {
+        "name": "isFinite",
+        "message": "Use Number.isFinite instead."
+      }
+    ],
+    "no-restricted-properties": [2,
+      {
+        "object": "Math",
+        "property": "pow",
+        "message": "Please use ** instead."
+      }
+    ]
   }
 }
