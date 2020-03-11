@@ -12,7 +12,7 @@ Before using it, please ensure that you've already installed the following progr
 [Node.js](https://nodejs.org/en/) (as server app),\
 [Yarn](https://yarnpkg.com/lang/en/docs/install/#mac-stable) as Node.js package manager\
 [MongoDb](https://docs.mongodb.com/manual/installation/) (as database) programs.\
-If you haven't, these are their links for installing\
+If you haven't, these are their links for installing
 
 ### Technologies
 Program/lib | version | command for checking\

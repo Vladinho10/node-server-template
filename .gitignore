@@ -62,3 +62,6 @@ typings/
 
 # intelij .idea folder
 .idea/
+
+# mac stupid files
+.DS_Store

@@ -6,8 +6,7 @@ class UserCtrl {
     static async actionReadAll(req, res) {
         const users = await User.find();
 
-        res.json({
-            statusCode: 200,
+        res.ok({
             message: 'get all users',
             data: users,
             limit: users.length
@@ -17,8 +16,7 @@ class UserCtrl {
     static async actionReadOne(req, res) {
         const user = await User.findOne({ _id: req.params._id });
 
-        res.json({
-            statusCode: 200,
+        res.ok({
             message: 'get user by id',
             data: user
         });
@@ -28,8 +26,7 @@ class UserCtrl {
         try {
             const user = await User.create(req.body);
 
-            res.json({
-                statusCode: 201,
+            res.created({
                 message: 'created new user',
                 data: user
             });
@@ -42,33 +39,25 @@ class UserCtrl {
     static async actionCreateMany(req, res) {
         const user = await User.insertMany(req.body);
 
-        res.json({
-            statusCode: 201,
+        res.created({
             message: 'created user users',
             data: user
         });
     }
 
     static async actionUpdateOne(req, res) {
+        // use findOneAndUpdate for return  updated data, using as 3rd param { useFindAndModify: false, new: true }
         const { nModified } = (await User.updateOne(
             { _id: req.params._id }, // find criteria
             req.body)); // change data
 
-        res.json({
-            statusCode: 202,
-            message: 'update user by id',
-            data: { nModified }
-        });
+        nModified ? res.accepted({ message: 'updated user by id' }) : res.notFound({ message: 'resource not found' });
     }
 
     static async actionDeleteOne(req, res) {
         const { deletedCount } = (await User.deleteOne({ _id: req.params._id }));
 
-        res.json({
-            statusCode: 204,
-            message: 'delete user by id',
-            data: { deletedCount }
-        });
+        deletedCount ? res.noContent() : res.notFound({ message: 'resource not found' });
     }
 }
 

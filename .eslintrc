@@ -12,10 +12,6 @@
     "mocha": true,
     "mongo": true
   },
-  "plugins": [
-    //    "prettier",
-    //    "standard"
-  ],
   "rules": {
     "semi": "error",
     "quotes": ["error", "single"],
