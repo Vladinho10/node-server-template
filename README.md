@@ -54,3 +54,11 @@ for yarn
 `yarn run nodemon`
 or\
  `yarn nodemon` 
+
+
+## Style guide 
+We are inspired from Airbnb eslint configurations. We suggest eslint config our version, and we'd love to accept
+any suggestions about the code style which is in line with our philosophy )) 
+###Table of Contents
+
+
