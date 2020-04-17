@@ -15,7 +15,6 @@
   "rules": {
     "semi": "error",
     "quotes": ["error", "single"],
-    "no-console": "warn",
     "prefer-const": "error",
     "eqeqeq": "error",
     "curly": "error",
