@@ -1,17 +1,12 @@
 'use strict';
-
 const crypto = require('crypto');
+
 const algorithm = 'aes-256-cbc';
-const key = crypto.scryptSync('mosfzjPjyX', 'salt', 32);
-const iv = crypto.scryptSync('pARPMz9QOK', 'salt', 16);
+const key = crypto.scryptSync('keyPassword', 'salt', 32);
+const iv = crypto.scryptSync('ivPassword', 'salt', 16);
 // console.log({ iv, key });
 // console.log({ bufferedKey: Buffer.from(key) });
-// console.log(key.toString());
-//
-// console.log()
-
-let a = 0;
-let b = 0;
+// console.log({ keyConvertToString: key.toString() });
 
 function encrypt(str) {
     const cipher = crypto.createCipheriv(algorithm, key, iv);
@@ -36,7 +31,10 @@ function decrypt(message) {
 
 const e = encrypt('Some serious stuff');
 const d = decrypt(e);
-// console.log(hw);
-// console.log(d);
+console.log(d);
 
-console.log(a.toString('hex') === b.toString('hex'));
+module.exports = {
+    encrypt,
+    decrypt
+};
+

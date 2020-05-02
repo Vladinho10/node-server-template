@@ -1,5 +1,4 @@
 'use strict';
-
 const app = require('express')();
 const mongoose = require('mongoose');
 const logger = require('log4js').getLogger('ENTRY.index');

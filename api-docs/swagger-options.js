@@ -1,3 +1,4 @@
+'use strict';
 const userSchema = require('./schemas/userSchema');
 const usersPath = require('./paths/usersPath');
 

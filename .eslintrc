@@ -48,7 +48,15 @@
       "ignoreTemplateLiterals": true
     }],
     "max-params": ["error", 4],
-    "operator-linebreak": ["error", "none"],
+    "operator-linebreak": ["error", "none", {
+      "overrides": {
+        "||": "before",
+        "&&": "before",
+        "=": "after",
+        "?": "before",
+        ":": "before"
+      }
+    }],
     "no-unneeded-ternary": "error",
     "no-mixed-operators": "error",
     "brace-style": "error",

@@ -1,7 +1,5 @@
 'use strict';
-
 const SwaggerRt = require('express').Router();
-
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('swagger-jsdoc')(require('../api-docs/swagger-options'));
 

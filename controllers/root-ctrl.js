@@ -1,5 +1,4 @@
 'use strict';
-
 class RootCtrl {
     static actionReadAll(req, res) {
         res.ok('get all data');
@@ -10,4 +9,6 @@ class RootCtrl {
     }
 }
 
-module.exports = RootCtrl;
+module.exports = {
+    RootCtrl
+};

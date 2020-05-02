@@ -1,5 +1,4 @@
 'use strict';
-
 const strings = {
     _camelize(str) {
         return str

@@ -1,6 +1,6 @@
 'use strict';
-
 require('dotenv').config();
+
 require('../loggerConfig');
 
 const db = {
@@ -8,6 +8,7 @@ const db = {
     options: {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        useCreateIndex: true,
     },
 };
 

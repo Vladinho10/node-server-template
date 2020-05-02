@@ -1,5 +1,4 @@
 'use strict';
-
 const User = require('../data/models/user-model');
 const { _pick } = require('../helpers/objects');
 
@@ -24,17 +23,12 @@ class UserCtrl {
     }
 
     static async actionCreate(req, res) {
-        try {
-            const user = await User.create(req.body);
+        const user = await User.create(req.body);
 
-            res.created({
-                message: 'created new user',
-                data: user
-            });
-        } catch (e) {
-            // TODO create error ctrl middleware
-            res.json({ e });
-        }
+        res.created({
+            message: 'created new user',
+            data: user
+        });
     }
 
     static async actionCreateMany(req, res) {
@@ -75,4 +69,6 @@ class UserCtrl {
     }
 }
 
-module.exports = UserCtrl;
+module.exports = {
+    UserCtrl
+};
