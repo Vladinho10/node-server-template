@@ -16,6 +16,9 @@ const strings = {
 
                 return '';
             });
+    },
+    _generateFileName(originalName) {
+        return `${Date.now().toString(36)}_${originalName}`;
     }
 };
 

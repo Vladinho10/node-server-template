@@ -5,6 +5,16 @@
       "impliedStrict": true
     }
   },
+  "plugins": ["markdown"],
+  "overrides": [
+    {
+      "files": ["**/*.md"],
+      "processor": "markdown/markdown"
+    },
+    {
+      "files": ["**/*.md/*.js"]
+    }
+  ],
   "root": true,
   "env": {
     "node": true,
@@ -65,7 +75,7 @@
     "keyword-spacing": ["error", { "before": true, "after": true }],
     "space-infix-ops": "error",
     "eol-last": ["error", "always"],
-    "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
+    "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 3 }],
     "no-whitespace-before-property": "error",
     "padded-blocks": ["error", "never"],
     "no-multiple-empty-lines": ["error", {"max": 1, "maxEOF": 1}],

@@ -1,6 +1,7 @@
 'use strict';
 const logger = require('log4js').getLogger('err.handler');
 
+// eslint-disable-next-line no-unused-vars
 module.exports = function (err, req, res, next) {
     if (err) {
         const errorResponse = [];
@@ -30,6 +31,13 @@ module.exports = function (err, req, res, next) {
             errorResponse.push({
                 field: field.slice(0, field.lastIndexOf('_')),
                 message: message.slice(0, message.lastIndexOf('error')).trim()
+            });
+        }
+
+        if (err.name === 'MulterError') {
+            errorResponse.push({
+                field: err.field,
+                message: err.message
             });
         }
 
