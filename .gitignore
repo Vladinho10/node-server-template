@@ -65,3 +65,5 @@ typings/
 
 # mac stupid files
 .DS_Store
+# upload files
+uploads

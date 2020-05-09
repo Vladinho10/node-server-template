@@ -1,9 +1,10 @@
 'use strict';
-const app = require('express')();
+const express = require('express');
+const app = express();
 const mongoose = require('mongoose');
 const logger = require('log4js').getLogger('ENTRY.index');
 // TODO setup the configs of app
-const config = require('./config/index');
+const config = require('./config');
 const _port = 4000;
 
 try {
@@ -12,6 +13,7 @@ try {
     logger.error(err);
 }
 
+app.use('/v1', express.static(config.files));
 app.use('/', require('./routers'));
 
 app.listen(_port, () => logger.info(`app listen ${_port} port`));

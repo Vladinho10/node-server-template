@@ -1,6 +1,5 @@
 'use strict';
 require('dotenv').config();
-
 require('../loggerConfig');
 
 const db = {
@@ -12,6 +11,20 @@ const db = {
     },
 };
 
+const files = `${process.cwd()}/files`;
+const uploads = `${process.cwd()}/uploads`;
+const mailOptions = {
+    host: 'smtp.gmail.com',
+    port: 465, // 587, 465
+    secure: true,
+    auth: {
+        user: 'jsandnodefamily@gmail.com',
+        pass: 'no9de3js'
+    },
+};
 module.exports = {
-    db
+    db,
+    files,
+    uploads,
+    mailOptions
 };
