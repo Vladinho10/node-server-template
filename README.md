@@ -61,8 +61,8 @@ or\
 ## Style guide 
 We are inspired from Airbnb eslint configurations. We suggest eslint config our version, and we'd love to accept
 any suggestions about the code style which is in line with our philosophy )) \
-[more] (../blob/master/styleGuide.md)
-
+[more](https://github.com/Vladinho10/node-server-template/blob/master/guides/style-guide.md)
 
 ## Architecture guide
-Coming soon !
+Coming soon !\
+[more](https://github.com/Vladinho10/node-server-template/blob/master/guides/architecture-guide.md)
