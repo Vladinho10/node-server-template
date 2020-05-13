@@ -17,11 +17,15 @@ const mailOptions = {
     host: 'smtp.gmail.com',
     port: 465, // 587, 465
     secure: true,
+    tls: {
+        rejectUnauthorized: false
+    },
     auth: {
-        user: 'jsandnodefamily@gmail.com',
-        pass: 'no9de3js'
+        user: `${process.env.EMAIL}`,
+        pass: `${process.env.EMAIL_PASS}`,
     },
 };
+
 module.exports = {
     db,
     files,

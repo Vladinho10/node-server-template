@@ -1,7 +1,8 @@
+'use strict';
 const nodemailer = require('nodemailer');
-const config = require('../config');
 
-const transporter = nodemailer.createTransport(config.mailOptions);
+const configs = require('../configs');
+const transporter = nodemailer.createTransport(configs.mailOptions);
 
 transporter.verify((error, success) => {
     if (error) {

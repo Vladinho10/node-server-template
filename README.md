@@ -4,20 +4,22 @@
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
+* [Style guide](#style-guide)
+* [Architecture guide](#Architecture-guide)
 
 ### General info
-This is a simple Node.js server application with CRUD operations. It provides REST APIs. 
+This is a simple Node.js server application boilerplate with CRUD operations. It provides REST APIs. 
 Before using it, please ensure that you've already installed the following programs\
-[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (as version control)\
-[Node.js](https://nodejs.org/en/) (as server app),\
-[Yarn](https://yarnpkg.com/lang/en/docs/install/#mac-stable) as Node.js package manager\
-[MongoDb](https://docs.mongodb.com/manual/installation/) (as database) programs.\
+[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) as version control,\
+[Node.js](https://nodejs.org/en/) as server app,\
+[Yarn](https://yarnpkg.com/lang/en/docs/install/#mac-stable) as Node.js package manager,\
+[MongoDb](https://docs.mongodb.com/manual/installation/) as database programs.\
 If you haven't, these are their links for installing
 
 ### Technologies
 Program/lib | version | command for checking\
 Git | 2.24.0 | `git --version`\
-Node.js | v8.12.0 | `node -v` \
+Node.js | v12.15.0 | `node -v` \
 Express | ^4.17.1 | see in this app package.json\
 MongoDB | v4.2.1 | `mongo --version`\
 Mongoose | ^5.7.13 | see in this app package.json\
@@ -30,7 +32,7 @@ Yarn | 1.19.1 | `yarn -v`
 2. After it you should write your git credentials (if it needs)
 3. enter downloaded directory\
 `cd node-server-template`
-4. create your .env file like .env.example file
+4. create your .env file like .env.simple file
 
 for npm
 * install packages\
@@ -58,7 +60,9 @@ or\
 
 ## Style guide 
 We are inspired from Airbnb eslint configurations. We suggest eslint config our version, and we'd love to accept
-any suggestions about the code style which is in line with our philosophy )) 
-###Table of Contents
+any suggestions about the code style which is in line with our philosophy )) \
+[more] (../blob/master/styleGuide.md)
 
 
+## Architecture guide
+Coming soon !

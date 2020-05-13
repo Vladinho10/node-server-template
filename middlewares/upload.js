@@ -2,11 +2,11 @@
 const multer = require('multer');
 
 const { strings } = require('../helpers');
-const config = require('../config');
+const configs = require('../configs');
 
 const storage = multer.diskStorage({
     destination(req, file, cb) {
-        cb(null, config.uploads);
+        cb(null, configs.uploads);
     },
     filename(req, file, cb) {
         const savingFileName = strings._generateFileName(file.originalname);
