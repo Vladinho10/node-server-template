@@ -5,16 +5,6 @@
       "impliedStrict": true
     }
   },
-  "plugins": ["markdown"],
-  "overrides": [
-    {
-      "files": ["**/*.md"],
-      "processor": "markdown/markdown"
-    },
-    {
-      "files": ["**/*.md/*.js"]
-    }
-  ],
   "root": true,
   "env": {
     "node": true,
@@ -26,6 +16,7 @@
     "semi": "error",
     "quotes": ["error", "single"],
     "prefer-const": "error",
+    "no-plusplus": "error",
     "eqeqeq": "error",
     "curly": "error",
     "quote-props": ["error", "as-needed"],
@@ -46,8 +37,11 @@
     "prefer-arrow-callback": ["error"],
     "arrow-spacing": "error",
     "arrow-body-style": ["error", "as-needed"],
+    "arrow-parens": ["error", "as-needed"],
     "implicit-arrow-linebreak": ["error", "beside"],
     "no-useless-constructor": "error",
+    "no-dupe-class-members": "error",
+    "class-methods-use-this": "error",
     "dot-notation": "error",
     "no-multi-assign": "error",
     "max-len": ["error", {
@@ -62,12 +56,12 @@
       "overrides": {
         "||": "before",
         "&&": "before",
-        "=": "after",
         "?": "before",
         ":": "before"
       }
     }],
     "no-unneeded-ternary": "error",
+    "no-nested-ternary": "error",
     "no-mixed-operators": "error",
     "brace-style": "error",
     "no-else-return": "error",
@@ -86,6 +80,8 @@
     "comma-spacing": ["error", { "before": false, "after": true }],
     "computed-property-spacing": ["error", "never"],
     "func-call-spacing": ["error", "never"],
+    "func-style": ["error", "expression"],
+    "function-paren-newline": ["error", "multiline"],
     "key-spacing": ["error", { "beforeColon": false }],
     "comma-style": ["error", "last"],
     "comma-dangle": ["error", "only-multiline"],

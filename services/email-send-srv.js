@@ -13,17 +13,18 @@ transporter.verify((error, success) => {
     }
 });
 
-const message = {
-    from: 'from@gmail.com',
-    to: 'garmanbozia@mailinator.com',
-    subject: 'Message title',
-    text: 'Plaintext version of the message',
-    html: '<p>HTML version of the message</p>'
-};
+// const message = {
+//     from: 'from@gmail.com',
+//     to: 'garmanbozia@mailinator.com',
+//     subject: 'Message title',
+//     text: 'Plaintext version of the message',
+//     html: '<p>HTML version of the message</p>'
+// };
 
-const sendLink = async (message) => {
-    const data = await transporter.sendMail(message);
-    console.log({ data });
-};
+const sendLink = async message => transporter.sendMail(message);
 
-(async () => await sendLink(message))().catch(e => console.log({ e }));
+// (async () => console.log(await sendLink(message)))().catch(e => console.log({ e }));
+
+module.exports = {
+    sendLink
+};

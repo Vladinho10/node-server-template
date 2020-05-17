@@ -5,7 +5,7 @@
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Style guide](#style-guide)
-* [Architecture guide](#Architecture-guide)
+* [Architecture guide](#architecture-guide)
 
 ### General info
 This is a simple Node.js server application boilerplate with CRUD operations. It provides REST APIs. 
@@ -66,3 +66,7 @@ any suggestions about the code style which is in line with our philosophy )) \
 ## Architecture guide
 Coming soon !\
 [more](https://github.com/Vladinho10/node-server-template/blob/master/guides/architecture-guide.md)
+
+<menk ogtagorcum enq miayn ardiakan u voch hnacac caser, usti grel enq mian dranc masin>
+<chenq grum kich ogtagorcvox kam chogtagorcvox methodnery
+<chenq ogtagorcum custom toSring, new Object,>

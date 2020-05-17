@@ -1,8 +1,7 @@
 'use strict';
-const arrays = {
-    _multiplyItems(numArray) {
-        return numArray.reduce((acc, val) => acc * val, 1n);
-    }
-};
 
-module.exports = arrays;
+const _multiplyItems = numArray => numArray.reduce((acc, val) => acc * val, 1n);
+
+module.exports = {
+    _multiplyItems
+};
