@@ -26,5 +26,5 @@ const sendLink = async message => transporter.sendMail(message);
 // (async () => console.log(await sendLink(message)))().catch(e => console.log({ e }));
 
 module.exports = {
-    sendLink
+    sendLink,
 };

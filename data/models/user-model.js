@@ -10,13 +10,13 @@ const userSchema = new Schema({
     },
     age: {
         type: Number,
-        required: true
+        required: true,
     },
     gender: {
         type: String,
         required: true,
-        default: null
-    }
+        default: null,
+    },
 });
 
 module.exports = mongoose.model('User', userSchema);

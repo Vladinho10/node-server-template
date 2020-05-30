@@ -1,6 +1,6 @@
 'use strict';
 // eslint-disable-next-line arrow-body-style
-const _pick = (obj, fields) => {
+const pick = (obj, fields) => {
     return fields.reduce((newObj, key) => {
         if (!(obj[key] === undefined)) {
             newObj[key] = obj[key];
@@ -11,5 +11,5 @@ const _pick = (obj, fields) => {
 };
 
 module.exports = {
-    _pick
+    pick,
 };

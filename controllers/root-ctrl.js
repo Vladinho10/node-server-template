@@ -10,5 +10,5 @@ class RootCtrl {
 }
 
 module.exports = {
-    RootCtrl
+    RootCtrl,
 };

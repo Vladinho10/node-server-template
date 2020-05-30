@@ -16,7 +16,7 @@ const encrypt = data => {
 
     return {
         iv: iv.toString('hex'),
-        encryptedString: finalEncryptedBuffer.toString('hex')
+        encryptedString: finalEncryptedBuffer.toString('hex'),
     };
 };
 
@@ -30,12 +30,12 @@ const  decrypt = message => {
     return finalDecryptedBuffer.toString();
 };
 
-const e = encrypt('Some serious stuff');
-const d = decrypt(e);
-console.log(d);
+const encoded = encrypt('Some serious stuff');
+const decoded = decrypt(encoded);
+console.log(decoded);
 
 module.exports = {
     encrypt,
-    decrypt
+    decrypt,
 };
 

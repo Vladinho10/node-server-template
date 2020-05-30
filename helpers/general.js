@@ -9,7 +9,7 @@ const putSegmentsInPromise = (segments, childWorkerPath, data = {}) => {
             workerData: {
                 segment,
                 ...data,
-            }
+            },
         });
 
         // when received data form worker, resolve/return it
@@ -24,5 +24,5 @@ const putSegmentsInPromise = (segments, childWorkerPath, data = {}) => {
 };
 
 module.exports = {
-    putSegmentsInPromise
+    putSegmentsInPromise,
 };

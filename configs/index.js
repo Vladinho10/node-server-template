@@ -18,7 +18,7 @@ const mailOptions = {
     port: 465, // 587, 465
     secure: true,
     tls: {
-        rejectUnauthorized: false
+        rejectUnauthorized: false,
     },
     auth: {
         user: `${process.env.EMAIL}`,
@@ -30,5 +30,5 @@ module.exports = {
     db,
     files,
     uploads,
-    mailOptions
+    mailOptions,
 };

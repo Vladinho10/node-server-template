@@ -8,7 +8,7 @@
 * [Architecture guide](#architecture-guide)
 
 ### General info
-This is a simple Node.js server application boilerplate with CRUD operations. It provides REST APIs. 
+This is a simple Node.js server application boilerplate with CRUD operations simple logic. It provides REST APIs. 
 Before using it, please ensure that you've already installed the following programs\
 [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) as version control,\
 [Node.js](https://nodejs.org/en/) as server app,\
@@ -22,9 +22,9 @@ Git | 2.24.0 | `git --version`\
 Node.js | v12.15.0 | `node -v` \
 Express | ^4.17.1 | see in this app package.json\
 MongoDB | v4.2.1 | `mongo --version`\
-Mongoose | ^5.7.13 | see in this app package.json\
-Mocha | 6.2.2 | see in this app package.json\
-Yarn | 1.19.1 | `yarn -v`
+Mongoose | ^5.9.4 | see in this app package.json\
+Mocha | 7.1.0 | see in this app package.json\
+Yarn | 1.22.4 | `yarn -v`
 
 ### Setup
 1. At first clone this repository\
@@ -59,14 +59,12 @@ or\
 
 
 ## Style guide 
-We are inspired from Airbnb eslint configurations. We suggest eslint config our version, and we'd love to accept
-any suggestions about the code style which is in line with our philosophy )) \
+We are inspired from Airbnb eslint configurations. We suggest eslint configs our version, and we'd love to accept
+any suggestions about the code style which is in line with our philosophy :) \
+It is used only modern and not outdated cases, consequently we've not written less used or not used methods, cases.
+For example it has not written about `const obj = new Object();` because we just use `const obj = {};`\
 [more](https://github.com/Vladinho10/node-server-template/blob/master/guides/style-guide.md)
 
 ## Architecture guide
 Coming soon !\
 [more](https://github.com/Vladinho10/node-server-template/blob/master/guides/architecture-guide.md)
-
-<menk ogtagorcum enq miayn ardiakan u voch hnacac caser, usti grel enq mian dranc masin>
-<chenq grum kich ogtagorcvox kam chogtagorcvox methodnery
-<chenq ogtagorcum custom toSring, new Object,>

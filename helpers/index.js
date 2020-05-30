@@ -10,5 +10,5 @@ module.exports = {
     strings,
     general,
     arrays,
-    jwt
+    jwt,
 };

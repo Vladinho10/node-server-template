@@ -9,7 +9,7 @@ class UserCtrl {
         res.ok({
             message: 'get all users',
             data: users,
-            limit: users.length
+            limit: users.length,
         });
     }
 
@@ -18,7 +18,7 @@ class UserCtrl {
 
         res.ok({
             message: 'get user by id',
-            data: user
+            data: user,
         });
     }
 
@@ -27,7 +27,7 @@ class UserCtrl {
 
         res.created({
             message: 'created new user',
-            data: user
+            data: user,
         });
     }
 
@@ -36,7 +36,7 @@ class UserCtrl {
 
         res.created({
             message: 'created user users',
-            data: user
+            data: user,
         });
     }
 
@@ -46,7 +46,8 @@ class UserCtrl {
 
         const { nModified } = (await User.updateOne(
             { _id: req.params._id }, // find criteria
-            newData)); // change data
+            newData,
+        )); // change data
 
         nModified ? res.accepted({ message: 'updated user by id' }) : res.notFound({ message: 'resource not found' });
     }
@@ -70,5 +71,5 @@ class UserCtrl {
 }
 
 module.exports = {
-    UserCtrl
+    UserCtrl,
 };

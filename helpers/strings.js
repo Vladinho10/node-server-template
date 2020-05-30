@@ -1,6 +1,6 @@
 'use strict';
 // eslint-disable-next-line arrow-body-style
-const _camelize = str => {
+const camelize = str => {
     return str
         .toLowerCase()
         .replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
@@ -18,9 +18,9 @@ const _camelize = str => {
         });
 };
 
-const _generateFileName = originalName => `${Date.now().toString(36)}_${originalName}`;
+const generateFileName = originalName => `${Date.now().toString(36)}_${originalName}`;
 
 module.exports = {
-    _camelize,
-    _generateFileName
+    camelize,
+    generateFileName,
 };

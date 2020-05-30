@@ -17,5 +17,5 @@ const oftenUseCodes = {
 };
 
 module.exports = {
-    oftenUseCodes
+    oftenUseCodes,
 };

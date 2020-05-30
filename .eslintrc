@@ -14,6 +14,16 @@
   },
   "rules": {
     "semi": "error",
+    "radix": ["error", "always"],
+    "id-length": ["error", {
+      "min": 2,
+      "max": 20,
+      "exceptions": ["v"]
+    }],
+    "camelcase": ["error", {
+      "ignoreDestructuring": true,
+      "allow": ["test_id"]
+    }],
     "quotes": ["error", "single"],
     "prefer-const": "error",
     "no-plusplus": "error",
@@ -45,7 +55,7 @@
     "dot-notation": "error",
     "no-multi-assign": "error",
     "max-len": ["error", {
-      "code": 140,
+      "code": 120,
       "tabWidth": 4,
       "ignoreUrls": true,
       "ignoreRegExpLiterals": true,
@@ -65,6 +75,7 @@
     "no-mixed-operators": "error",
     "brace-style": "error",
     "no-else-return": "error",
+    "spaced-comment": "error",
     "indent": ["error", 4, {}],
     "keyword-spacing": ["error", { "before": true, "after": true }],
     "space-infix-ops": "error",
@@ -83,9 +94,15 @@
     "func-style": ["error", "expression"],
     "function-paren-newline": ["error", "multiline"],
     "key-spacing": ["error", { "beforeColon": false }],
+    "no-trailing-spaces": "error",
     "comma-style": ["error", "last"],
-    "comma-dangle": ["error", "only-multiline"],
-    "new-cap": ["error", {"capIsNew": false}],
+    "comma-dangle": ["error", "always-multiline"],
+    "new-cap": ["error", { "capIsNew": false }],
+    "no-underscore-dangle": ["error", {
+      "allowAfterThis": true,
+      "allowAfterSuper": true,
+      "allow": ["_id"]
+    }],
     "no-restricted-globals": [
       "error",
       {

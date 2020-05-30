@@ -18,6 +18,6 @@ class FileCtrl {
 }
 
 module.exports = {
-    FileCtrl
+    FileCtrl,
 };
 

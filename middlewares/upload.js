@@ -9,11 +9,11 @@ const storage = multer.diskStorage({
         cb(null, configs.uploads);
     },
     filename(req, file, cb) {
-        const savingFileName = strings._generateFileName(file.originalname);
+        const savingFileName = strings.generateFileName(file.originalname);
         cb(null, savingFileName);
-    }
+    },
 });
 
 module.exports = {
-    uploadSingle: multer({ storage }).single('attachment')
+    uploadSingle: multer({ storage }).single('attachment'),
 };

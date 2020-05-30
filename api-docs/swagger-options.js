@@ -7,22 +7,22 @@ module.exports = {
         openapi: '3.0.0',
         info: {
             title: 'Node server template API',
-            version: '1.0.0'
+            version: '1.0.0',
         },
         servers: [
             {
                 url: 'http://localhost:3000/v1',
-                description: 'local'
-            }
+                description: 'local',
+            },
         ],
         components: {
             schemas: {
-                userSchema
-            }
+                userSchema,
+            },
         },
         paths: {
-            '/users': usersPath
-        }
+            '/users': usersPath,
+        },
     },
-    apis: ['./controllers/**/*.js', './api-docs/**/*.js',  './api-docs/*.json']
+    apis: ['./controllers/**/*.js', './api-docs/**/*.js',  './api-docs/*.json'],
 };

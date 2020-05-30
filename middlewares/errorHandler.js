@@ -19,7 +19,7 @@ module.exports = function (err, req, res, next) {
 
                 errorResponse.push({
                     field: error.path,
-                    message: `err_${message}`
+                    message: `err_${message}`,
                 });
             }
         }
@@ -30,14 +30,14 @@ module.exports = function (err, req, res, next) {
 
             errorResponse.push({
                 field: field.slice(0, field.lastIndexOf('_')),
-                message: message.slice(0, message.lastIndexOf('error')).trim()
+                message: message.slice(0, message.lastIndexOf('error')).trim(),
             });
         }
 
         if (err.name === 'MulterError') {
             errorResponse.push({
                 field: err.field,
-                message: err.message
+                message: err.message,
             });
         }
 

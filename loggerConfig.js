@@ -5,7 +5,7 @@ log4js.addLayout('asJson', () => logEvent => JSON.stringify({
     startTime: logEvent.startTime,
     category: logEvent.categoryName,
     level: logEvent.lxevel.levelStr,
-    message: logEvent.data.map(d => d instanceof Error ? d.stack : d).join(' ')
+    message: logEvent.data.map(v => v instanceof Error ? v.stack : v).join(' '),
 }));
 
 log4js.configure({
@@ -15,15 +15,15 @@ log4js.configure({
             layout: {
                 type: 'pattern', // asJson
                 pattern: '%[ %r %p %c %f{2} %l:%o %] %m',
-            }
-        }
+            },
+        },
     },
     categories: {
         default: {
             appenders: ['out'],
             level: 'info',
-            enableCallStack: true
-        }
-    }
+            enableCallStack: true,
+        },
+    },
 });
 

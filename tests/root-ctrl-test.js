@@ -3,9 +3,11 @@ const fs = require('fs');
 const mock = require('mock-fs');
 const { assert } = require('chai');
 
+// eslint-disable-next-line id-length
 const min = (a, b) => a < b ? a : b;
+// eslint-disable-next-line func-style, id-length
 function max(a, b) {
-    return a > b ? a : b; 
+    return a > b ? a : b;
 }
 
 // beforeEach(function() {
@@ -42,11 +44,10 @@ mock({
     dirName: {
         'file1.txt': 'text content', // string
         file2: Buffer.from([1, 2, 3, 4]), // Buffer
-    }
+    },
 });
-function ifExist(dirPath) {
-    return fs.existsSync(dirPath);
-}
+
+const ifExist = dirPath => fs.existsSync(dirPath);
 
 describe('#ifExist()', () => {
     it('should have 2 file', () => {
