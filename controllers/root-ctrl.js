@@ -1,11 +1,11 @@
 'use strict';
 class RootCtrl {
-    static actionReadAll(req, res) {
-        res.ok('get all data');
+    static readAll(req, res) {
+        return res.ok('get all data');
     }
 
-    static actionCreate(req, res) {
-        res.created('create new data');
+    static create(req, res) {
+        return res.created('create new data');
     }
 }
 

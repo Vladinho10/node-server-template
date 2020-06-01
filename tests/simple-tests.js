@@ -1,6 +1,6 @@
 'use strict';
 const fs = require('fs');
-const mock = require('mock-fs');
+const mockFS = require('mock-fs');
 const { assert } = require('chai');
 
 // eslint-disable-next-line id-length
@@ -40,7 +40,7 @@ describe('#max()', () => {
     });
 });
 
-mock({
+mockFS({
     dirName: {
         'file1.txt': 'text content', // string
         file2: Buffer.from([1, 2, 3, 4]), // Buffer
@@ -51,8 +51,8 @@ const ifExist = dirPath => fs.existsSync(dirPath);
 
 describe('#ifExist()', () => {
     it('should have 2 file', () => {
-        assert.equal(ifExist('images.jpg'), true);
+        assert.equal(ifExist('images.jpg'), false);
     });
 });
 
-mock.restore();
+mockFS.restore();

@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index",
     "nodemon": "./node_modules/nodemon/bin/nodemon.js index",
-    "test": "mocha"
+    "test": "mocha ./tests"
   },
   "author": "Vlad Mkhitaryan",
   "license": "ISC",

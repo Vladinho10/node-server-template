@@ -44,7 +44,7 @@ module.exports = function (err, req, res, next) {
         logger.error(err.message);
 
         return errorResponse.length
-            ? res.unprocessableEntity({ err: errorResponse })
+            ? res.unprocessableEntity({ errors: errorResponse })
             : res.internalServerError({ err: { message: 'Something went wrong' } });
     }
 };

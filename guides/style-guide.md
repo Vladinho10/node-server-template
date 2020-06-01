@@ -28,7 +28,6 @@
   1. [Events](#events)
   1. [Testing](#testing)
   1. [Performance](#performance)
-  1. [Chat With Us About JavaScript](#chat-with-us-about-javascript)
   1. [License](#license)
   1. [Amendments](#amendments)
 
@@ -855,7 +854,7 @@
     ```
 
   <a name="classes--methods-use-this"></a>
-  - [9.4](#classes--methods-use-this) Class methods should use `this` or be made into a static method unless an external library or framework requires to use specific non-static methods. Being an instance method should indicate that it behaves differently based on properties of the receiver. eslint: [`class-methods-use-this`](https://eslint.org/docs/rules/class-methods-use-this)
+  - [9.5](#classes--methods-use-this) Class methods should use `this` or be made into a static method unless an external library or framework requires to use specific non-static methods. Being an instance method should indicate that it behaves differently based on properties of the receiver. eslint: [`class-methods-use-this`](https://eslint.org/docs/rules/class-methods-use-this)
 
     ```javascript
     // bad
