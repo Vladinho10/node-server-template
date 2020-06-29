@@ -4,7 +4,7 @@ const { assert } = require('chai');
 const httpStatus = require('http-status');
 
 const { UserCtrl } = require('../../controllers/user-ctrl');
-const UserModel = require('../../data/models/user-model');
+const UserModel = require('../../dal/models/user-model');
 
 const mockReq = (body = {}, query = {}, params = {}, headers = {}) => ({
     body,
@@ -51,13 +51,13 @@ describe('Users', () => {
                     errors: [{ field: 'name', message: 'duplicate key' }],
                 });
 
-            const response = await UserCtrl.create(mockReq(user), mockRes(method, statusCode));
+            const response = await UserCtrl.post(mockReq(user), mockRes(method, statusCode));
 
             assert.equal(response.statusCode, 201);
             assert.equal(response.data._id, _id);
 
             const status = httpStatus.UNPROCESSABLE_ENTITY;
-            const errResponse = await UserCtrl.create(mockReq(user), mockRes(method, status));
+            const errResponse = await UserCtrl.post(mockReq(user), mockRes(method, status));
 
             assert.equal(errResponse.statusCode, 422);
             assert.equal(errResponse.data.errors[0].message, 'duplicate key');

@@ -5,7 +5,7 @@ const logger = require('log4js').getLogger('err.handler');
 module.exports = function (err, req, res, next) {
     if (err) {
         const errorResponse = [];
-        const { errors } = err;
+        const errors  = typeof err === 'string' ? err : err.errors;
         if (err.name === 'ValidationError') {
             for (const item in errors) {
                 const error = errors[item];

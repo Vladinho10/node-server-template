@@ -2,14 +2,14 @@
 const configs = require('../configs');
 
 class FileCtrl {
-    static actionDownload(req, res) {
+    static download(req, res) {
         const { fileName } = req.params;
-        const fromFilePath = `${configs.filesDir}/${fileName}`;
+        const fromFilePath = `${configs.files}/${fileName}`;
 
         return res.download(fromFilePath);
     }
 
-    static async actionUpload(req, res) {
+    static async upload(req, res) {
         const { file } = req;
         const filePath = (file && file.path) || `${configs.files}/lake.jpg`;
 

@@ -1,11 +1,17 @@
 'use strict';
 class RootCtrl {
-    static readAll(req, res) {
+    static async getMany(req, res) {
         return res.ok('get all data');
     }
 
-    static create(req, res) {
+    static async postOne(req, res) {
         return res.created('create new data');
+    }
+
+    static async showEjs(req, res) {
+        res.render('homePage', {
+            name: req.query.name || 'Eva',
+        });
     }
 }
 

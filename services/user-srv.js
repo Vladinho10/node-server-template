@@ -1,0 +1,58 @@
+'use strict';
+const User = require('../dal/models/user-model');
+const { pick } = require('../helpers/objects');
+
+class UserSrv {
+    static async readMany(query) {
+        return User.find(query);
+    }
+
+    static async readOne(_id) {
+        return  User.findOne({ _id });
+    }
+
+    static async createOne(body) {
+        return  User.create(body);
+    }
+
+    static async createMany(body) {
+        return User.insertMany(body);
+    }
+
+    static async updateOne(_id, body) {
+        const newData = pick(body, ['name', 'age', 'gender']);
+
+        return User.findOneAndUpdate(
+            { _id },
+            newData,
+            { useFindAndModify: false, new: true },
+        );
+    }
+
+    static async updateMany(body) {
+        const newData = pick(body.updatingFields, ['name', 'age', 'gender']);
+
+        const { nModified } = (await User.updateMany(
+            body.filter, // find criteria
+            newData, // changing data
+        ));
+
+        return (nModified > 0);
+    }
+
+    static async deleteOne(_id) {
+        const { deletedCount } = (await User.deleteOne({ _id }));
+
+        return (deletedCount > 0);
+    }
+
+    static async deleteMany(ids) {
+        const { deletedCount } = (await User.deleteMany({ _id: { $in: ids } }));
+
+        return (deletedCount > 0);
+    }
+}
+
+module.exports = {
+    UserSrv,
+};

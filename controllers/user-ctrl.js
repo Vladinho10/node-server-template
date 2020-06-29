@@ -1,10 +1,11 @@
 'use strict';
-const User = require('../data/models/user-model');
-const { pick } = require('../helpers/objects');
+const { UserSrv } = require('../services/user-srv');
 
 class UserCtrl {
-    static async readAll(req, res) {
-        const users = await User.find();
+    static async getMany(req, res) {
+        const { query } = req;
+
+        const users = await UserSrv.readMany(query);
 
         return res.ok({
             data: users,
@@ -12,54 +13,51 @@ class UserCtrl {
         });
     }
 
-    static async readOne(req, res) {
-        const user = await User.findOne({ _id: req.params._id });
+    static async getOne(req, res) {
+        const user = await UserSrv.readOne(req.params._id);
 
         return res.ok({
             data: user,
         });
     }
 
-    static async create(req, res) {
-        const user = await User.create(req.body);
+    static async post(req, res) {
+        const { body } = req;
+        const create = Array.isArray(body) ? UserSrv.createMany : UserSrv.createOne;
+
+        const data = await create(body);
 
         return res.created({
-            data: user,
+            data,
         });
     }
 
-    static async createMany(req, res) {
-        const user = await User.insertMany(req.body);
+    static async PutOne(req, res) {
+        const user = await UserSrv.updateOne(req.params._id, req.body); // change data
 
-        return res.created({
-            data: user,
-        });
+        return user
+            ? res.accepted({ data: user })
+            : res.notFound({ message: 'resource not found' });
     }
 
-    static async updateOne(req, res) {
-        // use findOneAndUpdate for return  updated data, using as 3rd param { useFindAndModify: false, new: true }
-        const newData = pick(req.body, ['name', 'age', 'gender']);
+    static async PutMany(req, res) {
+        const isModified = await UserSrv.updateMany(req.body);
 
-        const { nModified } = (await User.updateOne(
-            { _id: req.params._id }, // find criteria
-            newData,
-        )); // change data
-
-        return nModified > 0
+        return isModified
             ? res.accepted({ message: 'updated user by id' })
             : res.notFound({ message: 'resource not found' });
     }
 
-    static async deleteOne(req, res) {
-        const { deletedCount } = (await User.deleteOne({ _id: req.params._id }));
+    static async removeOne(req, res) {
+        const isDeleted  = await UserSrv.deleteOne({ _id: req.params._id });
 
-        return deletedCount ? res.noContent() : res.notFound({ message: 'resource not found' });
+        return isDeleted ? res.noContent() : res.notFound({ message: 'resource not found' });
     }
 
-    static async deleteAll(req, res) {
-        const data = (await User.deleteMany({ }));
+    static async removeMany(req, res) {
+        const isDeleted = await UserSrv.deleteMany(req.body.ids);
 
-        return  data ? res.noContent() : res.notFound({ message: 'resource not found' });
+        return  isDeleted ? res.noContent() : res.notFound({ message: 'resource not found' });
     }
 }
 

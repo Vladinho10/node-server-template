@@ -7,13 +7,11 @@ const logger = require('log4js').getLogger('ENTRY.index');
 const configs = require('./configs');
 const port = 4000;
 
-try {
-    (async () => await mongoose.connect(configs.db.url, configs.db.options))();
-} catch (err) {
-    logger.error(err);
-}
+(async () => await mongoose.connect(configs.db.url, configs.db.options))()
+    .catch(err => logger.error({ err }));
 
 app.use('/v1', express.static(configs.files));
 app.use('/', require('./routers'));
+app.set('view engine', 'ejs');
 
 app.listen(port, () => logger.info(`app listen ${port} port`));
