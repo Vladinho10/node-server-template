@@ -12,6 +12,6 @@ const port = 4000;
 
 app.use('/v1', express.static(configs.files));
 app.use('/', require('./routers'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); // by default ejs files in root's 'views' directory
 
 app.listen(port, () => logger.info(`app listen ${port} port`));
