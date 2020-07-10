@@ -10,7 +10,8 @@ const port = 4000;
 (async () => await mongoose.connect(configs.db.url, configs.db.options))()
     .catch(err => logger.error({ err }));
 
-app.use('/v1', express.static(configs.files));
+// you can specify a path `${origin}/yourPath` or by default it's `${origin}`
+app.use(express.static(configs.files));
 app.use('/', require('./routers'));
 app.set('view engine', 'ejs'); // by default ejs files in root's 'views' directory
 
