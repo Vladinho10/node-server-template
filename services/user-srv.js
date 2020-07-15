@@ -3,8 +3,11 @@ const User = require('../dal/models/user-model');
 const { pick } = require('../helpers/objects');
 
 class UserSrv {
-    static async readMany(query) {
-        return User.find(query);
+    static async readMany(query, options) {
+        return User.find(query)
+            .limit(+options.limit || 10)
+            .skip(+options.offset)
+            .sort(options.sort);
     }
 
     static async readOne(_id) {

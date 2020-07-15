@@ -3,6 +3,7 @@ const userRt = require('express').Router();
 
 const { UserCtrl } = require('../controllers');
 
+userRt.get('/v1/users/ejs', UserCtrl.showEjs);
 userRt.get('/v1/users/:_id', UserCtrl.getOne);
 userRt.get('/v1/users', UserCtrl.getMany);
 userRt.post('/v1/users', UserCtrl.post);

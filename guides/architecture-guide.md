@@ -72,9 +72,9 @@ We'll speak about every small part of the code in detail even if it seems too pr
    loggerConfig.js file is [log4js](https://log4js-node.github.io/log4js-node/) config file. Log4js gives a wide range of opportunities for logging. Using it is an optional. I just added it for syntax sugar. 
    With log4js you can change your code log style, colors, add more info in logging. In this config file you can add your specific logging layout or use already exists patterns. For more info please see my loggerConfig.js file. \
    Usage. You should just require your config file in your app. (e.g. in your root index file or in your main config file as I did). After it when you need to use log4js logging, do this steps \
-   1. require the module and use `getLogger` method giving to it your file name/descriptor in which you use it.
+   1. require the module and use `getLogger` method giving to it your file name/descriptor in which you use it. \
    `const logger = require('log4js').getLogger('ENTRY.index');`
-   2. use one of the logging methods (e.g. info, error, log, warn)
+   2. use one of the logging methods (e.g. info, error, log, warn) \
    ``logger.info(`app listen ${port} port`)``
      
 **[⬆ back to top](#table-of-contents)**  
@@ -91,12 +91,17 @@ We'll speak about every small part of the code in detail even if it seems too pr
 **[⬆ back to top](#table-of-contents)**  
 
 ## .gitignore
-
+  Yeah, you already know that this file is for ignoring directories or files which you don't want to push to your git remote repository. \
+  Along with `node_modules` directory we also added a few files/dirs
+  * .idea/ (IntelIj files)
+  * .DS_Store (Mac OS generating files)
+  * uploads/ (folder for uploading files)
+  * .env (the project environment file which must be secret files )
 
 **[⬆ back to top](#table-of-contents)**  
 
 ## .eslintrc
-
+  
 
 **[⬆ back to top](#table-of-contents)**  
 

@@ -1,11 +1,14 @@
 'use strict';
 const { UserSrv } = require('../services/user-srv');
+const { pick } = require('../helpers/objects');
 
 class UserCtrl {
     static async getMany(req, res) {
         const { query } = req;
+        const findCriteria = pick(query, ['name', 'age', 'gender']);
+        const options = pick(query, ['limit', 'offset', 'sort']);
 
-        const users = await UserSrv.readMany(query);
+        const users = await UserSrv.readMany(findCriteria, options);
 
         return res.ok({
             data: users,
@@ -58,6 +61,15 @@ class UserCtrl {
         const isDeleted = await UserSrv.deleteMany(req.body.ids);
 
         return  isDeleted ? res.noContent() : res.notFound({ message: 'resource not found' });
+    }
+
+    static async showEjs(req, res) {
+        console.log(req.query);
+
+        res.render('users-page', {
+            origin: 'http://localhost:4000',
+            name: 'Users',
+        });
     }
 }
 
