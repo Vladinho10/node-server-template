@@ -62,9 +62,13 @@ or\
 We are inspired from Airbnb eslint configurations. We suggest eslint configs our version, and we'd love to accept
 any suggestions about the code style which is in line with our philosophy :) \
 It is used only modern and not outdated cases, consequently we've not written less used or not used methods, cases.
-For example it has not written about `const obj = new Object();` because we just use `const obj = {};`\
+For example: it has not written about `const obj = new Object();` because we just use `const obj = {};`\
 [more](https://github.com/Vladinho10/node-server-template/blob/master/guides/style-guide.md)
 
 ## Architecture guide
-Coming soon !\
+
+The software architecture (SA) is one of the most important parts of the developing. It helps developers easy to integrate into the ocean of the codes.
+The architecture describes a set of aspects and decisions of the software. 
+This implies taking into consideration all kinds of requirements (performance, security, etc.), the organization of the system, how the system parts communicate with each other.\
+You should think about the long term, building software that is both functional right now and can support any sort of growth and change. \
 [more](https://github.com/Vladinho10/node-server-template/blob/master/guides/architecture-guide.md)

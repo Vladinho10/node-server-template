@@ -1,15 +1,29 @@
 'use strict';
-// eslint-disable-next-line arrow-body-style
 const pick = (obj, fields) => {
-    return fields.reduce((newObj, key) => {
-        if (!(obj[key] === undefined)) {
-            newObj[key] = obj[key];
-        }
+    const picked = {};
 
-        return newObj;
-    }, {});
+    for (const key in obj) {
+        if (fields.includes(key)) {
+            picked[key] = obj[key];
+        }
+    }
+
+    return picked;
+};
+
+const skip = (obj, fields) => {
+    const skipped = {};
+
+    for (const key in obj) {
+        if (!fields.includes(key)) {
+            skipped[key] = obj[key];
+        }
+    }
+
+    return skipped;
 };
 
 module.exports = {
     pick,
+    skip,
 };

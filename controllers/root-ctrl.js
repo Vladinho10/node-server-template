@@ -4,7 +4,7 @@ class RootCtrl {
         return res.ok('get all data');
     }
 
-    static async postOne(req, res) {
+    static async post(req, res) {
         return res.created('create new data');
     }
 

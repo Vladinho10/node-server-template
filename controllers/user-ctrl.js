@@ -35,7 +35,7 @@ class UserCtrl {
         });
     }
 
-    static async PutOne(req, res) {
+    static async putOne(req, res) {
         const user = await UserSrv.updateOne(req.params._id, req.body); // change data
 
         return user
@@ -43,7 +43,7 @@ class UserCtrl {
             : res.notFound({ message: 'resource not found' });
     }
 
-    static async PutMany(req, res) {
+    static async putMany(req, res) {
         const isModified = await UserSrv.updateMany(req.body);
 
         return isModified

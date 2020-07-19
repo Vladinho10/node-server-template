@@ -2,11 +2,7 @@
 
 ## Introduction
 
-The software architecture (SA) is one of the most important parts of the developing. It helps developers easy to integrate into the ocean of the codes.
-The architecture describes a set of aspects and decisions of the software. 
-This implies taking into consideration all kinds of requirements (performance, security, etc.), the organization of the system, how the system parts communicate with each other.\
-You should think about the long term, building software that is both functional right now and can support any sort of growth and change. \
-In other words, the architecture will define the problems you might encounter when it comes to implementation. 
+In other words, the SA defines the problems you might encounter when it comes to implementation. 
 It also shows the organisational structure and makes it much easier to take decisions and manage all sort of change. It also permits us to get a better estimate of the time & costs of a project.
 
 So based on our work experience we decided to have this SA. We'll start from the end because last part is more important to know at first.
@@ -87,13 +83,16 @@ We'll speak about every small part of the code in detail even if it seems too pr
 
 ## index
 
+  This is the entry point of your app. This is a cell from which is originated your application civilization. For running it, Node.js runs `index.js` at first. It initializes all classes and methods\
+  Here you should write code few as possible. It should be a very simple and clean. Usually you create the server with a port and give connection to your database. You can also add here your routers and middlewares.  
 
 **[⬆ back to top](#table-of-contents)**  
 
 ## .gitignore
+
   Yeah, you already know that this file is for ignoring directories or files which you don't want to push to your git remote repository. \
   Along with `node_modules` directory we also added a few files/dirs
-  * .idea/ (IntelIj files)
+  * .idea/ (IntelliJ files)
   * .DS_Store (Mac OS generating files)
   * uploads/ (folder for uploading files)
   * .env (the project environment file which must be secret files )
@@ -101,36 +100,51 @@ We'll speak about every small part of the code in detail even if it seems too pr
 **[⬆ back to top](#table-of-contents)**  
 
 ## .eslintrc
-  
 
+  ESLint is a ESLint is a static code analysis tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.
+  This is its config file. Our `.eslintrc` and style guide are being written according best practices of JS, Node.js (e.g. the great software development school of Airbnb), and, of course, our best modest experience :innocent: It was tested line by line. For more info please take a look our style guide.
+  
 **[⬆ back to top](#table-of-contents)**  
 
 ## eslintignore
 
+  This file is for ignoring any file or directory which you don't prefer to be checked by Eslint. It's an optional file.
 
 **[⬆ back to top](#table-of-contents)**  
 
 ## env.simple
 
+  This file is a simple example of your real .env file. In that you should write your .environment variables, secret keys and passwords.\
+  For using .env file. you must install `dotenv` module via npm and just require it in your config file. This module will use your .env file data when your app run.
+  Keep your `.env` file secure.
 
 **[⬆ back to top](#table-of-contents)**  
 
 ## .depcheckrc
 
-
+  This is an optional. As we said above, there is a module, which helps to check which dependency is unused in package.json.\
+  Sometimes there are modules or directory you don't want to be checked. So this file is for ignoring them.
+  
 **[⬆ back to top](#table-of-contents)**  
 
 ## views
 
+  This directory is used to save template engines. A template engine enables you to use static template files in your application. At runtime, the template engine replaces variables in a template file with actual values, and transforms the template into an HTML file sent to the client. This approach makes it easier to design an HTML page.\
+  You may not to have view engine. We decided to add it just for example. We use `EJS`. You can install another you wish. After it you need to set 2 things: the view engine and the directory for it (by default express use `views` dir). In our case we set them in entry `index.js` file.   
 
 **[⬆ back to top](#table-of-contents)**  
 
 ## tests
 
+  Tests are one of most important part of your code. Yes you can live without them, but life gets better and secure with them. We decided to use `Mocha` test framework with `Sinon` and `Chai`.
+  Your app should have 2 types of tests integration and unit. As we know with unit tests you test your individual parts of source code, individual methods. With integration tests you test a group of unit tests or specific flow of the code, e. g. working capacity from controllers to database actions. 
+  In our template we wrote some tests examples.
 
 **[⬆ back to top](#table-of-contents)**  
 
 ## services
+Services are conceptual parts of app architecture. 
+<img src="../files/media/c-s-d.png" width="210" height="193"  alt="some text"/>
 
 
 **[⬆ back to top](#table-of-contents)**  
@@ -160,7 +174,7 @@ We'll speak about every small part of the code in detail even if it seems too pr
 
 **[⬆ back to top](#table-of-contents)**  
 
-## dal
+## dal (database access layer)
 
 
 **[⬆ back to top](#table-of-contents)**  

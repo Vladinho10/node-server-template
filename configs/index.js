@@ -10,7 +10,7 @@ const db = {
         useCreateIndex: true,
     },
 };
-
+const port = `${process.env.PORT}`;
 const files = `${process.cwd()}/files`;
 const uploads = `${process.cwd()}/uploads`;
 const mailOptions = {
@@ -28,6 +28,7 @@ const mailOptions = {
 
 module.exports = {
     db,
+    port,
     files,
     uploads,
     mailOptions,
