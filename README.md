@@ -68,7 +68,5 @@ For example: it has not written about `const obj = new Object();` because we jus
 ## Architecture guide
 
 The software architecture (SA) is one of the most important parts of the developing. It helps developers easy to integrate into the ocean of the codes.
-The architecture describes a set of aspects and decisions of the software. 
-This implies taking into consideration all kinds of requirements (performance, security, etc.), the organization of the system, how the system parts communicate with each other.\
-You should think about the long term, building software that is both functional right now and can support any sort of growth and change. \
+The architecture describes a set of aspects and decisions of the software. \
 [more](https://github.com/Vladinho10/node-server-template/blob/master/guides/architecture-guide.md)

@@ -11,6 +11,9 @@
   },
   "author": "Vlad Mkhitaryan",
   "license": "ISC",
+  "engines": {
+    "node": "12.x"
+  },
   "dependencies": {
     "compose-middleware": "^5.0.1",
     "dotenv": "^8.2.0",
