@@ -1,6 +1,24 @@
 'use strict';
 const userSchema = require('./schemas/userSchema');
 const usersPath = require('./paths/usersPath');
+const rootPath = require('./paths/rootPath.json');
+
+const paths = [
+    usersPath,
+    rootPath,
+];
+
+const keyAndValue = paths => {
+    const obj = {};
+
+    for (const path of paths) {
+        for (const key in path) {
+            obj[key] = path[key];
+        }
+    }
+
+    return obj;
+};
 
 module.exports = {
     swaggerDefinition: {
@@ -20,9 +38,7 @@ module.exports = {
                 userSchema,
             },
         },
-        paths: {
-            '/users': usersPath,
-        },
+        paths: keyAndValue(paths),
     },
     apis: ['./controllers/**/*.js', './api-docs/**/*.js',  './api-docs/*.json'],
 };

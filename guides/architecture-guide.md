@@ -10,7 +10,7 @@ We'll speak about every small part of the code in detail even if it seems too pr
 
 ## Table of Contents
 
-  1. [API docs](#apidocs)
+  1. [API docs](#api_docs)
   1. [configs](#configs)
   1. [constants](#constants)
   1. [controllers](#controllers)
@@ -58,6 +58,7 @@ We'll speak about every small part of the code in detail even if it seems too pr
   ```
   Express framework v4.x doesn't use async/await functions, so we asyncified all we need (it is shown in `controllers` section). 
   
+
 ## yarn.lock
 
    If you use `npm` as your package manager, then equivalent to yarn.lock file is `package-lock.json` file.\
@@ -192,6 +193,20 @@ We'll speak about every small part of the code in detail even if it seems too pr
 
 ## middlewares
 
+  Middleware functions are functions that have access to the request object `(req)`, the response object `(res)`, and the next middleware function in the application’s request-response cycle. The next middleware function is commonly denoted by a variable named `next`.
+  We already talked about ErrorHandler middleware. Besides, it there are 2 ones: `respond.js` and `upload.js`.\
+  With `respond` you can send response to client and send appropriate status code according [http-status](https://www.npmjs.com/package/http-status) npm module.\
+  E.g. when you what to send <span style="color:green;">status code 200,</span> you can use 
+  ```
+  res.ok(data)
+  ``` 
+  method instead 
+  ```
+  res.status(200).send(data)
+  ``` 
+  or if you want to send <span style="color:red;">error 404</span> you should use `res.notFound()` instead of `res.status(404).send(data)`.\
+  With upload middlware you can upload file to server. In our case we have `uploads` directory for uploading file. But you can't see it because we've added it in `.gitignore`.
+  In middlewares you can add authentication logic. In which route it is used, the user must be authorized.
 
 **[⬆ back to top](#table-of-contents)**  
 
@@ -216,8 +231,9 @@ We'll speak about every small part of the code in detail even if it seems too pr
 
 **[⬆ back to top](#table-of-contents)**  
 
-## dal (database access layer)
+## dal
 
+  dal - data access layer.
 
 **[⬆ back to top](#table-of-contents)**  
 
@@ -240,7 +256,7 @@ We'll speak about every small part of the code in detail even if it seems too pr
 
 **[⬆ back to top](#table-of-contents)**  
 
-## API docs
+## API_docs
 
 
 **[⬆ back to top](#table-of-contents)**  
