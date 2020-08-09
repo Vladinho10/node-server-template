@@ -1,7 +1,7 @@
 {
   "/users": {
     "get": {
-      "summary": "Get all users",
+      "summary": "Get many users",
       "tags": ["Users"],
       "parameters": [
         {
@@ -33,7 +33,7 @@
         }
       ],
       "responses": {
-        "201": {
+        "200": {
           "description": " a desc",
           "content": {
             "application/json": {
@@ -103,8 +103,8 @@
         }
       ],
       "responses": {
-        "201": {
-          "description": " a desc",
+        "204": {
+          "description": "No content",
           "content": {
             "application/json": {
               "schema": {
@@ -116,7 +116,7 @@
       }
     }
   },
-  "/users{_id}": {
+  "/users/{_id}": {
     "get": {
       "summary": "Get a user by id",
       "tags": ["Users"],

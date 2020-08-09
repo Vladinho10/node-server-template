@@ -1,7 +1,7 @@
 {
   "/": {
     "get": {
-      "summary": "Get all users",
+      "summary": "Get request on root",
       "tags": ["Root"],
       "parameters": [
         {
@@ -12,28 +12,10 @@
           "schema": {
             "type": "integer"
           }
-        },
-        {
-          "in": "query",
-          "name": "offset",
-          "description": "this is offset",
-          "required": false,
-          "schema": {
-            "type": "string"
-          }
-        },
-        {
-          "in": "query",
-          "name": "sort",
-          "description": "this is sort",
-          "required": false,
-          "schema": {
-            "type": "integer"
-          }
         }
       ],
       "responses": {
-        "201": {
+        "200": {
           "description": " a desc",
           "content": {
             "application/json": {
@@ -46,7 +28,7 @@
       }
     },
     "post": {
-      "summary": "Create a new user",
+      "summary": "Post request on root",
       "tags": ["Root"],
       "parameters": [
         {

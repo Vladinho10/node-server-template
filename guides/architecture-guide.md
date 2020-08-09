@@ -3,18 +3,17 @@
 ## Introduction
 
 In other words, the SA defines the problems you might encounter when it comes to implementation. 
-It also shows the organisational structure and makes it much easier to take decisions and manage all sort of change. It also permits us to get a better estimate of the time & costs of a project.
-
+It also shows the organisational structure and makes it much easier to take decisions and manage all sort of change. It also permits us to get a better estimate of the time & costs of a project.\
 So based on our work experience we decided to have this SA. We'll start from the end because last part is more important to know at first.
 We'll speak about every small part of the code in detail even if it seems too primitive and maybe even every beginner knows it.
 
 ## Table of Contents
 
-  1. [API docs](#api_docs)
   1. [configs](#configs)
   1. [constants](#constants)
   1. [controllers](#controllers)
   1. [dal](#dal)
+  1. [docs](#docs)
   1. [files](#files)
   1. [guides](#guides)
   1. [helpers](#helpers)
@@ -30,18 +29,18 @@ We'll speak about every small part of the code in detail even if it seems too pr
   1. [.gitignore](#.gitignore)
   1. [index](#index)
   1. [jenkinsfile](#jenkinsfile)
-  1. [loggerConfig](#loggerconfig)
+  1. [LICENCE](#LICENCE)
   1. [package.json](#packagejson)
   1. [README.md](#README)
   1. [yarn.lock](#yarnlock)
-  
-  
+
 ## Foreword
 
    I'd like to start from naming of files or directories.
    1. All files or directories are started with lowercase. E.g. `configs`, `index.js`
    2. Complex words are written with dash. E.g. `admin-panel-ctrl`
    3. All directories are written with plural form. Exception is `dal` (data access layer), but in that dir again all subdirectories are in plural form.
+   4. We follow REST API rules. The key abstraction of information in REST is a `resource`. Any information that can be named can be a resource: a document or image, a temporal service, a collection of other resources, a non-virtual object (e.g. a person), and so on. REST uses a resource identifier to identify the particular resource involved in an interaction between components.
 
    In our software structure we use barrel export. A barrel is a way to rollup exports from several modules into a single convenient module. The barrel itself is a module file that re-exports selected exports of other modules. \
    Putting those words in action, is creating an index.js file to reexport everything the end user will need:
@@ -57,7 +56,7 @@ We'll speak about every small part of the code in detail even if it seems too pr
    };
   ```
   Express framework v4.x doesn't use async/await functions, so we asyncified all we need (it is shown in `controllers` section). 
-  
+  In addition 
 
 ## yarn.lock
 
@@ -85,16 +84,10 @@ We'll speak about every small part of the code in detail even if it seems too pr
 
 **[⬆ back to top](#table-of-contents)**  
 
-## loggerConfig
+## LICENCE
 
-   loggerConfig.js file is [log4js](https://log4js-node.github.io/log4js-node/) config file. Log4js gives a wide range of opportunities for logging. Using it is an optional. I just added it for syntax sugar. 
-   With log4js you can change your code log style, colors, add more info in logging. In this config file you can add your specific logging layout or use already exists patterns. For more info please see my loggerConfig.js file. \
-   Usage. You should just require your config file in your app. (e.g. in your root index file or in your main config file as I did). After it when you need to use log4js logging, do this steps \
-   1. require the module and use `getLogger` method giving to it your file name/descriptor in which you use it. \
-   `const logger = require('log4js').getLogger('ENTRY.index');`
-   2. use one of the logging methods (e.g. info, error, log, warn) \
-   ``logger.info(`app listen ${port} port`)``
-     
+  Ours is MIT License. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files. For more information please take a look in the document. [more](https://github.com/Vladinho10/node-server-template/blob/master/LICENSE)
+
 **[⬆ back to top](#table-of-contents)**  
 
 ## jenkinsfile
@@ -165,9 +158,31 @@ We'll speak about every small part of the code in detail even if it seems too pr
 **[⬆ back to top](#table-of-contents)**  
 
 ## services
-  Services are conceptual parts of app architecture. 
-  <img src="../files/media/c-s-d.png" width="210" height="193"  alt="c-s-d relation" align="right"/>
+  Services are conceptual parts of app architecture. We can say, that almost all API logic is written in services. Services have intermediate role between controllers and data access layer (dal).\
+  In service the data received from controller, adapting, filtering, checking, and if there isn't any exceptions cases, does manipulations with the database using appropriate models and at the end transfer back the modified data to controller.
+  Some times service can be just a helper (look below about helpers), which does resource specific operations. For example jwt's (json web token) `sign` and `verify` methods we could write also as service methods.\
+  ```
+  class UserSrv {
+      static async readMany(query, options) {}
+  
+      static async readOne(_id) {}
+  
+      static async createOne(body) {}
+  
+      static async createMany(body) {}
+  
+      static async updateOne(_id, body) {}
+  
+      static async updateMany(body) {}
+  
+      static async deleteOne(_id) {}
+  
+      static async deleteMany(ids) {}
+  }
+  ```
+  As you see, Service is javascript class, which has static methods, and all they are asynchronous. 
 
+  <img src="../files/media/c-s-d.png" width="210" height="193"  alt="c-s-d relation" align="right" margin="20px"/>
 
 **[⬆ back to top](#table-of-contents)**  
 
@@ -231,13 +246,70 @@ We'll speak about every small part of the code in detail even if it seems too pr
 
 **[⬆ back to top](#table-of-contents)**  
 
+## docs
+
+  It consists of the following directories: 
+  1. postman-docs
+  2. swagger-docs
+  postman-docs includes a postman collection with example requests for `/users` resource (API).
+  
+  This is API documentation designed by Swagger. It consists of 3 parts.
+  * paths
+  * schemas
+  * swagger options
+
+  Swagger options are the options of swagger configuration. In these options you should fill servers' information, schemas, paths. You also must leave required field `apis` (in which you may add controller files, if you use comments as swagger docs in controller files)
+  It is presented the routes(path), and their requests' fields in paths. You make files take for granted REST resources (users, messages, photos and so on). E.g. 
+  ```
+    {
+      "/users": {
+        "get": {
+          "summary": "Get many users",
+          "tags": ["Users"],
+          "parameters": [
+            {
+              "in": "query",
+              "name": "limit",
+              "description": "this is limit",
+              "required": false,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": " a desc",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#components/schemas/userSchema"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+   ``` 
+  At first, you must note the endpoint, in our example it is `/users`, then http method, after it you should describe the request's details (properties, response for it, status code and so on).
+  It is necessary to pay attention in the fact, that in `"responses"` (the body of the response) field there is a `"schema"`, which is referenced to `"#components/schemas/userSchema"`, or in other words said `userSchema.json` file which is in `swagger-docs/schemas` directory.
+  The last thing, which you must do is create a route (in our case is `your host` + `'/v1/api-docs'`) and a controller with `swagger-ui-express` module, which takes `swagger-jsdoc` module and swagger options as call argument. To get an entire overview please see [swagger-rt](https://github.com/Vladinho10/node-server-template/blob/master/routers/swagger-rt.js) . 
+
+**[⬆ back to top](#table-of-contents)**
+
 ## dal
 
-  dal - data access layer.
+  dal - data access layer. In this directory we store all things which related with database, include models, enums, triggers and so on.\
+  In our template we created only a small user model for example. Btw, we use mongodb famous `mongoose` module as ODM (Object Document Mapping). 
 
 **[⬆ back to top](#table-of-contents)**  
 
 ## controllers
+  The controller receives a request data for current route, sometimes clarify it, and then transfer that data to the service. Then the controller gets service response and send it to the client (web or mobile).\
+  If there is an exception situation, or custom Error Handler's case, the `ErrorHandler` middleware send the error response.\
+  In our graph success cases are shown with green lines, while error cases are shown with red lines. 
 
   <img src="../files/media/app-architecture.png"  alt="app-architecture"/>
 
@@ -253,11 +325,15 @@ We'll speak about every small part of the code in detail even if it seems too pr
 
 ## configs
 
+  In this place you can find all configurations of the app, including database, AWS, logger and other configurations. We require all `.env` file's data in configs `index.js` then use in over of the whole app.\
+  Some words about loggerConfig. It is [log4js](https://log4js-node.github.io/log4js-node/) config file. Log4js gives a wide range of opportunities for logging. Using it is an optional. I just added it for syntax sugar. 
+  With log4js you can change your code log style, colors, add more info in logging. In this config file you can add your specific logging layout or use already exists patterns. For more info please see my loggerConfig.js file. \
+  Usage. You should just require your config file in your app. (e.g. in your root index file or in your main config file as I did). After it when you need to use log4js logging, do this steps:
+  1. require the module and use `getLogger` method giving to it your file name/descriptor in which you use it. \
+  `const logger = require('log4js').getLogger('ENTRY.index');`
+  2. use one of the logging methods (e.g. info, error, log, warn) \
+  ``logger.info(`app listen ${port} port`)``
 
 **[⬆ back to top](#table-of-contents)**  
 
-## API_docs
-
-
-**[⬆ back to top](#table-of-contents)**  
 

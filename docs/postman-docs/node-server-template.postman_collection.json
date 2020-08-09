@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "6f1daf38-7c8c-4d4f-83a6-b0b48de73203",
+		"name": "node-server-template",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "get users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f9a9331a-68d6-4de8-ac7f-c08733f88083",
+								"exec": [
+									"const { data } = pm.response.json();",
+									"",
+									"const ids = [];",
+									"// if (users) {",
+									"//     for (const user of users) {",
+									"//         ids.push(user._id);",
+									"//     }",
+									"// }",
+									"",
+									"console.log(ids);",
+									"",
+									"pm.environment.set(\"ids\", ids);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{my-url}}/v1/users?limit=2&offset=3&sort=name",
+							"host": [
+								"{{my-url}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "offset",
+									"value": "3"
+								},
+								{
+									"key": "sort",
+									"value": "name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2df8d2f9-89f7-4966-b693-19e5264ba22f",
+								"exec": [
+									"var { data } = pm.response.json();",
+									"",
+									"if (data._id || (data[0] && data[0]._id)) {",
+									"    pm.environment.set(\"userId\", response._id);",
+									"    pm.environment.set(\"userEmail\", response.email);",
+									"    pm.environment.set(\"userName\", response.username);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Floretta\",\n    \"age\": 22,\n    \"gender\": \"female\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "{{my-url}}/v1/users",
+							"host": [
+								"{{my-url}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update users by gender",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"filter\": {\n        \"gender\": \"female\"\n    },\n    \"updatingFields\": {\n        \"age\": 20\n    }\n}"
+						},
+						"url": {
+							"raw": "{{my-url}}/v1/users",
+							"host": [
+								"{{my-url}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete users",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ids\": [\n\t\t\"5ef9de734549a70910236ecf\",\n\t\t\"5ef9df7d387e8809761d973b\",\n\t\t\"5ef9df7d387e8809761d9799\"\n\t]\n}"
+						},
+						"url": {
+							"raw": "{{my-url}}/v1/users",
+							"host": [
+								"{{my-url}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{my-url}}/v1/users/{{userId}}",
+							"host": [
+								"{{my-url}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new users",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n       {\n        \"name\": \"Ivetetta\",\n        \"age\": 22,\n        \"gender\": \"female\"\n    },\n    {\n        \"name\": \"Lizetta\",\n        \"age\": 21,\n        \"gender\": \"female\"\n    },\n    {\n        \"name\": \"Myuzetta\",\n        \"age\": 34,\n        \"gender\": \"female\"\n    },\n    {\n        \"name\": \"Zhanetta\",\n        \"age\": 33,\n        \"gender\": \"female\"\n    },\n    {\n        \"name\": \"Zhorzhetta\",\n        \"age\": 19,\n        \"gender\": \"female\"\n    },\n    {\n        \"name\": \"Koletta\",\n        \"age\": 29,\n        \"gender\": \"female\"\n    },\n    {\n        \"name\": \"Poletta\",\n        \"age\": 28,\n        \"gender\": \"female\"\n    },\n    {\n        \"name\": \"Floretta\",\n        \"age\": 25,\n        \"gender\": \"female\"\n    },\n    {\n        \"name\": \"Klaretta\",\n        \"age\": 24,\n        \"gender\": \"female\"\n    },\n    {\n        \"name\": \"Marietta\",\n        \"age\": 23,\n        \"gender\": \"female\"\n    }\n]"
+						},
+						"url": {
+							"raw": "{{my-url}}/v1/users",
+							"host": [
+								"{{my-url}}"
+							],
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user by id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{my-url}}/v1/users/{{userId}}",
+							"host": [
+								"{{my-url}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user by id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Emma\",\n    \"gender\": \"female\",\n    \"age\": 8\n}"
+						},
+						"url": {
+							"raw": "{{my-url}}/v1/users/{{userId}}",
+							"host": [
+								"{{my-url}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

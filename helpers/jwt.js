@@ -1,17 +1,17 @@
 'use strict';
 const jwt = require('jsonwebtoken');
+const jwtSecret = require('../configs');
 
-const secret = 'mySecret';
 const options = {
     // expiresIn: '1h',
     algorithm: 'HS256',
 };
 
 const sign = payload => typeof payload === 'string'
-    ? jwt.sign(payload, secret, options)
-    : jwt.sign(JSON.stringify(payload), secret, options);
+    ? jwt.sign(payload, jwtSecret, options)
+    : jwt.sign(JSON.stringify(payload), jwtSecret, options);
 
-const verify = token => jwt.verify(token, secret);
+const verify = token => jwt.verify(token, jwtSecret);
 
 module.exports = {
     sign,

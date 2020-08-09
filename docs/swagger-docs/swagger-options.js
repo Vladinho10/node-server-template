@@ -1,6 +1,6 @@
 'use strict';
-const userSchema = require('./schemas/userSchema');
-const usersPath = require('./paths/usersPath');
+const userSchema = require('./schemas/userSchema.json');
+const usersPath = require('./paths/usersPath.json');
 const rootPath = require('./paths/rootPath.json');
 
 const paths = [
@@ -29,7 +29,7 @@ module.exports = {
         },
         servers: [
             {
-                url: 'http://localhost:3000/v1',
+                url: 'http://localhost:4000/v1',
                 description: 'local',
             },
         ],
@@ -40,5 +40,5 @@ module.exports = {
         },
         paths: keyAndValue(paths),
     },
-    apis: ['./controllers/**/*.js', './api-docs/**/*.js',  './api-docs/*.json'],
+    apis: [],
 };

@@ -67,7 +67,7 @@ class UserCtrl {
         console.log(req.query);
 
         res.render('users-page', {
-            origin: 'http://localhost:4000',
+            origin: `${req.protocol}://${req.get('host')}`,
             name: 'Users',
         });
     }

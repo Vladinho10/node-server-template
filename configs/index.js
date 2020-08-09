@@ -1,6 +1,6 @@
 'use strict';
 require('dotenv').config();
-require('../loggerConfig');
+require('./loggerConfig');
 
 const db = {
     url: `${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
@@ -11,6 +11,7 @@ const db = {
     },
 };
 const port = `${process.env.PORT}`;
+const jwtSecret = `${process.env.JWT_SECRET}`;
 const files = `${process.cwd()}/files`;
 const uploads = `${process.cwd()}/uploads`;
 const mailOptions = {
@@ -31,5 +32,6 @@ module.exports = {
     port,
     files,
     uploads,
+    jwtSecret,
     mailOptions,
 };
