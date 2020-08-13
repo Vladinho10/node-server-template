@@ -1,5 +1,6 @@
 'use strict';
-require('dotenv').config();
+const rootPath = process.cwd();
+require('dotenv-flow').config({ path: `${rootPath}/envs` });
 require('./loggerConfig');
 
 const db = {
@@ -10,10 +11,10 @@ const db = {
         useCreateIndex: true,
     },
 };
-const port = `${process.env.PORT}`;
+const port = process.env.PORT;
 const jwtSecret = `${process.env.JWT_SECRET}`;
-const files = `${process.cwd()}/files`;
-const uploads = `${process.cwd()}/uploads`;
+const files = `${rootPath}/files`;
+const uploads = `${rootPath}/uploads`;
 const mailOptions = {
     host: 'smtp.gmail.com',
     port: 465, // 587, 465

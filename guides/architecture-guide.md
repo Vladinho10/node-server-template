@@ -14,6 +14,7 @@ We'll speak about every small part of the code in detail even if it seems too pr
   1. [controllers](#controllers)
   1. [dal](#dal)
   1. [docs](#docs)
+  1. [envs](#envs)
   1. [files](#files)
   1. [guides](#guides)
   1. [helpers](#helpers)
@@ -23,7 +24,6 @@ We'll speak about every small part of the code in detail even if it seems too pr
   1. [tests](#tests)
   1. [views](#views)
   1. [.depcheckrc](#depcheckrc)
-  1. [env.simple](#envsimple)
   1. [.eslintignore](#eslintignore)
   1. [.eslintrc](#eslintrc)
   1. [.gitignore](#.gitignore)
@@ -110,7 +110,7 @@ We'll speak about every small part of the code in detail even if it seems too pr
   * .idea/ (IntelliJ files)
   * .DS_Store (Mac OS generating files)
   * uploads/ (folder for uploading files)
-  * .env (the project environment file which must be secret files )
+  * /envs/.env.*.local (the project environment file where must be secret keys )
 
 **[⬆ back to top](#table-of-contents)**  
 
@@ -124,14 +124,6 @@ We'll speak about every small part of the code in detail even if it seems too pr
 ## eslintignore
 
   This file is for ignoring any file or directory which you don't prefer to be checked by Eslint. It's an optional file.
-
-**[⬆ back to top](#table-of-contents)**  
-
-## env.simple
-
-  This file is a simple example of your real .env file. In that you should write your .environment variables, secret keys and passwords.\
-  For using .env file. you must install `dotenv` module via npm and just require it in your config file. This module will use your .env file data when your app run.
-  Keep your `.env` file secure.
 
 **[⬆ back to top](#table-of-contents)**  
 
@@ -160,7 +152,7 @@ We'll speak about every small part of the code in detail even if it seems too pr
 ## services
   Services are conceptual parts of app architecture. We can say, that almost all API logic is written in services. Services have intermediate role between controllers and data access layer (dal).\
   In service the data received from controller, adapting, filtering, checking, and if there isn't any exceptions cases, does manipulations with the database using appropriate models and at the end transfer back the modified data to controller.
-  Some times service can be just a helper (look below about helpers), which does resource specific operations. For example jwt's (json web token) `sign` and `verify` methods we could write also as service methods.\
+  Some times service can be just a helper (look below about helpers), which does resource specific operations. For example jwt's (json web token) `sign` and `verify` methods we could write also as service methods.
   ```
   class UserSrv {
       static async readMany(query, options) {}
@@ -181,8 +173,6 @@ We'll speak about every small part of the code in detail even if it seems too pr
   }
   ```
   As you see, Service is javascript class, which has static methods, and all they are asynchronous. 
-
-  <img src="../files/media/c-s-d.png" width="210" height="193"  alt="c-s-d relation" align="right" margin="20px"/>
 
 **[⬆ back to top](#table-of-contents)**  
 
@@ -243,6 +233,14 @@ We'll speak about every small part of the code in detail even if it seems too pr
 ## files
 
   The `files` directory stores files related your template engine (.css, .js) or your media files and documents.
+
+**[⬆ back to top](#table-of-contents)**  
+
+## envs
+
+  It consists environment variables files. In `.env` file is a simple example of your real .env file. In that you should write your environment variables, secret keys and passwords.\
+  For using .env file. you must install `dotenv-flow` module via npm or yarn and just require it in your config file. This module will use your .env file data when your app run.
+  There are 2 kinds of env files: ignorable and public. Not ignorable files can be pushed and shared. Env files, ending .local (`.env.*.local`) must be kept secure. For more info please see [dotenv-flow](https://www.npmjs.com/package/dotenv-flow).
 
 **[⬆ back to top](#table-of-contents)**  
 

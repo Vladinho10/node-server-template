@@ -64,8 +64,6 @@ class UserCtrl {
     }
 
     static async showEjs(req, res) {
-        console.log(req.query);
-
         res.render('users-page', {
             origin: `${req.protocol}://${req.get('host')}`,
             name: 'Users',
