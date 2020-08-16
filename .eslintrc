@@ -12,6 +12,9 @@
     "mocha": true,
     "mongo": true
   },
+  "globals": {
+    "io": "writable"
+  },
   "rules": {
     "semi": "error",
     "radix": ["error", "always"],

@@ -9,7 +9,19 @@ class RootCtrl {
     }
 
     static async showEjs(req, res) {
+        io.on('connection', socket => {
+            io.removeAllListeners();
+            console.log('a user connected');
+
+            socket.on('chat message', msg => {
+                console.log({ msg });
+
+                io.emit('chat message', msg);
+            });
+        });
+
         res.render('homePage', {
+            origin: `${req.protocol}://${req.get('host')}`,
             name: req.query.name || 'Eva',
         });
     }

@@ -1,10 +1,11 @@
 'use strict';
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
 const logger = require('log4js').getLogger('ENTRY.index');
-// TODO setup the configs of app
+const express = require('express');
+const mongoose = require('mongoose');
 const configs = require('./configs');
+const app = express();
+const server = require('http').createServer(app);
+global.io = require('socket.io')(server);
 const { port } = configs;
 
 (async () => await mongoose.connect(configs.db.url, configs.db.options))()
@@ -15,4 +16,4 @@ app.use(express.static(configs.files));
 app.use('/', require('./routers'));
 app.set('view engine', 'ejs'); // by default ejs files in root's 'views' directory
 
-app.listen(port, () => logger.info(`app listen ${port} port`));
+server.listen(port, () => logger.info(`app listen ${port} port`));
