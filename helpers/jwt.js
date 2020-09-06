@@ -1,6 +1,6 @@
 'use strict';
 const jwt = require('jsonwebtoken');
-const jwtSecret = require('../configs');
+const { jwtSecret } = require('../configs');
 
 const options = {
     // expiresIn: '1h',

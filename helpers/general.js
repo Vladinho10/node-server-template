@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 'use strict';
 const { Worker } = require('worker_threads');
 
@@ -23,6 +24,17 @@ const putSegmentsInPromise = (segments, childWorkerPath, data = {}) => {
     }));
 };
 
+const jsonParser = jsonString => {
+    let data = {};
+
+    try {
+        data = JSON.parse(jsonString);
+    } catch (err) {}
+
+    return data;
+};
+
 module.exports = {
     putSegmentsInPromise,
+    jsonParser,
 };

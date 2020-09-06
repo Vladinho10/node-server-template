@@ -32,7 +32,7 @@ Yarn | 1.22.4 | `yarn -v`
 2. After it you should write your git credentials (if it needs)
 3. enter downloaded directory\
 `cd node-server-template`
-4. create your .env file like .env.simple file
+4. create your .env files like `.env` file in envs directory. 
 
 for npm
 * install packages\
@@ -69,4 +69,5 @@ For example: it has not written about `const obj = new Object();` because we jus
 
 The software architecture (SA) is one of the most important parts of the developing. It helps developers easy to integrate into the ocean of the codes.
 The architecture describes a set of aspects and decisions of the software. \
+  <img src="./files/media/app-architecture.png"  alt="app-architecture"/>
 [more](https://github.com/Vladinho10/node-server-template/blob/master/guides/architecture-guide.md)
