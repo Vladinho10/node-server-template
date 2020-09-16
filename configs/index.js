@@ -9,6 +9,7 @@ const db = {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
+        useFindAndModify: false,
     },
 };
 const port = process.env.PORT;
