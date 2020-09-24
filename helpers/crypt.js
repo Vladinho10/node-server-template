@@ -4,9 +4,9 @@ const crypto = require('crypto');
 const algorithm = 'aes-256-cbc';
 const key = crypto.scryptSync('keyPassword', 'salt', 32);
 const iv = crypto.scryptSync('ivPassword', 'salt', 16);
-// console.log({ iv, key });
-// console.log({ bufferedKey: Buffer.from(key) });
-// console.log({ keyConvertToString: key.toString() });
+// logger.info({ iv, key });
+// logger.info({ bufferedKey: Buffer.from(key) });
+// logger.info({ keyConvertToString: key.toString() });
 
 const encrypt = data => {
     const str = typeof data === 'string' ? data : JSON.stringify(data);
@@ -14,14 +14,11 @@ const encrypt = data => {
     const encryptedBuffer = cipher.update(str);
     const finalEncryptedBuffer = Buffer.concat([encryptedBuffer, cipher.final()]);
 
-    return {
-        iv: iv.toString('hex'),
-        encryptedString: finalEncryptedBuffer.toString('hex'),
-    };
+    return finalEncryptedBuffer.toString('hex');
 };
 
-const  decrypt = message => {
-    const finalEncryptedBuffer = Buffer.from(message.encryptedString, 'hex');
+const decrypt = message => {
+    const finalEncryptedBuffer = Buffer.from(message, 'hex');
 
     const decipher = crypto.createDecipheriv(algorithm, key, iv);
     const decryptedBuffer = decipher.update(finalEncryptedBuffer);
@@ -30,10 +27,9 @@ const  decrypt = message => {
     return finalDecryptedBuffer.toString();
 };
 
-const encoded = encrypt('Some serious stuff');
-const decoded = decrypt(encoded);
-console.log(decoded);
-
+// const encoded = encrypt('Some serious stuff');
+// const decoded = decrypt(encoded);
+// logger.info(decoded);
 module.exports = {
     encrypt,
     decrypt,

@@ -1,4 +1,5 @@
 'use strict';
+const crypto = require('crypto');
 // eslint-disable-next-line arrow-body-style
 const camelize = str => {
     return str
@@ -18,9 +19,11 @@ const camelize = str => {
         });
 };
 
+const randomString = (size = 32) => crypto.randomBytes(size).toString('hex');
 const generateFileName = originalName => `${Date.now().toString(36)}_${originalName}`;
 
 module.exports = {
     camelize,
+    randomString,
     generateFileName,
 };

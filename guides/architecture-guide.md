@@ -154,7 +154,7 @@ We'll speak about every small detail.
 ## services
   Services are conceptual parts of app architecture. We can say, that almost all API logic is written in services. Services have intermediate role between controllers and data access layer (dal).\
   In service the data received from controller, adapting, filtering, checking, and if there are no exceptions thrown, does manipulations with the database using appropriate models and at the end transfers back the modified data to the controller.
-  Sometimes service can be just a helper (look below about helpers), which does resource specific operations. For example jwt's (json web token) `sign` and `verify` methods we could be written as service methods.
+  Sometimes service can be just a helper (look below about helpers), which does resource specific operations. For example jwtSrv's (json web token) `sign` and `verify` methods we could be written as service methods.
   ```
   class UserSrv {
       static async readMany(query, options) {}
@@ -327,10 +327,7 @@ We'll speak about every small detail.
   Here can find all configurations of the app, including database, AWS, logger and other configurations. We require all `.env` file's data in configs `index.js` then use  it in the scope of whole app.\
   Some words about loggerConfig. It is [log4js](https://log4js-node.github.io/log4js-node/) config file. Log4js gives a wide range of opportunities for logging. Using it is an optional. I just added it for syntax sugar. 
   With log4js you can change your code log style, colors, add more info in logging. In this config file you can add your specific logging layout or use already exists patterns. For more info please see my loggerConfig.js file. \
-  Usage. You should just require your config file in your app. (e.g. in your root index file or in your main config file as I did). After it when you need to use log4js logging, do this steps:
-  1. require the module and use `getLogger` method giving to it your file name/descriptor in which you use it. \
-  `const logger = require('log4js').getLogger('ENTRY.index');`
-  2. use one of the logging methods (e.g. info, error, log, warn) \
+  Usage. We assigned logger method to `global.logger`. You should just require your config file in your app. (e.g. in your root index file or in your main config file as I did). After it when you need to use log4js logging, use one of the logging methods (e.g. info, error, log, warn) \
   ``logger.info(`app listen ${port} port`)``
 
 **[⬆ back to top](#table-of-contents)**  

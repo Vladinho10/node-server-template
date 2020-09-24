@@ -13,14 +13,15 @@
     "mongo": true
   },
   "globals": {
-    "io": "writable"
+    "io": "writable",
+    "logger": "writable"
   },
   "rules": {
     "semi": "error",
     "radix": ["error", "always"],
     "id-length": ["error", {
       "min": 2,
-      "max": 20,
+      "max": 30,
       "exceptions": ["v", "$"]
     }],
     "camelcase": ["error", {

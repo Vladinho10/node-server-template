@@ -11,10 +11,10 @@ class RootCtrl {
     static async showEjs(req, res) {
         io.on('connection', socket => {
             io.removeAllListeners();
-            console.log('a user connected');
+            logger.info('a user connected');
 
             socket.on('chat message', msg => {
-                console.log({ msg });
+                logger.info({ msg });
 
                 io.emit('chat message', msg);
             });

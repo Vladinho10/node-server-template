@@ -14,7 +14,7 @@ log4js.configure({
             type: 'stdout',
             layout: {
                 type: 'pattern', // asJson
-                pattern: '%[ %r %p %c %f{2} %l:%o %] %m',
+                pattern: '%[ %r %p %f{2} %l:%o %] %m',
             },
         },
     },
@@ -27,3 +27,4 @@ log4js.configure({
     },
 });
 
+global.logger = log4js.getLogger();

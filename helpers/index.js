@@ -4,7 +4,7 @@ const objects = require('./objects');
 const strings = require('./strings');
 const general = require('./general');
 const arrays = require('./arrays');
-const jwt = require('./jwt');
+const crypt = require('./crypt');
 
 module.exports = {
     mongoRequests,
@@ -12,5 +12,5 @@ module.exports = {
     strings,
     general,
     arrays,
-    jwt,
+    crypt,
 };
