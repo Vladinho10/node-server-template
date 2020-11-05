@@ -29,6 +29,8 @@ const removeDuplicates = async (model, duplicateCriteria = []) => {
     await model.deleteMany({ _id: { $in: duplicates } });
 };
 
-module.exports = {
+const mongoRequests = {
     removeDuplicates,
 };
+
+module.exports = { mongoRequests };

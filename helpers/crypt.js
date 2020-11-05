@@ -30,8 +30,10 @@ const decrypt = message => {
 // const encoded = encrypt('Some serious stuff');
 // const decoded = decrypt(encoded);
 // logger.info(decoded);
-module.exports = {
+const crypt = {
     encrypt,
     decrypt,
 };
+
+module.exports = { crypt };
 

@@ -1,5 +1,5 @@
 'use strict';
-const { oftenUseCodes } = require('../constants/general');
+const { general: { oftenUseCodes } } = require('../constants');
 
 const respond = (req, res, next) => {
     for (const message in oftenUseCodes) {

@@ -22,8 +22,10 @@ const camelize = str => {
 const randomString = (size = 32) => crypto.randomBytes(size).toString('hex');
 const generateFileName = originalName => `${Date.now().toString(36)}_${originalName}`;
 
-module.exports = {
+const strings = {
     camelize,
-    randomString,
     generateFileName,
+    randomString,
 };
+
+module.exports = { strings };

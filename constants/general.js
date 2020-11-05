@@ -16,6 +16,10 @@ const oftenUseCodes = {
     internalServerError: httpStatus.INTERNAL_SERVER_ERROR,
 };
 
-module.exports = {
+const general = {
     oftenUseCodes,
+};
+
+module.exports = {
+    general,
 };

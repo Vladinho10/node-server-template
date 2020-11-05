@@ -1,6 +1,2 @@
 'use strict';
-const User = require('./user-model');
-
-module.exports = {
-    User,
-};
+module.exports = require('../../barrelExport')(__dirname);

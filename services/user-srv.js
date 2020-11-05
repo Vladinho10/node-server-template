@@ -1,5 +1,5 @@
 'use strict';
-const User = require('../dal/models/user-model');
+const { User } = require('../dal/models');
 const { pick } = require('../helpers/objects');
 
 class UserSrv {
@@ -10,8 +10,8 @@ class UserSrv {
             .sort(options.sort);
     }
 
-    static async readOne(_id) {
-        return  User.findOne({ _id });
+    static async readOne(query) {
+        return  User.findOne(query);
     }
 
     static async createOne(body) {

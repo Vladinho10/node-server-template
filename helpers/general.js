@@ -34,7 +34,12 @@ const jsonParser = jsonString => {
     return data;
 };
 
-module.exports = {
-    putSegmentsInPromise,
+const isCurrentUser = (_id, user) => _id.toString() === user._id.toString();
+
+const general = {
+    isCurrentUser,
     jsonParser,
+    putSegmentsInPromise,
 };
+
+module.exports = { general };

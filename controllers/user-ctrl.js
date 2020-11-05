@@ -17,7 +17,7 @@ class UserCtrl {
     }
 
     static async getOne(req, res) {
-        const user = await UserSrv.readOne(req.params._id);
+        const user = await UserSrv.readOne({ _id: req.params._id });
 
         return res.ok({
             data: user,

@@ -1,5 +1,5 @@
 'use strict';
-const { oftenUseCodes } = require('../constants/general');
+const { general: { oftenUseCodes } } = require('../constants');
 
 // eslint-disable-next-line no-unused-vars
 module.exports = function (err, req, res, next) {

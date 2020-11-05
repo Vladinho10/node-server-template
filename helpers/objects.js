@@ -23,7 +23,17 @@ const skip = (obj, fields) => {
     return skipped;
 };
 
-module.exports = {
+const isEmptyObject = obj => typeof obj === 'object'
+    && Object.keys(obj).length === 0
+    && obj.constructor === Object;
+
+const isJSFileAndNotIndex = file => (file.slice(-3) === '.js') && (file !== 'index.js');
+
+const objects = {
+    isEmptyObject,
+    isJSFileAndNotIndex,
     pick,
     skip,
 };
+
+module.exports = { objects };

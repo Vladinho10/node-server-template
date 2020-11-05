@@ -1,5 +1,5 @@
 'use strict';
-module.exports = {
+const errorMessages = {
     INVALID_CREDENTIALS: 'invalid_credentials',
     INVALID_EMAIL: 'invalid_email',
     INVALID_TOKEN: 'invalid_token',
@@ -7,3 +7,5 @@ module.exports = {
     UNAUTHORIZED: 'unauthorized',
     USER_IS_NOT_FOUND: 'user_is_not_found',
 };
+
+module.exports = { errorMessages };
