@@ -6,6 +6,7 @@ const configs = require('./configs');
 const app = express();
 const server = require('http').createServer(app);
 global.io = require('socket.io')(server);
+global.CustomError = require('./services').CustomError;
 const { port } = configs;
 
 (async () => await mongoose.connect(configs.db.url, configs.db.options))()

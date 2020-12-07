@@ -5,7 +5,7 @@ const barrelExport = dirname => {
     const exportObject = fs.readdirSync(dirname)
         .reduce((acc, file) => {
             if (file !== 'index.js' && (file.slice(-3) === '.js')) {
-                Object.assign(acc, require(`${dirname}/${file}`));
+                return Object.assign({}, acc, require(`${dirname}/${file}`));
             }
 
             return acc;

@@ -14,7 +14,8 @@
   },
   "globals": {
     "io": "writable",
-    "logger": "writable"
+    "logger": "writable",
+    "CustomError": "writable"
   },
   "rules": {
     "semi": "error",

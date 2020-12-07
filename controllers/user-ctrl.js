@@ -1,12 +1,12 @@
 'use strict';
 const { UserSrv } = require('../services/user-srv');
-const { pick } = require('../helpers/objects');
+const { objects } = require('../helpers');
 
 class UserCtrl {
     static async getMany(req, res) {
         const { query } = req;
-        const findCriteria = pick(query, ['name', 'age', 'gender']);
-        const options = pick(query, ['limit', 'offset', 'sort']);
+        const findCriteria = objects.pick(query, ['name', 'age', 'gender']);
+        const options = objects.pick(query, ['limit', 'offset', 'sort']);
 
         const users = await UserSrv.readMany(findCriteria, options);
 

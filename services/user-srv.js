@@ -1,6 +1,6 @@
 'use strict';
 const { User } = require('../dal/models');
-const { pick } = require('../helpers/objects');
+const { objects } = require('../helpers');
 
 class UserSrv {
     static async readMany(query, options) {
@@ -23,7 +23,7 @@ class UserSrv {
     }
 
     static async updateOne(_id, body) {
-        const newData = pick(body, ['name', 'age', 'gender']);
+        const newData = objects.pick(body, ['name', 'age', 'gender']);
 
         return User.findOneAndUpdate(
             { _id },
@@ -33,7 +33,7 @@ class UserSrv {
     }
 
     static async updateMany(body) {
-        const newData = pick(body.updatingFields, ['name', 'age', 'gender']);
+        const newData = objects.pick(body.updatingFields, ['name', 'age', 'gender']);
 
         const { nModified } = (await User.updateMany(
             body.filter, // find criteria
