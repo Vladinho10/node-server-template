@@ -23,7 +23,7 @@
     "id-length": ["error", {
       "min": 2,
       "max": 30,
-      "exceptions": ["v", "$"]
+      "exceptions": ["v", "$", "i", "_"]
     }],
     "camelcase": ["error", {
       "ignoreDestructuring": true,

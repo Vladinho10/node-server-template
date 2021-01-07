@@ -32,6 +32,7 @@ We'll speak about every small detail.
   1. [index](#index)
   1. [jenkinsfile](#jenkinsfile)
   1. [LICENSE](#LICENSE)
+  1. [barrelExport](#barrelexport)
   1. [package.json](#packagejson)
   1. [README.md](#README)
   1. [yarn.lock](#yarnlock)
@@ -44,21 +45,7 @@ We'll speak about every small detail.
    3. All directories are written with plural form. Exception is `dal` (data access layer), but in that dir again all subdirectories are in plural form. E.g. `docs`, `services`
    4. We follow REST API rules. The key abstraction of information in REST is a `resource`. Any information that can be named can be a resource: a document or image, a temporary service, a collection of other resources, a non-virtual object (e.g. a person), and so on. REST uses a resource identifier to identify the particular resource involved in an interaction between components.
 
-   In our software structure we use barrel export. A barrel is a way to rollup exports from several modules into a single convenient module. The barrel itself is a module file that re-exports selected exports of other modules. \
-   Putting those words in action, is creating an index.js file to re-export everything the end user will need:
-   ```
-   const objects = require('./objects');
-   const strings = require('./strings');
-   const general = require('./general');
-   
-   module.exports = {
-       objects,
-       strings,
-       general,
-   };
-  ```
-  Express framework v4.x doesn't use async/await functions, so we asyncified all we need (it is shown in `controllers` section). 
-  In addition 
+  Express framework v4.x doesn't use async/await functions, so we asyncified all we need (it is shown in `controllers` section).  
 
 ## yarn.lock
 
@@ -91,6 +78,25 @@ We'll speak about every small detail.
   Ours is MIT License. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files. For more information please take a look in the document. [more](https://github.com/Vladinho10/node-server-template/blob/master/LICENSE)
 
 **[⬆ back to top](#table-of-contents)**  
+
+## barrelExport
+
+   In our software structure we use barrel export. A barrel is a way to rollup exports from several modules into a single convenient module. The barrel itself is a module file that re-exports selected exports of other modules. \
+   Putting those words in action, is creating an index.js file to re-export everything the end user will need: \
+   ```module.exports = require('../barrelExport')(__dirname);```
+   This code using the method `barrelExport.js` which requires and exports modules. 
+   Only in `services` directory you should add modules and export them manually, like the code below. The reason is circular using of modules. As we know in our architecture a service can use other services.
+   ```
+     const objects = require('./objects');
+     const strings = require('./strings');
+     const general = require('./general');
+     
+     module.exports = {
+         objects,
+         strings,
+         general,
+     };
+   ```
 
 ## jenkinsfile
 
