@@ -332,7 +332,7 @@ We'll speak about every small detail.
 
   Here can find all configurations of the app, including database, AWS, logger and other configurations. We require all `.env` file's data in configs `index.js` then use  it in the scope of whole app.\
   Some words about loggerConfig. It is [log4js](https://log4js-node.github.io/log4js-node/) config file. Log4js gives a wide range of opportunities for logging. Using it is an optional. I just added it for syntax sugar. 
-  With log4js you can change your code log style, colors, add more info in logging. In this config file you can add your specific logging layout or use already exists patterns. For more info please see my loggerConfig.js file. \
+  With log4js you can change your code log style, colors, add more info in logging. In this config file you can add your specific logging layout or use already exists patterns. For more info please see my logger-config.js file. \
   Usage. We assigned logger method to `global.logger`. You should just require your config file in your app. (e.g. in your root index file or in your main config file as I did). After it when you need to use log4js logging, use one of the logging methods (e.g. info, error, log, warn) \
   ``logger.info(`app listen ${port} port`)``
 

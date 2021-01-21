@@ -5,7 +5,7 @@ const { compose } = require('compose-middleware');
 const urlencoded = express.urlencoded({ extended: false });
 const json = express.json();
 
-const errorHandler = require('./errorHandler');
+const errorHandler = require('./error-handler');
 const { uploadSingle } = require('./upload');
 const respond = require('./respond');
 

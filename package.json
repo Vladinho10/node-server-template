@@ -11,6 +11,17 @@
   },
   "author": "Vlad Mkhitaryan",
   "license": "ISC",
+  "keywords": [
+    "swagger",
+    "express",
+    "mongodb",
+    "docker",
+    "kubernetes",
+    "jenkins",
+    "mongoose",
+    "template",
+    "server"
+  ],
   "engines": {
     "node": "12.x"
   },

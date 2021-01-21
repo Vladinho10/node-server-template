@@ -1,7 +1,7 @@
 'use strict';
-const userSchema = require('./schemas/userSchema.json');
-const usersPath = require('./paths/usersPath.json');
-const rootPath = require('./paths/rootPath.json');
+const userSchema = require('./schemas/user-schema.json');
+const usersPath = require('./paths/user-path.json');
+const rootPath = require('./paths/root-path.json');
 
 const paths = [
     usersPath,
