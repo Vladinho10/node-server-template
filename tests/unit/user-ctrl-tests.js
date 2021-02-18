@@ -3,8 +3,8 @@ const sinon = require('sinon');
 const { assert } = require('chai');
 const httpStatus = require('http-status');
 
-const { UserCtrl } = require('../../controllers/user-ctrl');
-const UserModel = require('../../dal/models/user-model');
+const { UserCtrl } = require('../../controllers');
+const UserModel = require('../../dal/models');
 
 const mockReq = (body = {}, query = {}, params = {}, headers = {}) => ({
     body,

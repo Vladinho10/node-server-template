@@ -46,7 +46,7 @@
       }
     },
     "post": {
-      "summary": "Create a new user or users",
+      "summary": "Create a new user",
       "tags": ["Users"],
       "responses": {
         "201": {

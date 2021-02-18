@@ -20,7 +20,7 @@ class RootCtrl {
             });
         });
 
-        res.render('homePage', {
+        res.render('home-page', {
             origin: `${req.protocol}://${req.get('host')}`,
             name: req.query.name || 'Eva',
         });

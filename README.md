@@ -60,8 +60,8 @@ or\
 
 ## Style guide 
 We suggest our ESLint configs which are inspired by AirBnB configs. We are open to any suggestions from contributors if they are inline with our philosophy. \
-These ESLint confings are written and tuned for modern JavaScript development. So we don’t support old, outdated JavaScript methods, e.g. 
-obj = new Object() this constuct because we can just use const obj = {};\
+These ESLint configs are written and tuned for modern JavaScript development. So we don’t support old, outdated JavaScript methods, e.g. 
+obj = new Object() this construct because we can just use const obj = {};\
 [more](https://github.com/Vladinho10/node-server-template/blob/master/guides/style-guide.md)
 
 ## Architecture guide
