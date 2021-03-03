@@ -23,6 +23,12 @@ const mockRes = (method, statusCode) => ({
 
 describe('Users', () => {
     beforeEach(() => {
+        /*
+        * when class is used, use sandbox.createStubInstance(ClassName) - it's return stub class
+        * when Function is used, use new Function() - when stub the methods
+        * when you stub class methods, restore them at the end
+        * */
+
         sinon.stub(UserModel, 'find');
         sinon.stub(UserModel, 'findOne');
         // sinon.stub(UserModel, 'create');

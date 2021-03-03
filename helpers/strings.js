@@ -1,29 +1,27 @@
 'use strict';
 const crypto = require('crypto');
-// eslint-disable-next-line arrow-body-style
-const camelize = str => {
-    return str
-        .toLowerCase()
-        .replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
-            if (+match !== 0) {
-                if (index === 0) {
-                    return match.toLowerCase();
-                }
+const toPascalCase = str => str[0].toUpperCase() + str.slice(1);
 
-                return match.toUpperCase();
-            } else if (match === '0') {
-                return match;
-            }
+const toCamelCase = str => {
+    const words = str.split(/\W/g).filter(Boolean);
+    let newStr = '';
 
-            return '';
-        });
+    for (const i in words) {
+        if (i === '0') {
+            newStr += words[i];
+        } else {
+            newStr += toPascalCase(words[i]);
+        }
+    }
+
+    return newStr;
 };
 
 const randomString = (size = 32) => crypto.randomBytes(size).toString('hex');
-const generateFileName = originalName => `${Date.now().toString(36)}_${originalName}`;
+const generateFileName = originalName => `${new Date().toISOString()}_${originalName}`;
 
 const strings = {
-    camelize,
+    toCamelCase,
     generateFileName,
     randomString,
 };

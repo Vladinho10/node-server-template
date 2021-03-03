@@ -40,27 +40,27 @@ class UserCtrl {
 
         return user
             ? res.accepted({ data: user })
-            : res.notFound({ message: 'resource not found' });
+            : res.notFound({ errors: [{ message: 'resource not found' }] });
     }
 
     static async putMany(req, res) {
         const isModified = await UserSrv.updateMany(req.body);
 
         return isModified
-            ? res.accepted({ message: 'updated user by id' })
-            : res.notFound({ message: 'resource not found' });
+            ? res.accepted({ data: { message: 'updated user by id' } })
+            : res.notFound({ errors: [{ message: 'resource not found' }] });
     }
 
     static async removeOne(req, res) {
         const isDeleted  = await UserSrv.deleteOne({ _id: req.params._id });
 
-        return isDeleted ? res.noContent() : res.notFound({ message: 'resource not found' });
+        return isDeleted ? res.noContent() : res.notFound({ errors: [{ message: 'resource not found' }] });
     }
 
     static async removeMany(req, res) {
         const isDeleted = await UserSrv.deleteMany(req.body.ids);
 
-        return  isDeleted ? res.noContent() : res.notFound({ message: 'resource not found' });
+        return  isDeleted ? res.noContent() : res.notFound({ errors: [{ message: 'resource not found' }] });
     }
 
     static async showEjs(req, res) {

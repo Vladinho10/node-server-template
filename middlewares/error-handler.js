@@ -37,8 +37,8 @@ module.exports = function (err, req, res, next) {
             }
 
             if (err.name === 'MongoError') {
-                const [, field] = err.message.split('index: ');
-                const [, message] = err.message.split(err.code);
+                const [, field = ''] = err.message.split('index: ');
+                const [, message = ''] = err.message.split(err.code);
 
                 errorResponse.push({
                     field: field.slice(0, field.lastIndexOf('_')),
