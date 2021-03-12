@@ -40,10 +40,12 @@ module.exports = function (err, req, res, next) {
                 const [, field = ''] = err.message.split('index: ');
                 const [, message = ''] = err.message.split(err.code);
 
-                errorResponse.push({
-                    field: field.slice(0, field.lastIndexOf('_')),
-                    message: message.slice(0, message.lastIndexOf('error')).trim(),
-                });
+                if (field && message) {
+                    errorResponse.push({
+                        field: field.slice(0, field.lastIndexOf('_')),
+                        message: message.slice(0, message.lastIndexOf('error')).trim(),
+                    });
+                }
             }
 
             if (err.name === 'MulterError') {
