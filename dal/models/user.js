@@ -14,6 +14,13 @@ const userSchema = new Schema({
         type: String,
         default: null,
     },
+    // dateField: {
+    //     type: Date,
+    //     default: Date.now,
+    //     index: {
+    //         expireAfterSeconds: 40,
+    //     },
+    // },
 });
 
 const User = mongoose.model('User', userSchema);

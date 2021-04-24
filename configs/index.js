@@ -17,8 +17,8 @@ const jwtSecret = `${process.env.JWT_SECRET}`;
 const files = `${rootPath}/files`;
 const uploads = `${rootPath}/uploads`;
 const mailOptions = {
-    host: 'smtp.gmail.com',
-    port: 465, // 587, 465
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT, // 587, 465
     secure: true,
     tls: {
         rejectUnauthorized: false,

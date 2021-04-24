@@ -4,12 +4,9 @@ const nodemailer = require('nodemailer');
 const configs = require('../configs');
 const transporter = nodemailer.createTransport(configs.mailOptions);
 
-transporter.verify((error, success) => {
+transporter.verify(error => {
     if (error) {
-        console.log(error);
-    } else {
-        console.log({ success });
-        console.log('Server is ready to take our messages');
+        logger.info(error);
     }
 });
 

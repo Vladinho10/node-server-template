@@ -1,12 +1,16 @@
-version: "2"
+version: "3"
 services:
-  web:
-  build: .
-  ports:
-  — "8080:8080"
-  depends_on:
-  — mongo
-  mongo:
-  image: mongo
-  ports:
-  — "27017:27017"
+  mongo-container:
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+  node-server-template-cont:
+    restart: always
+    build: .
+    ports:
+      - "5005:5000"
+    links:
+      - mongo-container
+

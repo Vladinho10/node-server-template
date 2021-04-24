@@ -60,7 +60,7 @@
     "dot-notation": "error",
     "no-multi-assign": "error",
     "max-len": ["error", {
-      "code": 120,
+      "code": 200,
       "tabWidth": 4,
       "ignoreUrls": true,
       "ignoreRegExpLiterals": true,
@@ -96,7 +96,6 @@
     "comma-spacing": ["error", { "before": false, "after": true }],
     "computed-property-spacing": ["error", "never"],
     "func-call-spacing": ["error", "never"],
-    "func-style": ["error", "expression"],
     "function-paren-newline": ["error", "multiline"],
     "key-spacing": ["error", { "beforeColon": false }],
     "no-trailing-spaces": "error",

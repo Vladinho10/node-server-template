@@ -1,24 +1,13 @@
 'use strict';
-const userSchema = require('./schemas/user-schema.json');
-const usersPath = require('./paths/user-path.json');
-const rootPath = require('./paths/root-path.json');
+const fs = require('fs');
 
-const paths = [
-    usersPath,
-    rootPath,
-];
+const paths = fs
+    .readdirSync(`${__dirname}/paths`)
+    .reduce((acc, file) => Object.assign(acc, require(`./paths/${file}`)), {});
 
-const keyAndValue = paths => {
-    const obj = {};
-
-    for (const path of paths) {
-        for (const key in path) {
-            obj[key] = path[key];
-        }
-    }
-
-    return obj;
-};
+const schemas = fs
+    .readdirSync(`${__dirname}/schemas`)
+    .reduce((acc, file) => Object.assign(acc, require(`./schemas/${file}`)), {});
 
 module.exports = {
     swaggerDefinition: {
@@ -34,11 +23,9 @@ module.exports = {
             },
         ],
         components: {
-            schemas: {
-                userSchema,
-            },
+            schemas,
         },
-        paths: keyAndValue(paths),
+        paths,
     },
     apis: [],
 };
