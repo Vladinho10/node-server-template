@@ -69,3 +69,4 @@ envs/.env.prod.local
 .DS_Store
 # upload files
 uploads
+data

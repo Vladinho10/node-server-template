@@ -1,6 +1,6 @@
 {
   "name": "node-server-template",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Just universal server",
   "repository": "https://github.com/Vladinho10/node-server-template",
   "main": "index.js",
@@ -20,7 +20,13 @@
     "jenkins",
     "mongoose",
     "template",
-    "server"
+    "server",
+    "nodemailer",
+    "jsonwebtoken",
+    "log4js",
+    "morgan",
+    "socket.io",
+    "mongoose"
   ],
   "engines": {
     "node": "12.x"

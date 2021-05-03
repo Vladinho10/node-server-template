@@ -4,11 +4,9 @@ services:
     image: mongo
     volumes:
       - ./data:/data/db
-    ports:
-      - "27017:27017"
   node-server-template-cont:
     restart: always
-    build: .
+    build: ..
     ports:
       - "5005:5000"
     links:

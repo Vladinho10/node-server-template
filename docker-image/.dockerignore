@@ -1,0 +1,8 @@
+../node_modules
+../npm-debug.log
+../envs/.env.local
+../envs/.env.stage.local
+../envs/.env.prod.local
+../.idea
+../upload
+../.DS_Store

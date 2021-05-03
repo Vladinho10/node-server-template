@@ -2,26 +2,24 @@
 const nodemailer = require('nodemailer');
 
 const configs = require('../configs');
+
+logger.info('configs.mailOptions', configs.mailOptions);
 const transporter = nodemailer.createTransport(configs.mailOptions);
 
-transporter.verify(error => {
-    if (error) {
-        logger.info(error);
+class EmailSendSrv {
+    static async sendLink(email, options) {
+        const message = {
+            from: 'from@gmail.com',
+            to: email,
+            subject: 'Message title',
+            text: 'Plaintext version of the message',
+            html: `<p>${options.message}</p>`,
+        };
+
+        return transporter.sendMail(message);
     }
-});
-
-// const message = {
-//     from: 'from@gmail.com',
-//     to: 'garmanbozia@mailinator.com',
-//     subject: 'Message title',
-//     text: 'Plaintext version of the message',
-//     html: '<p>HTML version of the message</p>'
-// };
-
-const sendLink = async message => transporter.sendMail(message);
-
-// (async () => console.log(await sendLink(message)))().catch(e => console.log({ e }));
+}
 
 module.exports = {
-    sendLink,
+    EmailSendSrv,
 };
