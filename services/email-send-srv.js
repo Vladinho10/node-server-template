@@ -3,7 +3,6 @@ const nodemailer = require('nodemailer');
 
 const configs = require('../configs');
 
-logger.info('configs.mailOptions', configs.mailOptions);
 const transporter = nodemailer.createTransport(configs.mailOptions);
 
 class EmailSendSrv {
