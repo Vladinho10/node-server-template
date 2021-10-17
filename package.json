@@ -3,12 +3,6 @@
   "version": "2.0.0",
   "description": "Just universal server",
   "repository": "https://github.com/Vladinho10/node-server-template",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index",
-    "nodemon": "./node_modules/nodemon/bin/nodemon.js index",
-    "test": "mocha ./tests"
-  },
   "author": "Vlad Mkhitaryan",
   "license": "ISC",
   "keywords": [
@@ -30,6 +24,12 @@
   ],
   "engines": {
     "node": "12.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "nodemon": "./node_modules/nodemon/bin/nodemon.js index",
+    "test": "mocha ./tests"
   },
   "dependencies": {
     "compose-middleware": "^5.0.1",

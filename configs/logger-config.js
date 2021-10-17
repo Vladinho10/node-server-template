@@ -4,7 +4,7 @@ const log4js = require('log4js');
 log4js.addLayout('asJson', () => logEvent => JSON.stringify({
     startTime: logEvent.startTime,
     category: logEvent.categoryName,
-    level: logEvent.lxevel.levelStr,
+    level: logEvent.level.levelStr,
     message: logEvent.data.map(v => v instanceof Error ? v.stack : v).join(' '),
 }));
 
