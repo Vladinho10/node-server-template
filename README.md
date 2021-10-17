@@ -21,13 +21,14 @@ If you haven't, these are their links for installing.
 
 ### Technologies
 Program/lib | version | command for checking\
-Git | 2.24.0 | `git --version`\
-Node.js | v12.15.0 | `node -v` \
+Git | 2.30.1 | `git --version`\
+Node.js | v16.6.1 | `node -v` \
 Express | ^4.17.1 | see in app package.json\
-MongoDB | v4.2.1 | `mongo --version`\
-Mongoose | ^5.9.4 | see in this app package.json\
-Mocha | 7.1.0 | see in this app package.json\
-Yarn | 1.22.4 | `yarn -v`
+MongoDB | v4.4.5 | `mongo --version`\
+Mongoose | ^6.0.11 | see in this app package.json\
+Mocha | 9.1.3 | see in this app package.json\
+Eslint | 8.0.1 | see in this app package.json\
+Yarn | 1.22.10 | `yarn -v`
 
 ### Setup
 1. Clone this repository\

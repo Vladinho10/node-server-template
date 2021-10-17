@@ -1,11 +1,11 @@
 'use strict';
 class RootCtrl {
     static async getMany(req, res) {
-        return res.ok('get all data');
+        return res.ok({ message: 'get all data' });
     }
 
     static async post(req, res) {
-        return res.created('create new data');
+        return res.created({ message: 'create new data' });
     }
 
     static async showEjs(req, res) {

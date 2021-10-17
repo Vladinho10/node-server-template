@@ -9,7 +9,7 @@ global.io = require('socket.io')(server);
 global.CustomError = require('./services').CustomError;
 const { port } = configs;
 
-(async () => await mongoose.connect(configs.db.url, configs.db.options))()
+(async () => await mongoose.connect(configs.db.url))()
     .catch(err => logger.error({ err }));
 
 // you can specify a path `${origin}/yourPath` or by default it's `${origin}`
