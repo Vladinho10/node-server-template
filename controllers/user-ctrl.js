@@ -1,5 +1,5 @@
 'use strict';
-const { UserSrv } = require('../services/user-srv');
+const { UserSrv } = require('../services');
 const { objects } = require('../helpers');
 
 class UserCtrl {
