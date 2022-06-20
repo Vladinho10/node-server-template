@@ -1,6 +1,8 @@
 'use strict';
 const configs = require('../configs');
 
+console.log('hiii');
+
 class FileCtrl {
     static download(req, res) {
         const { remote } = req.query;
