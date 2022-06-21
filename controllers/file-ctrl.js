@@ -1,10 +1,8 @@
 'use strict';
 const configs = require('../configs');
 
-console.log('hiii');
-
 class FileCtrl {
-    static download(req, res) {
+    static download(req:Request, res:Response) {
         const { remote } = req.query;
         const { fileName } = req.params;
         const fromFilePath = remote ? remote : `${configs.files}/${fileName}`;
