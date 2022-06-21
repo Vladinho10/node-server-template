@@ -2,7 +2,7 @@
 const configs = require('../configs');
 
 class FileCtrl {
-    static download(req:Request, res:Response) {
+    static download(req, res) {
         const { remote } = req.query;
         const { fileName } = req.params;
         const fromFilePath = remote ? remote : `${configs.files}/${fileName}`;

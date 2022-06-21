@@ -1,0 +1,23 @@
+import log4js from 'log4js';
+import http from 'http';
+const logger = log4js.getLogger('ENTRY.index');
+import express from 'express';
+import mongoose from 'mongoose';
+const configs = require('./configs');
+const app = express();
+const { port } = { port: 5000 };
+const server = http.createServer(app);
+// @ts-ignore
+global.io = require('socket.io')(server);
+// @ts-ignore
+global.CustomError = require('./services').CustomError;
+
+(async () => await mongoose.connect(configs.db.url))()
+    .catch(err => logger.error({ err }));
+
+// you can specify a path `${origin}/yourPath` or by default it's `${origin}`
+app.use(express.static(configs.files));
+app.use('/', require('./routers'));
+app.set('view engine', 'ejs'); // by default ejs files in root's 'views' directory
+
+server.listen(port, () => logger.info(`app listen ${port} port`));

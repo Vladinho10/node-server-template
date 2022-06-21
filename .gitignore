@@ -70,3 +70,4 @@ envs/.env.prod.local
 # upload files
 uploads
 data
+dist
