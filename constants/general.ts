@@ -1,8 +1,8 @@
 'use strict';
-exports.__esModule = true;
 // const httpStatus = require('http-status');
-var httpStatus = require("http-status");
-var oftenUseCodes = {
+import * as httpStatus from 'http-status';
+
+const oftenUseCodes = {
     ok: httpStatus.OK,
     created: httpStatus.CREATED,
     accepted: httpStatus.ACCEPTED,
@@ -14,9 +14,10 @@ var oftenUseCodes = {
     notFound: httpStatus.NOT_FOUND,
     unsupportedMediaType: httpStatus.UNSUPPORTED_MEDIA_TYPE,
     unprocessableEntity: httpStatus.UNPROCESSABLE_ENTITY,
-    internalServerError: httpStatus.INTERNAL_SERVER_ERROR
+    internalServerError: httpStatus.INTERNAL_SERVER_ERROR,
 };
-var general = {
-    oftenUseCodes: oftenUseCodes
+const general = {
+    oftenUseCodes,
 };
-exports["default"] = general;
+
+export default general ;

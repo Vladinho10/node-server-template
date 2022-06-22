@@ -1,33 +1,33 @@
 'use strict';
-const rootPath = process.cwd();
-require('dotenv-flow').config({ path: `${rootPath}/envs` });
-require('./logger-config');
-
-const db = {
-    url: `${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
+exports.__esModule = true;
+exports.mailOptions = exports.jwtSecret = exports.uploads = exports.files = exports.port = exports.db = void 0;
+var rootPath = process.cwd();
+// require('dotenv-flow').config({ path: `${rootPath}/envs` });
+// require('./logger-config');
+require("dotenv-flow/config");
+require("./logger-config");
+var db = {
+    url: "".concat(process.env.DB_HOST, ":").concat(process.env.DB_PORT, "/").concat(process.env.DB_NAME)
 };
-const port = process.env.PORT;
-const jwtSecret = `${process.env.JWT_SECRET}`;
-const files = `${rootPath}/files`;
-const uploads = `${rootPath}/uploads`;
-const mailOptions = {
+exports.db = db;
+var port = process.env.PORT;
+exports.port = port;
+var jwtSecret = "".concat(process.env.JWT_SECRET);
+exports.jwtSecret = jwtSecret;
+var files = "".concat(rootPath, "/files");
+exports.files = files;
+var uploads = "".concat(rootPath, "/uploads");
+exports.uploads = uploads;
+var mailOptions = {
     host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT, // 587, 465
+    port: process.env.SMTP_PORT,
     secure: true,
     tls: {
-        rejectUnauthorized: false,
+        rejectUnauthorized: false
     },
     auth: {
-        user: `${process.env.EMAIL}`,
-        pass: `${process.env.EMAIL_PASS}`,
-    },
+        user: "".concat(process.env.EMAIL),
+        pass: "".concat(process.env.EMAIL_PASS)
+    }
 };
-
-module.exports = {
-    db,
-    port,
-    files,
-    uploads,
-    jwtSecret,
-    mailOptions,
-};
+exports.mailOptions = mailOptions;
