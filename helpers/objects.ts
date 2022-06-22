@@ -27,7 +27,7 @@ const isEmptyObject = obj => typeof obj === 'object'
     && Object.keys(obj).length === 0
     && obj.constructor === Object;
 
-const isJSFileAndNotIndex = file => (file.slice(-3) === '.js') && (file !== 'index.js');
+const isJSFileAndNotIndex = file => (file.slice(-3) === '.js') && (file !== 'index.ts');
 
 const objects = {
     isEmptyObject,
@@ -36,4 +36,4 @@ const objects = {
     skip,
 };
 
-module.exports = { objects };
+export { objects };

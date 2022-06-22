@@ -1,9 +1,9 @@
 /* eslint-disable no-empty */
 'use strict';
-const { Worker } = require('worker_threads');
+import { Worker } from  'worker_threads';
 
 // eslint-disable-next-line arrow-body-style
-const putSegmentsInPromise = (segments, childWorkerPath, data = {}) => {
+const putSegmentsInPromise = (segments: any[], childWorkerPath: string, data = {}) => {
     return segments.map(segment => new Promise((resolve, reject) => {
         // transfer data to each workers/threads
         const worker = new Worker(childWorkerPath, {
@@ -24,7 +24,7 @@ const putSegmentsInPromise = (segments, childWorkerPath, data = {}) => {
     }));
 };
 
-const jsonParser = jsonString => {
+const jsonParser = (jsonString: string) => {
     let data = {};
 
     try {
@@ -34,7 +34,7 @@ const jsonParser = jsonString => {
     return data;
 };
 
-const isCurrentUser = (_id, user) => _id.toString() === user._id.toString();
+const isCurrentUser = (_id: any, user: any) => _id.toString() === user._id.toString();
 
 const general = {
     isCurrentUser,
@@ -42,4 +42,4 @@ const general = {
     putSegmentsInPromise,
 };
 
-module.exports = { general };
+export { general };

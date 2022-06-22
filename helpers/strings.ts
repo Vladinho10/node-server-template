@@ -1,5 +1,6 @@
 'use strict';
-const crypto = require('crypto');
+import * as crypto  from 'crypto';
+
 const toPascalCase = str => str[0].toUpperCase() + str.slice(1);
 
 const toCamelCase = str => {
@@ -26,4 +27,4 @@ const strings = {
     randomString,
 };
 
-module.exports = { strings };
+export { strings };

@@ -1,6 +1,6 @@
 'use strict';
 
-const removeDuplicates = async (model, duplicateCriteria = []) => {
+const removeDuplicates = async (model: any, duplicateCriteria = []) => {
     /**
      * response includes
      * _id - a document with duplicateCriteria fields
@@ -35,11 +35,11 @@ const removeDuplicates = async (model, duplicateCriteria = []) => {
     });
 
     await model.deleteMany({ _id: { $in: duplicateIds } });
-    logger.info(`deleted ${duplicateIds.length} duplicates`);
+    // logger.info(`deleted ${duplicateIds.length} duplicates`);
 };
 
 const mongoRequests = {
     removeDuplicates,
 };
 
-module.exports = { mongoRequests };
+export { mongoRequests };
