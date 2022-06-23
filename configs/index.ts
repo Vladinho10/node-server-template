@@ -5,14 +5,14 @@ const rootPath = process.cwd();
 import 'dotenv-flow/config';
 import './logger-config';
 
-const db = {
+export const db = {
     url: `${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
 };
-const port = process.env.PORT;
-const jwtSecret = `${process.env.JWT_SECRET}`;
-const files = `${rootPath}/files`;
-const uploads = `${rootPath}/uploads`;
-const mailOptions = {
+export const port = process.env.PORT;
+export const jwtSecret = `${process.env.JWT_SECRET}`;
+export const files = `${rootPath}/files`;
+export const uploads = `${rootPath}/uploads`;
+export const mailOptions = {
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT, // 587, 465
     secure: true,
@@ -25,11 +25,11 @@ const mailOptions = {
     },
 };
 
-export {
-    db,
-    port,
-    files,
-    uploads,
-    jwtSecret,
-    mailOptions,
-};
+// export default {
+//     db,
+//     port,
+//     files,
+//     uploads,
+//     jwtSecret,
+//     mailOptions,
+// };

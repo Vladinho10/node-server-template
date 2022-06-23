@@ -1,5 +1,6 @@
 'use strict';
-const configs = require('../configs');
+
+import * as configs from '../configs/index';
 
 class FileCtrl {
     static download(req, res) {
@@ -18,7 +19,7 @@ class FileCtrl {
     }
 }
 
-module.exports = {
+export {
     FileCtrl,
 };
 

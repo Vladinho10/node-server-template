@@ -9,16 +9,16 @@ class RootCtrl {
     }
 
     static async showEjs(req, res) {
-        io.on('connection', socket => {
-            io.removeAllListeners();
-            logger.info('a user connected');
-
-            socket.on('chat message', msg => {
-                logger.info({ msg });
-
-                io.emit('chat message', msg);
-            });
-        });
+        // io.on('connection', socket => {
+        //     io.removeAllListeners();
+        //     logger.info('a user connected');
+        //
+        //     socket.on('chat message', msg => {
+        //         logger.info({ msg });
+        //
+        //         io.emit('chat message', msg);
+        //     });
+        // });
 
         res.render('home-page', {
             origin: `${req.protocol}://${req.get('host')}`,
@@ -27,6 +27,6 @@ class RootCtrl {
     }
 }
 
-module.exports = {
+export {
     RootCtrl,
 };

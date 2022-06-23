@@ -1,9 +1,9 @@
 'use strict';
-const asyncHandler = require('express-async-handler');
 import * as fs from 'fs';
 import { objects } from '../helpers';
-// import asyncHandler from 'express-async-handler'; ????????????????????????
+import * as asyncHandler from 'express-async-handler';
 
+console.log('asyncHandler', asyncHandler);
 const controllers = {};
 
 const asyncClass = aClass => {

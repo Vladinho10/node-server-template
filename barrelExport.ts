@@ -1,5 +1,5 @@
 'use strict';
-const fs = require('fs');
+import * as fs from 'fs';
 
 const barrelExport = dirname => {
     const exportObject = fs.readdirSync(dirname)
@@ -14,4 +14,4 @@ const barrelExport = dirname => {
     return exportObject;
 };
 
-module.exports = barrelExport;
+export { barrelExport };

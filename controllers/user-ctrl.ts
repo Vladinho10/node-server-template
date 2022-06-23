@@ -1,6 +1,6 @@
 'use strict';
-const { UserSrv } = require('../services');
-const { objects } = require('../helpers');
+import { UserSrv } from '../services';
+import { objects } from '../helpers';
 
 class UserCtrl {
     static async getMany(req, res) {
@@ -71,6 +71,6 @@ class UserCtrl {
     }
 }
 
-module.exports = {
+export {
     UserCtrl,
 };
