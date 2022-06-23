@@ -1,5 +1,5 @@
 'use strict';
-const fs = require('fs');
+import * as fs from 'fs';
 
 const paths = fs
     .readdirSync(`${__dirname}/paths`)
