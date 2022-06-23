@@ -1,4 +1,3 @@
-'use strict';
 import * as log4js from 'log4js';
 
 log4js.addLayout('asJson', () => logEvent => JSON.stringify({

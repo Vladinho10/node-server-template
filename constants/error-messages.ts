@@ -1,4 +1,3 @@
-'use strict';
 const errorMessages = {
     INVALID_CREDENTIALS: 'invalid_credentials',
     INVALID_EMAIL: 'invalid_email',

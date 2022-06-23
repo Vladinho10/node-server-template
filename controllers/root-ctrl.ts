@@ -1,4 +1,3 @@
-'use strict';
 class RootCtrl {
     static async getMany(req, res) {
         return res.ok({ message: 'get all data' });

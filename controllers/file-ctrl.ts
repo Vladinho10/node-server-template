@@ -1,5 +1,3 @@
-'use strict';
-
 import * as configs from '../configs/index';
 
 class FileCtrl {

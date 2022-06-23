@@ -1,9 +1,13 @@
-'use strict';
 import * as fs from 'fs';
 import { objects } from '../helpers';
-import * as asyncHandler from 'express-async-handler';
 
-console.log('asyncHandler', asyncHandler);
+const asyncHandler = fn =>
+    function asyncUtilWrap(...args) {
+        const fnReturn = fn(...args)
+        const next = args[args.length-1]
+        return Promise.resolve(fnReturn).catch(next)
+    }
+
 const controllers = {};
 
 const asyncClass = aClass => {

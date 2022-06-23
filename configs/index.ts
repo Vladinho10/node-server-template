@@ -1,8 +1,6 @@
-'use strict';
 const rootPath = process.cwd();
-// require('dotenv-flow').config({ path: `${rootPath}/envs` });
-// require('./logger-config');
-import 'dotenv-flow/config';
+import * as dotEnvConfig from 'dotenv-flow';
+dotEnvConfig.config({ path: `${rootPath}/envs` });
 import './logger-config';
 
 export const db = {
@@ -25,11 +23,20 @@ export const mailOptions = {
     },
 };
 
-// export default {
-//     db,
-//     port,
-//     files,
-//     uploads,
-//     jwtSecret,
-//     mailOptions,
-// };
+
+console.log({
+    db,
+    port,
+    files,
+    uploads,
+    jwtSecret,
+    mailOptions,
+})
+export default {
+    db,
+    port,
+    files,
+    uploads,
+    jwtSecret,
+    mailOptions,
+};

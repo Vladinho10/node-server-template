@@ -1,4 +1,3 @@
-'use strict';
 import { UserSrv } from '../services';
 import { objects } from '../helpers';
 

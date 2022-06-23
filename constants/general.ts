@@ -1,5 +1,3 @@
-'use strict';
-// const httpStatus = require('http-status');
 import * as httpStatus from 'http-status';
 
 const oftenUseCodes = {
