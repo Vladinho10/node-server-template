@@ -3,7 +3,7 @@
 import { Worker } from  'worker_threads';
 
 // eslint-disable-next-line arrow-body-style
-const putSegmentsInPromise = (segments: any[], childWorkerPath: string, data = {}) => {
+const putSegmentsInPromise = (segments, childWorkerPath, data = {}) => {
     return segments.map(segment => new Promise((resolve, reject) => {
         // transfer data to each workers/threads
         const worker = new Worker(childWorkerPath, {
@@ -24,7 +24,7 @@ const putSegmentsInPromise = (segments: any[], childWorkerPath: string, data = {
     }));
 };
 
-const jsonParser = (jsonString: string) => {
+const jsonParser = (jsonString) => {
     let data = {};
 
     try {
@@ -34,7 +34,7 @@ const jsonParser = (jsonString: string) => {
     return data;
 };
 
-const isCurrentUser = (_id: any, user: any) => _id.toString() === user._id.toString();
+const isCurrentUser = (_id, user) => _id.toString() === user._id.toString();
 
 const general = {
     isCurrentUser,

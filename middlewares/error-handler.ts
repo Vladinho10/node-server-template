@@ -1,6 +1,6 @@
 'use strict';
 // const { general: { oftenUseCodes } } = require('../constants');
-import { general } from '../constants/general';
+import { general } from '../constants';
 
 console.log('general', general);
 // eslint-disable-next-line no-unused-vars
@@ -9,9 +9,7 @@ export default function (err, req, res, next) {
     if (err) {
         const errorResponse = [];
         const errors  = typeof err === 'string' ? err : err.errors;
-
         // logger.error(err.message);
-
         if (err.name === 'CustomError') {
             errorResponse.push({
                 field: err.field,

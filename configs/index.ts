@@ -23,15 +23,6 @@ export const mailOptions = {
     },
 };
 
-
-console.log({
-    db,
-    port,
-    files,
-    uploads,
-    jwtSecret,
-    mailOptions,
-})
 export default {
     db,
     port,
