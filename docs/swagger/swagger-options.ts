@@ -9,7 +9,7 @@ const schemas = fs
     .readdirSync(`${__dirname}/schemas`)
     .reduce((acc, file) => Object.assign(acc, require(`./schemas/${file}`)), {});
 
-module.exports = {
+export default {
     swaggerDefinition: {
         openapi: '3.0.0',
         info: {

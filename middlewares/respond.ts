@@ -1,11 +1,12 @@
 'use strict';
-const { general: { oftenUseCodes } } = require('../constants');
+// const { general: { oftenUseCodes } } = require('../constants');
+import { general } from '../constants';
 
 const respond = (req, res, next) => {
-    for (const message in oftenUseCodes) {
+    for (const message in general.oftenUseCodes) {
         res[message] = function (data) {
             return res
-                .status(oftenUseCodes[message])
+                .status(general.oftenUseCodes[message])
                 .send(data);
         };
     }
@@ -13,4 +14,4 @@ const respond = (req, res, next) => {
     next();
 };
 
-module.exports = respond;
+export { respond };

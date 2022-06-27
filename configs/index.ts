@@ -12,7 +12,8 @@ export const files = `${rootPath}/files`;
 export const uploads = `${rootPath}/uploads`;
 export const mailOptions = {
     host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT, // 587, 465
+    // port: process.env.SMTP_PORT, // 587, 465
+    port: +process.env.SMTP_PORT || 587,  // 587, 465
     secure: true,
     tls: {
         rejectUnauthorized: false,

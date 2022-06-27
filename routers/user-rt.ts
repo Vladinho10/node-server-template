@@ -1,7 +1,11 @@
-'use strict';
-const userRt = require('express').Router();
 
-const { UserCtrl } = require('../controllers');
+import * as express from 'express';
+import { UserCtrl } from '../controllers/user-ctrl';
+const userRt = express.Router();
+
+console.log('express', express);
+console.log('UserCtrl', UserCtrl);
+console.log('userRt', userRt);
 
 userRt.get('/v1/users/ejs', UserCtrl.showEjs);
 userRt.get('/v1/users/:_id', UserCtrl.getOne);
@@ -12,4 +16,4 @@ userRt.put('/v1/users/', UserCtrl.putMany);
 userRt.delete('/v1/users/:_id', UserCtrl.removeOne);
 userRt.patch('/v1/users', UserCtrl.removeMany);
 
-module.exports = userRt;
+export { userRt };

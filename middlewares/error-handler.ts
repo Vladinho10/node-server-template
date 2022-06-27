@@ -1,8 +1,6 @@
-'use strict';
-// const { general: { oftenUseCodes } } = require('../constants');
+
 import { general } from '../constants';
 
-console.log('general', general);
 // eslint-disable-next-line no-unused-vars
 export default function (err, req, res, next) {
     // logger.error({ errMessage: err.message });

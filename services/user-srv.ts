@@ -1,7 +1,10 @@
 'use strict';
-const { User } = require('../dal/models');
-const { objects } = require('../helpers');
+import { User } from '../dal/models/user';
+import * as nodemailer from 'nodemailer';
+import { objects } from '../helpers';
+import * as configs from '../configs/index';
 
+console.log('configs.mailOptions', configs.mailOptions);
 class UserSrv {
     static async readMany(query, options) {
         return User.find(query)
@@ -11,6 +14,8 @@ class UserSrv {
     }
 
     static async readOne(query) {
+        console.log('configs.mailOptions', configs.mailOptions);
+        nodemailer.createTransport(configs.mailOptions);
         return  User.findOne(query);
     }
 
@@ -35,6 +40,7 @@ class UserSrv {
     static async updateMany(body) {
         const newData = objects.pick(body.updatingFields, ['name', 'age', 'gender']);
 
+        // @ts-ignore
         const { nModified } = (await User.updateMany(
             body.filter, // find criteria
             newData, // changing data
@@ -56,6 +62,8 @@ class UserSrv {
     }
 }
 
-module.exports = {
+// console.log(UserSrv.readOne());
+
+export {
     UserSrv,
 };

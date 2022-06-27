@@ -1,6 +1,6 @@
 'use strict';
-const jwt = require('jsonwebtoken');
-const { jwtSecret } = require('../configs');
+import jwt from 'jsonwebtoken';
+import { jwtSecret } from '../configs';
 
 const options = {
     // expiresIn: '1h',
@@ -18,13 +18,13 @@ class JwtSrv {
         try {
             return jwt.verify(token, jwtSecret);
         } catch (err) {
-            logger.error({ errMessage: err.message });
+            // logger.error({ errMessage: err.message });
         }
 
         return {};
     }
 }
 
-module.exports = {
+export {
     JwtSrv,
 };

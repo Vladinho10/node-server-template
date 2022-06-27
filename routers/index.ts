@@ -1,9 +1,8 @@
-'use strict';
-const fs = require('fs');
-const { objects } = require('../helpers');
-const indexRouter = require('express').Router();
-
-const { combine, errorHandler } = require('../middlewares');
+import * as fs from 'fs';
+import { objects } from '../helpers';
+import * as express from 'express';
+const indexRouter = express.Router();
+import { combine, errorHandler } from '../middlewares/index';
 
 indexRouter.use(combine);
 

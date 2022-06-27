@@ -1,9 +1,10 @@
 'use strict';
-const nodemailer = require('nodemailer');
+import * as nodemailer from 'nodemailer';
 
-const configs = require('../configs');
+import configs from '../configs';
 
 const transporter = nodemailer.createTransport(configs.mailOptions);
+console.log('transporter', transporter);
 
 class EmailSendSrv {
     static async sendLink(email, options) {
@@ -19,6 +20,6 @@ class EmailSendSrv {
     }
 }
 
-module.exports = {
+export {
     EmailSendSrv,
 };
