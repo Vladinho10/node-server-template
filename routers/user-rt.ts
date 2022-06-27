@@ -1,11 +1,7 @@
 
 import * as express from 'express';
-import { UserCtrl } from '../controllers/user-ctrl';
+import { UserCtrl } from '../controllers';
 const userRt = express.Router();
-
-console.log('express', express);
-console.log('UserCtrl', UserCtrl);
-console.log('userRt', userRt);
 
 userRt.get('/v1/users/ejs', UserCtrl.showEjs);
 userRt.get('/v1/users/:_id', UserCtrl.getOne);

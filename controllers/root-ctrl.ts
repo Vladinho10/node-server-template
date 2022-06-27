@@ -1,4 +1,4 @@
-class RootCtrl {
+export class RootCtrl {
     static async getMany(req, res) {
         return res.ok({ message: 'get all data' });
     }
@@ -25,7 +25,3 @@ class RootCtrl {
         });
     }
 }
-
-export {
-    RootCtrl,
-};

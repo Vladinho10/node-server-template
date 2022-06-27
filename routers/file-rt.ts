@@ -1,9 +1,9 @@
 
 import * as express from 'express';
-import { FileCtrl } from '../controllers/file-ctrl';
-const FileRt = express.Router();
+import { FileCtrl } from '../controllers';
+const fileRt = express.Router();
 
-FileRt.get('/v1/files/download/:fileName', FileCtrl.download);
-FileRt.post('/v1/files/upload/', FileCtrl.upload);
+fileRt.get('/v1/files/download/:fileName', FileCtrl.download);
+fileRt.post('/v1/files/upload/', FileCtrl.upload);
 
-export { FileRt };
+export { fileRt };

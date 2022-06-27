@@ -23,12 +23,3 @@ export const mailOptions = {
         pass: `${process.env.EMAIL_PASS}`,
     },
 };
-
-export default {
-    db,
-    port,
-    files,
-    uploads,
-    jwtSecret,
-    mailOptions,
-};

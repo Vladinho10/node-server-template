@@ -1,6 +1,6 @@
 import * as configs from '../configs/index';
 
-class FileCtrl {
+export class FileCtrl {
     static download(req, res) {
         const { remote } = req.query;
         const { fileName } = req.params;
@@ -16,8 +16,4 @@ class FileCtrl {
         return res.sendFile(filePath);
     }
 }
-
-export {
-    FileCtrl,
-};
 

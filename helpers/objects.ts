@@ -28,10 +28,12 @@ const isEmptyObject = obj => typeof obj === 'object'
     && obj.constructor === Object;
 
 const isJSFileAndNotIndex = file => (file.slice(-3) === '.js') && (file !== 'index.ts');
+const isTSFileAndNotIndex = file => (file.slice(-3) === '.ts') && (file !== 'index.ts');
 
 const objects = {
     isEmptyObject,
     isJSFileAndNotIndex,
+    isTSFileAndNotIndex,
     pick,
     skip,
 };

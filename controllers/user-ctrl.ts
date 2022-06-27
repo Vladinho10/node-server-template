@@ -1,7 +1,7 @@
 import { UserSrv } from '../services';
 import { objects } from '../helpers';
 
-class UserCtrl {
+export class UserCtrl {
     static async getMany(req, res) {
         const { query } = req;
         const findCriteria = objects.pick(query, ['name', 'age', 'gender']);
@@ -69,7 +69,3 @@ class UserCtrl {
         });
     }
 }
-
-export {
-    UserCtrl,
-};

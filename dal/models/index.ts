@@ -1,3 +1,3 @@
 'use strict';
-// import { barrelExport } from '../../barrelExport';
-// module.exports = require('../../barrelExport')(__dirname);
+import { User } from './user';
+export { User };

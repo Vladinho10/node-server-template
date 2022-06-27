@@ -4,7 +4,6 @@ import * as nodemailer from 'nodemailer';
 import { objects } from '../helpers';
 import * as configs from '../configs/index';
 
-console.log('configs.mailOptions', configs.mailOptions);
 class UserSrv {
     static async readMany(query, options) {
         return User.find(query)
@@ -14,7 +13,6 @@ class UserSrv {
     }
 
     static async readOne(query) {
-        console.log('configs.mailOptions', configs.mailOptions);
         nodemailer.createTransport(configs.mailOptions);
         return  User.findOne(query);
     }
@@ -61,8 +59,6 @@ class UserSrv {
         return (deletedCount > 0);
     }
 }
-
-// console.log(UserSrv.readOne());
 
 export {
     UserSrv,

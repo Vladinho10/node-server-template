@@ -27,9 +27,7 @@
   },
   "main": "index.ts",
   "scripts": {
-    "start": "ts-node-dev --respawn index.ts",
-    "serve": "nodemon index.ts",
-    "dev": "nodemon --exec ts-node index.ts",
+    "start": "tsc; node ./dist/index.js",
     "build": "tsc",
     "nodemon": "./node_modules/nodemon/bin/nodemon.js index",
     "test": "mocha ./tests"

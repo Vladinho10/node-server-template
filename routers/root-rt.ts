@@ -1,11 +1,11 @@
 
 import * as express from 'express';
-const RootRt = express.Router();
-import { RootCtrl } from '../controllers/root-ctrl';
+const rootRt = express.Router();
+import { RootCtrl } from '../controllers';
 
-RootRt.get('/v1/', RootCtrl.getMany);
-RootRt.post('/v1/', RootCtrl.post);
+rootRt.get('/v1/', RootCtrl.getMany);
+rootRt.post('/v1/', RootCtrl.post);
 
-RootRt.get('/', RootCtrl.showEjs);
+rootRt.get('/', RootCtrl.showEjs);
 
-export { RootRt };
+export { rootRt };

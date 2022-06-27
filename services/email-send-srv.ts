@@ -1,10 +1,9 @@
 'use strict';
 import * as nodemailer from 'nodemailer';
 
-import configs from '../configs';
+import { mailOptions } from '../configs';
 
-const transporter = nodemailer.createTransport(configs.mailOptions);
-console.log('transporter', transporter);
+const transporter = nodemailer.createTransport(mailOptions);
 
 class EmailSendSrv {
     static async sendLink(email, options) {
