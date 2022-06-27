@@ -1,5 +1,3 @@
-'use strict';
-
 const removeDuplicates = async (model: any, duplicateCriteria = []) => {
     /**
      * response includes

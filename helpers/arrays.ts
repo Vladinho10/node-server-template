@@ -1,4 +1,3 @@
-'use strict';
 const isEmptyArray = (arr: any): boolean => !Array.isArray(arr) || !arr.length;
 const getRandomItem = (arr: any[]) => arr[Math.floor(Math.random() * arr.length)];
 const multiplyItems = (numArray:number[]) => numArray.reduce((acc, val) => acc * val, 1);

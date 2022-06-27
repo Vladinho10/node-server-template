@@ -1,5 +1,6 @@
-'use strict';
-class CustomError extends Error {
+export class CustomError extends Error {
+    type: string;
+    field: string;
     constructor(errorObject) {
         super(errorObject);
 
@@ -8,11 +9,8 @@ class CustomError extends Error {
             Error.captureStackTrace(this, CustomError);
         }
         this.name = 'CustomError';
-        // this.type = errorObject.type;
-        // this.field = errorObject.field;
+        this.type = errorObject.type;
+        this.field = errorObject.field;
         this.message = errorObject.message;
     }
 }
-export {
-    CustomError,
-};

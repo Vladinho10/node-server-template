@@ -1,4 +1,3 @@
-'use strict';
 import jwt from 'jsonwebtoken';
 import { jwtSecret } from '../configs';
 
@@ -7,7 +6,7 @@ const options = {
     algorithm: 'HS256',
 };
 
-class JwtSrv {
+export class JwtSrv {
     static sign(payload) {
         return typeof payload === 'string'
             ? jwt.sign(payload, jwtSecret, options)
@@ -24,7 +23,3 @@ class JwtSrv {
         return {};
     }
 }
-
-export {
-    JwtSrv,
-};

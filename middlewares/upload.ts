@@ -1,4 +1,3 @@
-'use strict';
 import multer from 'multer';
 
 import { strings } from '../helpers';

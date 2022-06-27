@@ -1,4 +1,4 @@
-'use strict';
+
 import * as fs from 'fs';
 
 const paths = fs

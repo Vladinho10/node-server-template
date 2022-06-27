@@ -1,4 +1,3 @@
-'use strict';
 import * as crypto  from 'crypto';
 
 const algorithm = 'aes-256-cbc';

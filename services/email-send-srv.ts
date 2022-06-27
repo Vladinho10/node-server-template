@@ -1,11 +1,10 @@
-'use strict';
 import * as nodemailer from 'nodemailer';
 
 import { mailOptions } from '../configs';
 
 const transporter = nodemailer.createTransport(mailOptions);
 
-class EmailSendSrv {
+export class EmailSendSrv {
     static async sendLink(email, options) {
         const message = {
             from: 'from@gmail.com',
@@ -18,7 +17,3 @@ class EmailSendSrv {
         return transporter.sendMail(message);
     }
 }
-
-export {
-    EmailSendSrv,
-};

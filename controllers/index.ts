@@ -37,8 +37,6 @@
 //
 // export default controllers;
 
-import { FileCtrl } from './file-ctrl';
-import { RootCtrl } from './root-ctrl';
-import { UserCtrl } from './user-ctrl';
-
-export { FileCtrl, RootCtrl, UserCtrl };
+export * from './file-ctrl';
+export * from './root-ctrl';
+export * from './user-ctrl';

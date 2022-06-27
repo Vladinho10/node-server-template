@@ -1,10 +1,9 @@
-'use strict';
-import { User } from '../dal/models/user';
+import { User } from '../dal/models';
 import * as nodemailer from 'nodemailer';
 import { objects } from '../helpers';
 import * as configs from '../configs/index';
 
-class UserSrv {
+export class UserSrv {
     static async readMany(query, options) {
         return User.find(query)
             .limit(+options.limit || 10)
@@ -59,7 +58,3 @@ class UserSrv {
         return (deletedCount > 0);
     }
 }
-
-export {
-    UserSrv,
-};

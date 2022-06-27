@@ -1,4 +1,3 @@
-'use strict';
 const pick = (obj, fields) => {
     const picked = {};
 

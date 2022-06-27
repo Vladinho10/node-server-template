@@ -1,5 +1,4 @@
 /* eslint-disable no-empty */
-'use strict';
 import { Worker } from  'worker_threads';
 
 // eslint-disable-next-line arrow-body-style

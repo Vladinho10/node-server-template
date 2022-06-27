@@ -1,4 +1,3 @@
-'use strict';
 import * as crypto  from 'crypto';
 
 const toPascalCase = str => str[0].toUpperCase() + str.slice(1);

@@ -1,4 +1,3 @@
-'use strict';
 // const { general: { oftenUseCodes } } = require('../constants');
 import { general } from '../constants';
 
