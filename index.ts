@@ -4,9 +4,8 @@ import http from 'http';
 const logger = log4js.getLogger('ENTRY.index');
 import express from 'express';
 import mongoose from 'mongoose';
-const { db } = require('./configs');
+const { db, port } = require('./configs');
 const app = express();
-const { port } = { port: 5000 };
 const server = http.createServer(app);
 // @ts-ignore
 global.io = socketIo(server);

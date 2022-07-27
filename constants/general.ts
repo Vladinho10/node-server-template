@@ -1,6 +1,21 @@
 import * as httpStatus from 'http-status';
 
-const oftenUseCodes = {
+interface oftenUseCodesGeneral{
+    ok:number,
+    created:number,
+    accepted:number,
+    noContent:number,
+    badRequest:number,
+    unauthorized:number,
+    paymentRequired:number,
+    forbidden: number,
+    notFound: number,
+    unsupportedMediaType: number,
+    unprocessableEntity: number,
+    internalServerError:number,
+};
+
+const oftenUseCodes: oftenUseCodesGeneral= {
     ok: httpStatus.OK,
     created: httpStatus.CREATED,
     accepted: httpStatus.ACCEPTED,
