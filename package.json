@@ -34,7 +34,7 @@
   "dependencies": {
     "compose-middleware": "^5.0.1",
     "dotenv-flow": "^3.2.0",
-    "ejs": "^3.1.6",
+    "ejs": "^3.1.7",
     "express": "^4.17.1",
     "express-async-handler": "^1.2.0",
     "http-status": "^1.4.2",
