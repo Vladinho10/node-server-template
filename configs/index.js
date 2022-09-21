@@ -3,8 +3,15 @@ const rootPath = process.cwd();
 require('dotenv-flow').config({ path: `${rootPath}/envs` });
 require('./logger-config');
 
-const db = {
-    url: `${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
+const dbOptions = {
+    logging: console.log,
+    operatorsAliases: 0,
+    freezeTableName: true,
+    dialect: 'mysql',
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
 };
 const port = process.env.PORT;
 const jwtSecret = `${process.env.JWT_SECRET}`;
@@ -24,7 +31,7 @@ const mailOptions = {
 };
 
 module.exports = {
-    db,
+    dbOptions,
     port,
     files,
     uploads,
