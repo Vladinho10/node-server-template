@@ -29,7 +29,11 @@
   "scripts": {
     "start": "node index",
     "nodemon": "./node_modules/nodemon/bin/nodemon.js index",
-    "test": "mocha ./tests"
+    "test": "mocha ./tests",
+    "migrate-up": "node_modules/sequelize-cli/lib/sequelize db:migrate",
+    "migrate-down": "node_modules/sequelize-cli/lib/sequelize db:migrate:undo:all",
+    "seed-up": "node_modules/sequelize-cli/lib/sequelize db:seed:all",
+    "seed-down": "node_modules/sequelize-cli/lib/sequelize db:seed:undo:all"
   },
   "dependencies": {
     "compose-middleware": "^5.0.1",
@@ -43,7 +47,10 @@
     "mongoose": "^6.4.6",
     "morgan": "^1.9.1",
     "multer": "^1.4.3",
+    "mysql2": "^2.3.3",
     "nodemailer": "^6.7.0",
+    "sequelize": "^6.23.0",
+    "sequelize-cli": "^6.4.1",
     "socket.io": "^4.3.1",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.1.3"

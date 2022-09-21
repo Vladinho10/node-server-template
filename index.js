@@ -1,16 +1,17 @@
 'use strict';
 const logger = require('log4js').getLogger('ENTRY.index');
 const express = require('express');
-const mongoose = require('mongoose');
+const { Sequelize } = require('sequelize');
 const configs = require('./configs');
 const app = express();
 const server = require('http').createServer(app);
 global.io = require('socket.io')(server);
 global.CustomError = require('./services').CustomError;
-const { port } = configs;
+const { port, dbOptions } = configs;
 
-(async () => await mongoose.connect(configs.db.url))()
-    .catch(err => logger.error({ err }));
+const sequelize = new Sequelize(dbOptions.database, dbOptions.username, dbOptions.password, dbOptions);
+(async () => await sequelize.authenticate())()
+    .catch(err => logger.error('Hey, unable to connect to the database', { err }));
 
 // you can specify a path `${origin}/yourPath` or by default it's `${origin}`
 app.use(express.static(configs.files));

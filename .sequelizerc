@@ -1,0 +1,9 @@
+'use strict';
+
+const path = require('path');
+
+module.exports = {
+    config: path.join(__dirname, 'configs', 'db.js'),
+    'seeders-path': path.join(__dirname,'dal', 'seeds'),
+    'migrations-path': path.join(__dirname,'dal', 'migrations')
+};

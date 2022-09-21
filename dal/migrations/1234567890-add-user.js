@@ -1,8 +1,8 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.define(
-        'User',
-        {
+
+module.exports = {
+    async up(queryInterface, DataTypes) {
+        await queryInterface.createTable('user', {
             id: {
                 allowNull: false,
                 primaryKey: true,
@@ -21,20 +21,10 @@ module.exports = (sequelize, DataTypes) => {
             updatedAt: {
                 type: DataTypes.BIGINT,
             },
-        },
-        {
-            tableName: 'user',
-            timestamps: false,
-        },
-    );
+        });
+    },
 
-    User.addHook('beforeSave', async model => {
-        if (model.isNewRecord) {
-            model.createdAt = new Date().getTime();
-        }
-
-        model.updatedAt = new Date().getTime();
-    });
-
-    return User;
+    async down(queryInterface) {
+        await queryInterface.dropTable('user');
+    },
 };
