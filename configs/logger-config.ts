@@ -1,6 +1,6 @@
 import * as log4js from 'log4js';
 
-log4js.addLayout('asJson', () => logEvent => JSON.stringify({
+log4js.addLayout('asJson', () => (logEvent):string => JSON.stringify({
     startTime: logEvent.startTime,
     category: logEvent.categoryName,
     level: logEvent.level.levelStr,
