@@ -1,6 +1,6 @@
-import { general } from '../constants';
+import Express, { Response, Send } from 'express';
 
-import Express, { Send, Response } from 'express';
+import { general } from '../constants';
 
 export type CustomResponse = Response & {
     created?: Send;

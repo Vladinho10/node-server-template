@@ -1,9 +1,9 @@
+import './logger-config';
+import * as dotEnvConfig from 'dotenv-flow';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 const rootPath = process.cwd();
-import * as dotEnvConfig from 'dotenv-flow';
 dotEnvConfig.config({ path: `${rootPath}/envs` });
-import './logger-config';
 
 export const db = {
     uri: `${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,

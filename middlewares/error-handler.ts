@@ -1,10 +1,9 @@
-
 import { general } from '../constants';
+
 import { CustomResponse } from './respond';
 
-// eslint-disable-next-line no-unused-vars
 export default function (err, req: Request, res: CustomResponse, next) {
-    // logger.error({ errMessage: err.message });
+    globalThis.logger.error({ errMessage: err.message });
     if (err) {
         const errorResponse = [];
         const errors  = typeof err === 'string' ? err : err.errors;

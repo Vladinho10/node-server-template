@@ -1,7 +1,7 @@
-
 import * as express from 'express';
-import * as swaggerUi from 'swagger-ui-express';
 import * as swaggerJsdoc from 'swagger-jsdoc';
+import * as swaggerUi from 'swagger-ui-express';
+
 import swaggerOptions from '../docs/swagger/swagger-options';
 
 const SwaggerRt = express.Router();

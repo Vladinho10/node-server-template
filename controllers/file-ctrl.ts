@@ -1,5 +1,6 @@
-import * as configs from '../configs/index';
 import { Request } from 'express';
+
+import * as configs from '../configs';
 import { CustomResponse } from '../middlewares/respond';
 
 export class FileCtrl {

@@ -1,7 +1,8 @@
+import { Request } from 'express';
+
+import { CustomResponse } from '../middlewares/respond';
 import { UserSrv } from '../services';
 import { objects } from '../helpers';
-import { Request } from 'express';
-import { CustomResponse } from '../middlewares/respond';
 
 export class UserCtrl {
     static async getMany(req: Request, res: CustomResponse) {

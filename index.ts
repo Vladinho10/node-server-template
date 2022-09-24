@@ -1,16 +1,20 @@
-import log4js from 'log4js';
-import { Server } from 'socket.io';
 import http from 'http';
-const logger = log4js.getLogger('ENTRY.index');
+
+import { Server } from 'socket.io';
 import express from 'express';
+import log4js from 'log4js';
 import mongoose from 'mongoose';
+
+import { CustomError } from './services';
 import { db, files, port } from './configs';
 import routers from './routers';
+
+const logger = log4js.getLogger('ENTRY.index');
 const app = express();
 const server = http.createServer(app);
 
 globalThis.io = new Server(server);
-import { CustomError } from './services';
+
 globalThis.CustomError = CustomError;
 
 (async () => await mongoose.connect(db.uri))()

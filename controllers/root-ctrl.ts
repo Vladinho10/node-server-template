@@ -1,4 +1,5 @@
 import { Request } from 'express';
+
 import { CustomResponse } from '../middlewares/respond';
 
 export class RootCtrl {

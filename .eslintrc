@@ -1,5 +1,15 @@
 {
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
+  "plugins": [
+    "filenames",
+    "sort-imports-es6-autofix",
+    "node"
+  ],
   "parserOptions": {
     "sourceType": "module",
     "ecmaFeatures": {
@@ -9,7 +19,6 @@
   "root": true,
   "env": {
     "node": true,
-    "es2020": true,
     "mocha": true,
     "mongo": true
   },
@@ -125,6 +134,44 @@
         "property": "pow",
         "message": "Please use ** instead."
       }
-    ]
-  }
+    ],
+    "filenames/match-regex": ["error", "^[a-z][A-Za-z0-9.-]+$"],
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-useless-path-segments": [
+      "error",
+      {
+        "noUselessIndex": true
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin", "external", "parent", "sibling", "index"
+        ],
+        "newlines-between": "always"
+      }
+    ],
+    "sort-imports-es6-autofix/sort-imports-es6": [
+      "warn",
+      {
+        "ignoreCase": false,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": [
+          "none", "all", "multiple", "single"
+        ]
+      }
+    ],
+    "node/no-process-env": "error"
+  },
+  "overrides": [
+    {
+      "files": ["configs/**/*.ts"],
+      "rules": {
+        // Config Module is the only modules allowed to access process.env
+        "node/no-process-env": "off"
+      }
+    }
+  ]
 }

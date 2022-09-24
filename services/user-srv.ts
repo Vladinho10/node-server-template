@@ -1,7 +1,8 @@
-import { User } from '../dal/models';
 import * as nodemailer from 'nodemailer';
+
+import * as configs from '../configs';
+import { User } from '../dal/models';
 import { objects } from '../helpers';
-import * as configs from '../configs/index';
 
 export class UserSrv {
     static async readMany(query, options) {

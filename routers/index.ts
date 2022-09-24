@@ -1,21 +1,30 @@
 // import * as fs from 'fs';
 // import { objects } from '../helpers';
-import * as express from 'express';
-const indexRouter = express.Router();
-import middlewares from '../middlewares/index';
 
+import * as express from 'express';
+
+import middlewares from '../middlewares';
+
+import { fileRt } from './file-rt';
+import { rootRt } from './root-rt';
+import { userRt } from './user-rt';
+
+const indexRouter = express.Router();
 indexRouter.use(middlewares.combine);
 
-// fs.readdirSync(__dirname)
-//     .forEach(file => {
+// const files = fs.readdirSync(__dirname);
+//
+// async function foo(files, indexRouter) {
+//     for (const file of files) {
 //         if (objects.isJSFileAndNotIndex(file)) {
-//             indexRouter.use(require(`./${file}`));
+//             // indexRouter.use(require(`./${file}`));
+//             indexRouter.use(await import(`./${file}`));
 //         }
-//     });
+//     }
+// }
+//
+// (async () => await foo(files, indexRouter))();
 
-import { userRt } from './user-rt';
-import { rootRt } from './root-rt';
-import { fileRt } from './file-rt';
 indexRouter.use(userRt);
 indexRouter.use(rootRt);
 indexRouter.use(fileRt);
