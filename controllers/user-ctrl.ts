@@ -1,29 +1,31 @@
 import { UserSrv } from '../services';
 import { objects } from '../helpers';
+import { Request } from 'express';
+import { CustomResponse } from '../middlewares/respond';
 
 export class UserCtrl {
-    static async getMany(req, res) {
+    static async getMany(req: Request, res: CustomResponse) {
         const { query } = req;
         const findCriteria = objects.pick(query, ['name', 'age', 'gender']);
         const options = objects.pick(query, ['limit', 'offset', 'sort']);
 
         const users = await UserSrv.readMany(findCriteria, options);
 
-        return res.ok({
+        return res.send({
             data: users,
             limit: users.length,
         });
     }
 
-    static async getOne(req, res) {
+    static async getOne(req: Request, res: CustomResponse) {
         const user = await UserSrv.readOne({ _id: req.params._id });
 
-        return res.ok({
+        return res.send({
             data: user,
         });
     }
 
-    static async post(req, res) {
+    static async post(req: Request, res: CustomResponse) {
         const { body } = req;
         const create = Array.isArray(body) ? UserSrv.createMany : UserSrv.createOne;
 
@@ -34,7 +36,7 @@ export class UserCtrl {
         });
     }
 
-    static async putOne(req, res) {
+    static async putOne(req: Request, res: CustomResponse) {
         const user = await UserSrv.updateOne(req.params._id, req.body); // change data
 
         return user
@@ -42,7 +44,7 @@ export class UserCtrl {
             : res.notFound({ errors: [{ message: 'resource not found' }] });
     }
 
-    static async putMany(req, res) {
+    static async putMany(req: Request, res: CustomResponse) {
         const isModified = await UserSrv.updateMany(req.body);
 
         return isModified
@@ -50,19 +52,19 @@ export class UserCtrl {
             : res.notFound({ errors: [{ message: 'resource not found' }] });
     }
 
-    static async removeOne(req, res) {
+    static async removeOne(req: Request, res: CustomResponse) {
         const isDeleted  = await UserSrv.deleteOne({ _id: req.params._id });
 
         return isDeleted ? res.noContent() : res.notFound({ errors: [{ message: 'resource not found' }] });
     }
 
-    static async removeMany(req, res) {
+    static async removeMany(req: Request, res: CustomResponse) {
         const isDeleted = await UserSrv.deleteMany(req.body.ids);
 
         return  isDeleted ? res.noContent() : res.notFound({ errors: [{ message: 'resource not found' }] });
     }
 
-    static async showEjs(req, res) {
+    static async showEjs(req: Request, res: CustomResponse) {
         res.render('users-page', {
             origin: `${req.protocol}://${req.get('host')}`,
             name: 'Users',

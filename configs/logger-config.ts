@@ -26,4 +26,4 @@ log4js.configure({
     },
 });
 
-global.logger = log4js.getLogger();
+globalThis.logger = log4js.getLogger();

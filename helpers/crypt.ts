@@ -7,7 +7,7 @@ const iv = crypto.scryptSync('ivPassword', 'salt', 16);
 // logger.info({ bufferedKey: Buffer.from(key) });
 // logger.info({ keyConvertToString: key.toString() });
 
-const encrypt = (data: string | any) => {
+const encrypt = (data: string | Buffer) => {
     const str = typeof data === 'string' ? data : JSON.stringify(data);
     const cipher = crypto.createCipheriv(algorithm, key, iv);
     const encryptedBuffer = cipher.update(str);

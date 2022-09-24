@@ -1,8 +1,9 @@
 
 import { general } from '../constants';
+import { CustomResponse } from './respond';
 
 // eslint-disable-next-line no-unused-vars
-export default function (err, req, res, next) {
+export default function (err, req: Request, res: CustomResponse, next) {
     // logger.error({ errMessage: err.message });
     if (err) {
         const errorResponse = [];
@@ -58,4 +59,6 @@ export default function (err, req, res, next) {
             ? res[err.type]({ errors: errorResponse })
             : res.internalServerError({ errors: [{ message: 'Something went wrong' }] });
     }
-};
+
+    next();
+}

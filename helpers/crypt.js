@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 exports.__esModule = true;
 exports.crypt = void 0;
-var crypto = require("crypto");
+var crypto = require('crypto');
 var algorithm = 'aes-256-cbc';
 var key = crypto.scryptSync('keyPassword', 'salt', 32);
 var iv = crypto.scryptSync('ivPassword', 'salt', 16);
@@ -26,7 +26,7 @@ var decrypt = function (message) {
 // const decoded = decrypt(encoded);
 // logger.info(decoded);
 var crypt = {
-    encrypt: encrypt,
-    decrypt: decrypt
+    encrypt,
+    decrypt,
 };
 exports.crypt = crypt;

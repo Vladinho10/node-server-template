@@ -1,4 +1,6 @@
-const removeDuplicates = async (model: any, duplicateCriteria = []) => {
+import { Model } from 'mongoose';
+
+const removeDuplicates = async (model: Model<Document>, duplicateCriteria = []) => {
     /**
      * response includes
      * _id - a document with duplicateCriteria fields

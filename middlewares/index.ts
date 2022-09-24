@@ -10,10 +10,10 @@ const json = express.json();
 export default {
     errorHandler,
     combine: compose([
-    morgan('combined'),
-    urlencoded,
-    json,
-    respond,
-    uploadSingle,
-    ])
+        morgan('combined'),
+        urlencoded,
+        json,
+        respond,
+        uploadSingle,
+    ]),
 };

@@ -3,10 +3,12 @@ import * as fs from 'fs';
 
 const paths = fs
     .readdirSync(`${__dirname}/paths`)
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     .reduce((acc, file) => Object.assign(acc, require(`./paths/${file}`)), {});
 
 const schemas = fs
     .readdirSync(`${__dirname}/schemas`)
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     .reduce((acc, file) => Object.assign(acc, require(`./schemas/${file}`)), {});
 
 export default {

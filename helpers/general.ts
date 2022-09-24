@@ -1,4 +1,3 @@
-/* eslint-disable no-empty */
 import { Worker } from  'worker_threads';
 
 // eslint-disable-next-line arrow-body-style
@@ -23,12 +22,14 @@ const putSegmentsInPromise = (segments, childWorkerPath, data = {}) => {
     }));
 };
 
-const jsonParser = (jsonString) => {
+const jsonParser = jsonString => {
     let data = {};
 
     try {
         data = JSON.parse(jsonString);
-    } catch (err) {}
+    } catch (err) {
+        console.log('json parser error', err);
+    }
 
     return data;
 };

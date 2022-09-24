@@ -1,8 +1,9 @@
 import * as configs from '../configs/index';
-import Express from 'express';
+import { Request } from 'express';
+import { CustomResponse } from '../middlewares/respond';
 
 export class FileCtrl {
-    static download(req:Express.Request, res:Express.Response) {
+    static download(req: Request, res: CustomResponse) {
         const { remote } = req.query;
         const { fileName } = req.params;
         const fromFilePath = remote ? remote.toString() : `${configs.files}/${fileName}`;
@@ -10,8 +11,8 @@ export class FileCtrl {
         return res.download(fromFilePath);
     }
 
-    static async upload(req:Express.Request, res:Express.Response) {
-        const { file }: any = req;
+    static async upload(req, res: CustomResponse) {
+        const { file } = req;
         const filePath: string = (file && file.path) || `${configs.files}/lake.jpg`;
 
         return res.sendFile(filePath);

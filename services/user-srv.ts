@@ -37,13 +37,12 @@ export class UserSrv {
     static async updateMany(body) {
         const newData = objects.pick(body.updatingFields, ['name', 'age', 'gender']);
 
-        // @ts-ignore
-        const { nModified } = (await User.updateMany(
+        const { modifiedCount } = (await User.updateMany(
             body.filter, // find criteria
             newData, // changing data
         ));
 
-        return (nModified > 0);
+        return (modifiedCount > 0);
     }
 
     static async deleteOne(_id) {

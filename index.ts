@@ -1,23 +1,24 @@
 import log4js from 'log4js';
-import socketIo from 'socket.io';
+import { Server } from 'socket.io';
 import http from 'http';
 const logger = log4js.getLogger('ENTRY.index');
 import express from 'express';
 import mongoose from 'mongoose';
-const { db, port } = require('./configs');
+import { db, files, port } from './configs';
+import routers from './routers';
 const app = express();
 const server = http.createServer(app);
-// @ts-ignore
-global.io = socketIo(server);
-// @ts-ignore
-// global.CustomError = require('./services').CustomError;
 
-(async () => await mongoose.connect(db.url))()
+globalThis.io = new Server(server);
+import { CustomError } from './services';
+globalThis.CustomError = CustomError;
+
+(async () => await mongoose.connect(db.uri))()
     .catch(err => logger.error({ err }));
 
 // you can specify a path `${origin}/yourPath` or by default it's `${origin}`
-// app.use(express.static(configs.files));
-app.use('/', require('./routers'));
+app.use(express.static(files));
+app.use('/', routers);
 app.set('view engine', 'ejs'); // by default ejs files in root's 'views' directory
 
 server.listen(port, () => logger.info(`app listen ${port} port`));
