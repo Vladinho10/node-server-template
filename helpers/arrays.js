@@ -1,23 +1,27 @@
 'use strict';
-const isEmptyArray = arr => !Array.isArray(arr) || !arr.length;
-const getRandomItem = arr => arr[Math.floor(Math.random() * arr.length)];
-const multiplyItems = numArray => numArray.reduce((acc, val) => acc * val, 1n);
-const sliceIntoChunks = (arr, chunkSize) => {
-    const res = [];
-
-    for (let i = 0; i < arr.length; i += chunkSize) {
-        const chunk = arr.slice(i, i + chunkSize);
+exports.__esModule = true;
+exports.arrays = void 0;
+var isEmptyArray = function (arr) {
+    return !Array.isArray(arr) || !arr.length;
+};
+var getRandomItem = function (arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+};
+var multiplyItems = function (numArray) {
+    return numArray.reduce((acc, val) => acc * val, 1);
+};
+var sliceIntoChunks = function (arr, chunkSize) {
+    var res = [];
+    for (var i = 0; i < arr.length; i += chunkSize) {
+        var chunk = arr.slice(i, i + chunkSize);
         res.push(chunk);
     }
-
     return res;
 };
-
-const arrays = {
+var arrays = {
     isEmptyArray,
     getRandomItem,
     multiplyItems,
     sliceIntoChunks,
 };
-
-module.exports = { arrays };
+exports.arrays = arrays;

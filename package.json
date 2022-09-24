@@ -1,12 +1,13 @@
 {
   "name": "node-server-template",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Just universal server",
   "repository": "https://github.com/Vladinho10/node-server-template",
   "author": "Vlad Mkhitaryan",
   "license": "ISC",
   "keywords": [
     "swagger",
+    "typescript",
     "express",
     "mongodb",
     "docker",
@@ -25,18 +26,22 @@
   "engines": {
     "node": "16.x"
   },
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "start": "node index",
-    "nodemon": "./node_modules/nodemon/bin/nodemon.js index",
-    "test": "mocha ./tests"
+    "start": "tsc; node ./dist/index.js",
+    "build": "tsc",
+    "nodemon": "tsc; ./node_modules/nodemon/bin/nodemon.js index",
+    "test": "mocha ./tests",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
   "dependencies": {
+    "@types/nodemailer": "^6.4.4",
+    "@types/socket.io": "^3.0.2",
     "compose-middleware": "^5.0.1",
     "dotenv-flow": "^3.2.0",
     "ejs": "^3.1.7",
-    "express": "^4.17.1",
-    "express-async-handler": "^1.2.0",
+    "express": "^4.18.1",
     "http-status": "^1.4.2",
     "jsonwebtoken": "^8.5.1",
     "log4js": "^6.4.0",
@@ -49,11 +54,23 @@
     "swagger-ui-express": "^4.1.3"
   },
   "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
     "chai": "^4.3.4",
-    "eslint": "^8.0.1",
+    "eslint": "^8.24.0",
+    "eslint-plugin-filenames": "^1.3.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "mocha": "^9.1.3",
     "mock-fs": "^5.1.1",
-    "nodemon": "^2.0.13",
-    "sinon": "^11.1.2"
+    "nodemon": "^2.0.16",
+    "sinon": "^11.1.2",
+    "ts-node": "^10.8.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.4"
   }
 }

@@ -1,4 +1,4 @@
-'use strict';
+
 const fs = require('fs');
 const mockFS = require('mock-fs');
 const { assert } = require('chai');

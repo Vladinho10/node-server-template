@@ -8,6 +8,7 @@
 * [Architecture guide](#architecture-guide)
 
 ### General info
+25.09.22. Updates. We create a new version of the template. It is already written in Typescript !
 12.03.21 Updates. Great news ! :fire: :heart: \
 In this template every time we manually create 7 files for one CRUD logic. Now you can create your CRUD new files at once just using `rest-resource-file-generator` npm module made by me :tophat: \
 Here is the link of instructions in npm [rest-resource-file-generator](https://www.npmjs.com/package/rest-resource-file-generator) \
@@ -21,14 +22,14 @@ If you haven't, these are their links for installing.
 
 ### Technologies
 Program/lib | version | command for checking\
-Git | 2.30.1 | `git --version`\
+Git | 2.37.0 | `git --version`\
 Node.js | v16.6.1 | `node -v` \
-Express | ^4.17.1 | see in app package.json\
+Express | ^4.18.1 | see in app package.json\
 MongoDB | v4.4.5 | `mongo --version`\
-Mongoose | ^6.0.11 | see in this app package.json\
+Mongoose | ^6.4.6 | see in this app package.json\
 Mocha | 9.1.3 | see in this app package.json\
-Eslint | 8.0.1 | see in this app package.json\
-Yarn | 1.22.10 | `yarn -v`
+Eslint | 8.24.0 | see in this app package.json\
+Yarn | 1.22.19 | `yarn -v`
 
 ### Setup
 1. Clone this repository\
@@ -58,8 +59,6 @@ for yarn
   `yarn start`
 * if you want your server stay always running\
 `yarn run nodemon`
-or\
- `yarn nodemon` 
 
 
 ## Style guide 

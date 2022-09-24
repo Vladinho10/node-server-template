@@ -3,23 +3,23 @@ module.exports = `'use strict';
 const { serviceName } = require('dir');
 
 class controllerName {
-    static async getOne(req, res) {
+    static async getOne(req: Request, res: CustomResponse) {
         
     }
     
-    static async getMany(req, res) {
+    static async getMany(req: Request, res: CustomResponse) {
         
     }
 
-    static async post(req, res) {
+    static async post(req: Request, res: CustomResponse) {
         
     }
 
-    static async putOne(req, res) {
+    static async putOne(req: Request, res: CustomResponse) {
         
     }
 
-    static async deleteOne(req, res) {
+    static async deleteOne(req: Request, res: CustomResponse) {
         
     }
 }

@@ -70,6 +70,8 @@ envs/.env.prod.local
 # upload files
 uploads
 data
+# build directory
+dist
 
 # local docker compose file
 docker-image/docker-compose.override.yml
