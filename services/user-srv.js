@@ -1,6 +1,7 @@
 'use strict';
 const { User } = require('../dal/models');
 const { objects } = require('../helpers');
+const { JwtSrv } = require('./jwt-srv');
 
 class UserSrv {
     static async readMany(query, options) {
@@ -11,25 +12,35 @@ class UserSrv {
     }
 
     static async readOne(query) {
-        return  User.findOne(query);
+        return User.findOne(query);
     }
 
     static async createOne(body) {
-        return  User.create(body);
+        const user = await User.create(body);
+        return {
+            user,
+            auth: {
+                token: JwtSrv.sign({ id: user.id }),
+            },
+        };
     }
 
     static async createMany(body) {
         return User.insertMany(body);
     }
 
-    static async updateOne(_id, body) {
-        const newData = objects.pick(body, ['name', 'age', 'gender']);
+    static async updateOne(id, body) {
+        const newData = await objects.pick(body, ['name', 'age']);
 
-        return User.findOneAndUpdate(
-            { _id },
-            newData,
-            { useFindAndModify: false, new: true },
-        );
+        const user = await User.findOne({ where: { id } });
+
+        if (!user) {
+            return { message: 'error' };
+        }
+        for (const key in newData) {
+            user[key] = newData[key];
+        }
+        return user.save();
     }
 
     static async updateMany(body) {

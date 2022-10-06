@@ -29,13 +29,16 @@
   "scripts": {
     "start": "node index",
     "nodemon": "./node_modules/nodemon/bin/nodemon.js index",
-    "test": "mocha ./tests",
+    "test": "mocha ./tests/tests/testUser.js",
     "migrate-up": "node_modules/sequelize-cli/lib/sequelize db:migrate",
+    "migrate-create": "node_modules/sequelize-cli/lib/sequelize migration:create",
     "migrate-down": "node_modules/sequelize-cli/lib/sequelize db:migrate:undo:all",
     "seed-up": "node_modules/sequelize-cli/lib/sequelize db:seed:all",
     "seed-down": "node_modules/sequelize-cli/lib/sequelize db:seed:undo:all"
   },
   "dependencies": {
+    "@types/sequelize": "^4.28.14",
+    "chai-http": "^4.3.0",
     "compose-middleware": "^5.0.1",
     "dotenv-flow": "^3.2.0",
     "ejs": "^3.1.6",

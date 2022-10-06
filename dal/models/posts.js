@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.define(
-        'User',
+    const Posts = sequelize.define(
+        'Posts',
         {
             id: {
                 allowNull: false,
@@ -10,26 +10,25 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.UUID,
                 defaultValue: DataTypes.UUIDV4,
             },
-            age: {
-                type: DataTypes.INTEGER,
+            userId: {
+                type: DataTypes.UUID,
+                defaultValue: DataTypes.UUIDV4,
+                references: {
+                    model: 'user',
+                    key: 'id',
+                },
             },
-            name: {
+            title: {
                 type: DataTypes.STRING,
-            },
-            createdAt: {
-                type: DataTypes.BIGINT,
-            },
-            updatedAt: {
-                type: DataTypes.BIGINT,
             },
         },
         {
-            tableName: 'user',
+            tableName: 'posts',
             timestamps: false,
         },
     );
 
-    User.addHook('beforeSave', async model => {
+    Posts.addHook('beforeSave', async model => {
         if (model.isNewRecord) {
             model.createdAt = new Date().getTime();
         }
@@ -37,10 +36,12 @@ module.exports = (sequelize, DataTypes) => {
         model.updatedAt = new Date().getTime();
     });
 
-    User.associate = models => {
-        User.hasMany(models.Posts, {
+    Posts.associate = models => {
+        Posts.belongsTo(models.User, {
             foreignKey: 'userId',
         });
     };
-    return User;
+
+    return Posts;
 };
+

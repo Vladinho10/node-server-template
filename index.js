@@ -19,3 +19,6 @@ app.use('/', require('./routers'));
 app.set('view engine', 'ejs'); // by default ejs files in root's 'views' directory
 
 server.listen(port, () => logger.info(`app listen ${port} port`));
+
+
+module.exports = server
