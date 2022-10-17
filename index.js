@@ -20,5 +20,4 @@ app.set('view engine', 'ejs'); // by default ejs files in root's 'views' directo
 
 server.listen(port, () => logger.info(`app listen ${port} port`));
 
-
-module.exports = server
+module.exports = server;

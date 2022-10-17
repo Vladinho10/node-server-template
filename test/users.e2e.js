@@ -1,8 +1,8 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const server = require('../../index');
-const { JwtSrv } = require('../../services/jwt-srv');
-const { User } = require('../../dal/models');
+const server = require('../index');
+const { JwtSrv } = require('../services/jwt-srv');
+const { User } = require('../dal/models');
 const { expect } = chai;
 chai.should();
 
