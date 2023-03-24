@@ -1,0 +1,189 @@
+{
+  "/users": {
+    "get": {
+      "summary": "Get many users",
+      "tags": ["Users"],
+      "parameters": [
+        {
+          "in": "query",
+          "name": "limit",
+          "description": "this is limit",
+          "required": false,
+          "schema": {
+            "type": "integer"
+          }
+        },
+        {
+          "in": "query",
+          "name": "offset",
+          "description": "this is offset",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "in": "query",
+          "name": "sort",
+          "description": "this is sort",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": " a desc",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/userSchema"
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Create a new user",
+      "tags": ["Users"],
+      "responses": {
+        "201": {
+          "description": "created a user",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/userSchema"
+              }
+            }
+          }
+        }
+      }
+    },
+    "put": {
+      "summary": "Update many users",
+      "tags": ["Users"],
+      "parameters": [
+        {
+          "in": "body",
+          "name": "ids",
+          "description": "array of ids",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "202": {
+          "description": "Updated many users",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/userSchema"
+              }
+            }
+          }
+        }
+      }
+    },
+    "patch": {
+      "summary": "Delete many users",
+      "tags": ["Users"],
+      "parameters": [
+        {
+          "in": "query",
+          "name": "limit",
+          "description": "this is limit",
+          "required": false,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "No content",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/userSchema"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/users/{_id}": {
+    "get": {
+      "summary": "Get a user by id",
+      "tags": ["Users"],
+      "parameters": [
+        {
+          "name": "_id",
+          "in": "path",
+          "description": "ID of user",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "got a user",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/userSchema"
+              }
+            }
+          }
+        }
+      }
+    },
+    "put": {
+      "summary": "update a user by id",
+      "tags": ["Users"],
+      "parameters": [
+        {
+          "name": "_id",
+          "in": "path",
+          "description": "ID of user",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "updated a user",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/userSchema"
+              }
+            }
+          }
+        }
+      }
+    },
+    "delete": {
+      "summary": "delete a user by id",
+      "tags": ["Users"],
+      "parameters": [
+        {
+          "name": "_id",
+          "in": "path",
+          "description": "ID of user",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "Deleted a user"
+        }
+      }
+    }
+  }
+}

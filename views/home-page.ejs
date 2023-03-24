@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body { font: 13px Helvetica, Arial; }
+        form {
+            background: #ced1cc;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+        form input {
+            border: 0;
+            padding: 10px;
+            width: 100%;
+            resize: vertical;
+
+        }
+        form button {
+            width: 100%;
+            background: rgb(130, 224, 255);
+            border: none;
+            padding: 10px;
+            content: "";
+            display: table;
+            clear: both;
+        }
+        #messages { list-style-type: none; margin: 0; padding: 0; }
+        #messages li { padding: 5px 10px; }
+        #messages li:nth-child(odd) { background: #eee; }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        @media screen and (max-width: 600px) {
+            #m, #btn {
+                width: 100%;
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1> Hello <%= name %></h1>
+<ul id="messages"></ul>
+<form action="">
+    <div class="row">
+        <div class="col-75">
+            <input id="m" autocomplete="off" />
+        </div>
+        <div class="col-25">
+            <button id="btn" type="submit">Send</button>
+        </div>
+    </div>
+</form>
+<script src="<%= `${origin}/socket.io/socket.io.js` %>"></script>
+<script src="<%= `${origin}/js/sockets-fe.js` %>"> </script>
+</body>
+</html>

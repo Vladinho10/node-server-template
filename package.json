@@ -1,0 +1,83 @@
+{
+  "name": "node-server-template",
+  "version": "2.0.0",
+  "description": "Just universal server",
+  "repository": "https://github.com/Vladinho10/node-server-template",
+  "author": "Vlad Mkhitaryan",
+  "license": "ISC",
+  "keywords": [
+    "swagger",
+    "express",
+    "mongodb",
+    "docker",
+    "kubernetes",
+    "jenkins",
+    "mongoose",
+    "template",
+    "server",
+    "nodemailer",
+    "jsonwebtoken",
+    "log4js",
+    "morgan",
+    "socket.io",
+    "mongoose"
+  ],
+  "engines": {
+    "node": "16.x"
+  },
+  "main": "index.js",
+  "mocha": {
+    "diff": true,
+    "extension": [
+      "js"
+    ],
+    "slow": "75",
+    "timeout": "20000"
+  },
+  "scripts": {
+    "start": "node index",
+    "nodemon": "./node_modules/nodemon/bin/nodemon.js index",
+    "test": "mocha ./test/*.e2e.js",
+    "migrate-up": "node_modules/sequelize-cli/lib/sequelize db:migrate",
+    "migrate-create": "node_modules/sequelize-cli/lib/sequelize migration:create",
+    "migrate-down": "node_modules/sequelize-cli/lib/sequelize db:migrate:undo:all",
+    "seed-up": "node_modules/sequelize-cli/lib/sequelize db:seed:all",
+    "seed-down": "node_modules/sequelize-cli/lib/sequelize db:seed:undo:all"
+  },
+  "dependencies": {
+    "@types/sequelize": "^4.28.14",
+    "@vonage/server-sdk": "^3.0.12",
+    "@vonage/voice": "^1.0.9",
+    "axios": "^1.2.2",
+    "chai-http": "^4.3.0",
+    "cheerio": "^1.0.0-rc.12",
+    "compose-middleware": "^5.0.1",
+    "dotenv-flow": "^3.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.2.0",
+    "http-status": "^1.4.2",
+    "images-to-pdf": "^1.0.3",
+    "jsonwebtoken": "^8.5.1",
+    "log4js": "^6.4.0",
+    "mongoose": "^6.4.6",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.3",
+    "mysql2": "^2.3.3",
+    "ngrok": "^4.3.3",
+    "nodemailer": "^6.7.0",
+    "sequelize": "^6.23.0",
+    "sequelize-cli": "^6.4.1",
+    "socket.io": "^4.3.1",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.3"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "eslint": "^8.0.1",
+    "mocha": "^9.1.3",
+    "mock-fs": "^5.1.1",
+    "nodemon": "^2.0.13",
+    "sinon": "^11.1.2"
+  }
+}

@@ -1,0 +1,14 @@
+version: "3"
+services:
+  mongo-container:
+    image: mongo
+    volumes:
+      - ./data:/data/db
+  node-server-template-cont:
+    restart: always
+    build: ..
+    ports:
+      - "5005:5000"
+    links:
+      - mongo-container
+
