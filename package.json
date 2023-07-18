@@ -45,7 +45,7 @@
     "http-status": "^1.4.2",
     "jsonwebtoken": "^9.0.0",
     "log4js": "^6.4.0",
-    "mongoose": "^6.4.6",
+    "mongoose": "^6.11.3",
     "morgan": "^1.9.1",
     "multer": "^1.4.3",
     "nodemailer": "^6.7.0",
