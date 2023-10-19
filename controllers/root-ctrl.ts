@@ -6,11 +6,9 @@ export class RootCtrl {
     static async getMany(req: Request, res: CustomResponse) {
         return res.send({ message: 'get all data' });
     }
-
     static async post(req: Request, res: CustomResponse) {
         return res.created({ message: 'create new data' });
     }
-
     static async showEjs(req: Request, res: CustomResponse) {
         globalThis.io.on('connection', socket => {
             globalThis.io.removeAllListeners();

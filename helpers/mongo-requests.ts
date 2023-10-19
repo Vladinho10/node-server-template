@@ -37,7 +37,6 @@ const removeDuplicates = async (model: Model<Document>, duplicateCriteria = []) 
     await model.deleteMany({ _id: { $in: duplicateIds } });
     // logger.info(`deleted ${duplicateIds.length} duplicates`);
 };
-
 const mongoRequests = {
     removeDuplicates,
 };

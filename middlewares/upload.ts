@@ -12,5 +12,4 @@ const storage = multer.diskStorage({
         cb(null, savingFileName);
     },
 });
-
 export default multer({ storage }).single('attachment');

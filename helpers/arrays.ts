@@ -11,12 +11,28 @@ const sliceIntoChunks = (arr: never[], chunkSize: number) => {
 
     return res;
 };
+const breakSegments = (arr: never[], cpuCount: number) => {
+    const segmentSize = Math.ceil(arr.length / cpuCount);
+    const segments = [];
 
+    for (let i = 0; i < cpuCount; i += 1) {
+        const start = i * segmentSize;  // 0 * 10000
+        const end = start + segmentSize;
+        const segment = arr.slice(start, end);
+
+        if (segment.length) {
+            segments.push(segment);
+        }
+    }
+
+    return segments;
+};
 const arrays = {
     isEmptyArray,
     getRandomItem,
     multiplyItems,
     sliceIntoChunks,
+    breakSegments,
 };
 
 export { arrays };

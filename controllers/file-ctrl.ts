@@ -11,7 +11,6 @@ export class FileCtrl {
 
         return res.download(fromFilePath);
     }
-
     static async upload(req, res: CustomResponse) {
         const { file } = req;
         const filePath: string = (file && file.path) || `${configs.files}/lake.jpg`;

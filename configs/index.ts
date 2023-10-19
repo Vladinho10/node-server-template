@@ -6,7 +6,7 @@ const rootPath = process.cwd();
 dotEnvConfig.config({ path: `${rootPath}/envs` });
 
 export const db = {
-    uri: `${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
+    uri: process.env.MONGO_URL,
 };
 export const port: string = process.env.PORT;
 export const jwtSecret = `${process.env.JWT_SECRET}`;
@@ -14,9 +14,7 @@ export const files = `${rootPath}/files`;
 export const uploads = `${rootPath}/uploads`;
 export const mailOptions: SMTPTransport.Options = {
     host: process.env.SMTP_HOST,
-    // port: process.env.SMTP_PORT, // 587, 465
-    port: +process.env.SMTP_PORT || 587,  // 587, 465
-    secure: true,
+    port: +process.env.SMTP_PORT,
     tls: {
         rejectUnauthorized: false,
     },

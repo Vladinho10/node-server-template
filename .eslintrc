@@ -35,10 +35,6 @@
       "max": 30,
       "exceptions": ["v", "$", "i", "_"]
     }],
-    "camelcase": ["error", {
-      "ignoreDestructuring": true,
-      "allow": ["test_id"]
-    }],
     "quotes": ["error", "single"],
     "prefer-const": "error",
     "no-plusplus": "error",
@@ -47,7 +43,7 @@
     "quote-props": ["error", "as-needed"],
     "object-shorthand": "error",
     "array-callback-return": "error",
-    "prefer-destructuring": "error",
+    "prefer-destructuring": ["error", {"object": true, "array": false}],
     "prefer-template": "error",
     "template-curly-spacing": ["error", "never"],
     "no-loop-func": "error",
@@ -64,13 +60,12 @@
     "arrow-body-style": ["error", "as-needed"],
     "arrow-parens": ["error", "as-needed"],
     "implicit-arrow-linebreak": ["error", "beside"],
-    "no-useless-constructor": "error",
     "no-dupe-class-members": "error",
     "class-methods-use-this": "error",
     "dot-notation": "error",
     "no-multi-assign": "error",
     "max-len": ["error", {
-      "code": 200,
+      "code": 240,
       "tabWidth": 4,
       "ignoreUrls": true,
       "ignoreRegExpLiterals": true,
@@ -112,11 +107,6 @@
     "comma-style": ["error", "last"],
     "comma-dangle": ["error", "always-multiline"],
     "new-cap": ["error", { "capIsNew": false }],
-    "no-underscore-dangle": ["error", {
-      "allowAfterThis": true,
-      "allowAfterSuper": true,
-      "allow": ["_id"]
-    }],
     "no-restricted-globals": [
       "error",
       {

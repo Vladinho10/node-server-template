@@ -14,9 +14,8 @@ const app = express();
 const server = http.createServer(app);
 
 globalThis.io = new Server(server);
-
 globalThis.CustomError = CustomError;
-
+mongoose.set('strictQuery', false);
 (async () => await mongoose.connect(db.uri))()
     .catch(err => logger.error({ err }));
 
@@ -24,5 +23,4 @@ globalThis.CustomError = CustomError;
 app.use(express.static(files));
 app.use('/', routers);
 app.set('view engine', 'ejs'); // by default ejs files in root's 'views' directory
-
 server.listen(port, () => logger.info(`app listen ${port} port`));

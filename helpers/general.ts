@@ -1,16 +1,14 @@
 import { Worker } from  'worker_threads';
-
 // eslint-disable-next-line arrow-body-style
 const putSegmentsInPromise = (segments, childWorkerPath, data = {}) => {
     return segments.map(segment => new Promise((resolve, reject) => {
-        // transfer data to each workers/threads
+        // transfer data to each worker/threads
         const worker = new Worker(childWorkerPath, {
             workerData: {
                 segment,
                 ...data,
             },
         });
-
         // when received data form worker, resolve/return it
         worker.on('message', resolve);
         worker.on('error', reject);
@@ -21,7 +19,6 @@ const putSegmentsInPromise = (segments, childWorkerPath, data = {}) => {
         });
     }));
 };
-
 const jsonParser = jsonString => {
     let data = {};
 
@@ -33,9 +30,7 @@ const jsonParser = jsonString => {
 
     return data;
 };
-
 const isCurrentUser = (_id, user) => _id.toString() === user._id.toString();
-
 const general = {
     isCurrentUser,
     jsonParser,

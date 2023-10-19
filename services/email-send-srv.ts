@@ -7,7 +7,7 @@ const transporter = nodemailer.createTransport(mailOptions);
 export class EmailSendSrv {
     static async sendLink(email, options) {
         const message = {
-            from: 'from@gmail.com',
+            from: mailOptions.auth.user,
             to: email,
             subject: 'Message title',
             text: 'Plaintext version of the message',

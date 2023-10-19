@@ -15,7 +15,6 @@ export type CustomResponse = Response & {
     unprocessableEntity?: Send;
     internalServerError?: Send;
 }
-
 const respond = (req:Express.Request, res:Express.Response, next:Express.NextFunction) => {
     for (const message in general.oftenUseCodes) {
         res[message] = function (data) {

@@ -1,6 +1,6 @@
 {
   "name": "node-server-template",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Just universal server",
   "repository": "https://github.com/Vladinho10/node-server-template",
   "author": "Vlad Mkhitaryan",
@@ -24,53 +24,72 @@
     "mongoose"
   ],
   "engines": {
-    "node": "16.x"
+    "node": "20.x"
   },
   "main": "index.ts",
+  "mocha": {
+    "diff": true,
+    "extension": [
+      "js"
+    ],
+    "slow": "75",
+    "timeout": "20000"
+  },
   "scripts": {
     "start": "tsc; node ./dist/index.js",
     "build": "tsc",
     "nodemon": "tsc; ./node_modules/nodemon/bin/nodemon.js index",
-    "test": "mocha ./tests",
+    "test": "mocha ./test/*.e2e.js",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "migrate-up": "node_modules/sequelize-cli/lib/sequelize db:migrate",
+    "migrate-create": "node_modules/sequelize-cli/lib/sequelize migration:create",
+    "migrate-down": "node_modules/sequelize-cli/lib/sequelize db:migrate:undo:all",
+    "seed-up": "node_modules/sequelize-cli/lib/sequelize db:seed:all",
+    "seed-down": "node_modules/sequelize-cli/lib/sequelize db:seed:undo:all"
   },
   "dependencies": {
-    "@types/nodemailer": "^6.4.4",
+    "@types/nodemailer": "^6.4.13",
+    "@types/sequelize": "^4.28.17",
     "@types/socket.io": "^3.0.2",
+    "axios": "^1.5.1",
+    "chai-http": "^4.4.0",
     "compose-middleware": "^5.0.1",
-    "dotenv-flow": "^3.2.0",
-    "ejs": "^3.1.7",
-    "express": "^4.18.1",
-    "http-status": "^1.4.2",
-    "jsonwebtoken": "^9.0.0",
-    "log4js": "^6.4.0",
-    "mongoose": "^6.11.3",
-    "morgan": "^1.9.1",
-    "multer": "^1.4.3",
-    "nodemailer": "^6.7.0",
-    "socket.io": "^4.3.1",
-    "swagger-jsdoc": "^6.1.0",
-    "swagger-ui-express": "^4.1.3"
+    "dotenv-flow": "^4.0.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "http-status": "^1.7.3",
+    "images-to-pdf": "^1.0.3",
+    "jsonwebtoken": "^9.0.2",
+    "log4js": "^6.9.1",
+    "mongoose": "^7.6.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.6.2",
+    "nodemailer": "^6.9.6",
+    "pg": "^8.11.3",
+    "sequelize": "^6.33.0",
+    "sequelize-cli": "^6.6.1",
+    "socket.io": "^4.7.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
-    "@types/express": "^4.17.13",
+    "@types/express": "^4.17.20",
     "@types/mongoose": "^5.11.97",
-    "@types/node": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.38.0",
-    "@typescript-eslint/parser": "^5.38.0",
-    "chai": "^4.3.4",
-    "eslint": "^8.24.0",
+    "@types/node": "^20.8.7",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "chai": "^4.3.10",
+    "eslint": "^8.51.0",
     "eslint-plugin-filenames": "^1.3.2",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
-    "mocha": "^9.1.3",
-    "mock-fs": "^5.1.1",
-    "nodemon": "^2.0.16",
-    "sinon": "^11.1.2",
-    "ts-node": "^10.8.1",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^4.7.4"
+    "mocha": "^10.2.0",
+    "mock-fs": "^5.2.0",
+    "nodemon": "^3.0.1",
+    "sinon": "^16.1.3",
+    "typescript": "^5.2.2"
   }
 }
