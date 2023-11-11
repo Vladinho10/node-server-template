@@ -52,7 +52,7 @@
     "@types/nodemailer": "^6.4.13",
     "@types/sequelize": "^4.28.17",
     "@types/socket.io": "^3.0.2",
-    "axios": "^1.5.1",
+    "axios": "^1.6.0",
     "chai-http": "^4.4.0",
     "compose-middleware": "^5.0.1",
     "dotenv-flow": "^4.0.0",
