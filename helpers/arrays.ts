@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 const isEmptyArray = (arr: never[]): boolean => !Array.isArray(arr) || !arr.length;
 const getRandomItem = (arr: never[]) => arr[Math.floor(Math.random() * arr.length)];
 const multiplyItems = (numArray: number[]) => numArray.reduce((acc, val) => acc * val, 1);
@@ -27,12 +28,16 @@ const breakSegments = (arr: never[], cpuCount: number) => {
 
     return segments;
 };
+
+const makeArrWithLength = (len = 100) => [...Array(len).keys()].map(i => i + 1);
+
 const arrays = {
     isEmptyArray,
     getRandomItem,
     multiplyItems,
     sliceIntoChunks,
     breakSegments,
+    makeArrWithLength,
 };
 
 export { arrays };

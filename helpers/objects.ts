@@ -26,12 +26,23 @@ const isEmptyObject = obj => typeof obj === 'object'
 
 const isJSFileAndNotIndex = file => (file.slice(-3) === '.js') && (file !== 'index.ts');
 const isTSFileAndNotIndex = file => (file.slice(-3) === '.ts') && (file !== 'index.ts');
+const deepEqual = (x:object, y: object) => {
+    const objectKeys = Object.keys;
+    const typeofX = typeof x;
+    const typeofY = typeof y;
+
+    return x && y && typeofX === 'object' && typeofX === typeofY ? (
+        objectKeys(x).length === objectKeys(y).length
+        && objectKeys(x).every(key => deepEqual(x[key], y[key]))
+    ) : (x === y || Object.is(x, y));
+};
 const objects = {
     isEmptyObject,
     isJSFileAndNotIndex,
     isTSFileAndNotIndex,
     pick,
     skip,
+    deepEqual,
 };
 
 export { objects };

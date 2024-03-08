@@ -1,9 +1,9 @@
 import './logger-config';
-import * as dotEnvConfig from 'dotenv-flow';
+import * as dotEnvFlow from 'dotenv-flow';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 const rootPath = process.cwd();
-dotEnvConfig.config({ path: `${rootPath}/envs` });
+dotEnvFlow.config({ path: `${rootPath}/envs` });
 
 export const db = {
     uri: process.env.MONGO_URL,

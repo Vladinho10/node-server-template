@@ -30,11 +30,6 @@
   "rules": {
     "semi": "error",
     "radix": ["error", "always"],
-    "id-length": ["error", {
-      "min": 2,
-      "max": 30,
-      "exceptions": ["v", "$", "i", "_"]
-    }],
     "quotes": ["error", "single"],
     "prefer-const": "error",
     "no-plusplus": "error",

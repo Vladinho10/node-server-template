@@ -1,4 +1,8 @@
 import { Worker } from  'worker_threads';
+
+const sleep = (seconds = 1): void => {
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, seconds * 1000);
+};
 // eslint-disable-next-line arrow-body-style
 const putSegmentsInPromise = (segments, childWorkerPath, data = {}) => {
     return segments.map(segment => new Promise((resolve, reject) => {
@@ -31,10 +35,17 @@ const jsonParser = jsonString => {
     return data;
 };
 const isCurrentUser = (_id, user) => _id.toString() === user._id.toString();
+const isParent = process.send === undefined;
+const getProcessLabel = isParent ? 'parent' : 'child';
+const getDuration = (endTime: bigint, startTime: bigint): string => `${(endTime - startTime) / BigInt(1_000_000_000)} seconds`;
 const general = {
     isCurrentUser,
     jsonParser,
     putSegmentsInPromise,
+    sleep,
+    isParent,
+    getProcessLabel,
+    getDuration,
 };
 
 export { general };
