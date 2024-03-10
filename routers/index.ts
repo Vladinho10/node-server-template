@@ -1,32 +1,24 @@
 // import * as fs from 'fs';
 // import { objects } from '../helpers';
 
+import { extname } from 'path';
+import fs from 'fs';
+
 import * as express from 'express';
 
+import { objects } from '../helpers';
 import middlewares from '../middlewares';
 
-import { fileRt } from './file-rt';
-import { rootRt } from './root-rt';
-import { userRt } from './user-rt';
+const ext = extname(__filename);
 
 const indexRouter = express.Router();
 indexRouter.use(middlewares.combine);
-
-// const files = fs.readdirSync(__dirname);
-//
-// async function foo(files, indexRouter) {
-//     for (const file of files) {
-//         if (objects.isJSFileAndNotIndex(file)) {
-//             // indexRouter.use(require(`./${file}`));
-//             indexRouter.use(await import(`./${file}`));
-//         }
-//     }
-// }
-//
-// (async () => await foo(files, indexRouter))();
-
-indexRouter.use(userRt);
-indexRouter.use(rootRt);
-indexRouter.use(fileRt);
+fs.readdirSync(__dirname)
+    .filter(file => objects.isNotIndex(file, ext))
+    .forEach(file => {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const { router } = require(`./${file}`);
+        indexRouter.use(router);
+    });
 
 export default indexRouter;

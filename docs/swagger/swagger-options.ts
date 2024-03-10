@@ -1,15 +1,16 @@
-
 import * as fs from 'fs';
 
+const pathsPWD = `${process.cwd()}/docs/swagger/paths`;
+const schemasPWD = `${process.cwd()}/docs/swagger/schemas`;
 const paths = fs
-    .readdirSync(`${__dirname}/paths`)
+    .readdirSync(pathsPWD)
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    .reduce((acc, file) => Object.assign(acc, require(`./paths/${file}`)), {});
+    .reduce((acc, file) => Object.assign(acc, require(`${pathsPWD}/${file}`)), {});
 
 const schemas = fs
-    .readdirSync(`${__dirname}/schemas`)
+    .readdirSync(schemasPWD)
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    .reduce((acc, file) => Object.assign(acc, require(`./schemas/${file}`)), {});
+    .reduce((acc, file) => Object.assign(acc, require(`${schemasPWD}/${file}`)), {});
 
 export default {
     swaggerDefinition: {

@@ -2,11 +2,11 @@ import * as express from 'express';
 
 import { RootCtrl } from '../controllers';
 
-const rootRt = express.Router();
+const router = express.Router();
 
-rootRt.get('/v1/', RootCtrl.getMany);
-rootRt.post('/v1/', RootCtrl.post);
+router.get('/v1/', RootCtrl.getMany);
+router.post('/v1/', RootCtrl.post);
 
-rootRt.get('/', RootCtrl.showEjs);
+router.get('/', RootCtrl.showEjs);
 
-export { rootRt };
+export { router };

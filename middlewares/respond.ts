@@ -3,6 +3,7 @@ import Express, { Response, Send } from 'express';
 import { general } from '../constants';
 
 export type CustomResponse = Response & {
+    ok?: Send;
     created?: Send;
     accepted?: Send;
     noContent?: Send;

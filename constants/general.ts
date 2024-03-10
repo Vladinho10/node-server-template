@@ -1,6 +1,7 @@
 import * as httpStatus from 'http-status';
 
 const oftenUseCodes = {
+    ok: httpStatus.OK,
     created: httpStatus.CREATED,
     accepted: httpStatus.ACCEPTED,
     noContent: httpStatus.NO_CONTENT,

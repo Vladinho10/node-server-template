@@ -23,9 +23,7 @@ const skip = (obj, fields) => {
 const isEmptyObject = obj => typeof obj === 'object'
     && Object.keys(obj).length === 0
     && obj.constructor === Object;
-
-const isJSFileAndNotIndex = file => (file.slice(-3) === '.js') && (file !== 'index.ts');
-const isTSFileAndNotIndex = file => (file.slice(-3) === '.ts') && (file !== 'index.ts');
+const isNotIndex = (file, ext) => (file.slice(-3) === ext) && (file !== `index${ext}`);
 const deepEqual = (x:object, y: object) => {
     const objectKeys = Object.keys;
     const typeofX = typeof x;
@@ -38,8 +36,7 @@ const deepEqual = (x:object, y: object) => {
 };
 const objects = {
     isEmptyObject,
-    isJSFileAndNotIndex,
-    isTSFileAndNotIndex,
+    isNotIndex,
     pick,
     skip,
     deepEqual,

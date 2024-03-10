@@ -36,8 +36,8 @@
     "timeout": "20000"
   },
   "scripts": {
-    "start": "tsc; node ./dist/index.js",
-    "build": "tsc",
+    "start": "yarn run build; node ./dist/index.js",
+    "build": "rm -rf ./dist; tsc",
     "nodemon": "tsc; ./node_modules/nodemon/bin/nodemon.js index",
     "test": "mocha ./test/*.e2e.js",
     "lint": "eslint .",
