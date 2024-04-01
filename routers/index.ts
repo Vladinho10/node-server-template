@@ -1,6 +1,3 @@
-// import * as fs from 'fs';
-// import { objects } from '../helpers';
-
 import { extname } from 'path';
 import fs from 'fs';
 

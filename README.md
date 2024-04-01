@@ -22,13 +22,13 @@ If you haven't, these are their links for installing.
 
 ### Technologies
 Program/lib | version | command for checking\
-Git | 2.37.0 | `git --version`\
-Node.js | v16.6.1 | `node -v` \
-Express | ^4.18.1 | see in app package.json\
-MongoDB | v4.4.5 | `mongo --version`\
-Mongoose | ^6.4.6 | see in this app package.json\
-Mocha | 9.1.3 | see in this app package.json\
-Eslint | 8.24.0 | see in this app package.json\
+Git | 2.39.3 | `git --version`\
+Node.js | v20.8.0 | `node -v` \
+Express | ^4.19.2 | see in app package.json\
+MongoDB | v7.0.2 | `mongosh` (on MacOS)\
+Mongoose | ^8.2.4 | see in this app package.json\
+Mocha | ^10.4.0 | see in this app package.json\
+Eslint | ^8.57.0 | see in this app package.json\
 Yarn | 1.22.19 | `yarn -v`
 
 ### Setup
