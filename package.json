@@ -63,7 +63,7 @@
     "images-to-pdf": "^1.0.3",
     "jsonwebtoken": "^9.0.2",
     "log4js": "^6.9.1",
-    "mongoose": "^8.2.4",
+    "mongoose": "^8.9.5",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.9.8",
