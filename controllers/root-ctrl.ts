@@ -4,10 +4,14 @@ import { CustomResponse } from '../middlewares/respond';
 
 export class RootCtrl {
     static async getMany(req: Request, res: CustomResponse) {
-        return res.send({ message: 'get all data' });
+        res.send({ message: 'get all data' });
+
+        return;
     }
     static async post(req: Request, res: CustomResponse) {
-        return res.created({ message: 'create new data' });
+        res.created({ message: 'create new data' });
+
+        return;
     }
     static async showEjs(req: Request, res: CustomResponse) {
         globalThis.io.on('connection', socket => {
@@ -25,5 +29,7 @@ export class RootCtrl {
             origin: `${req.protocol}://${req.get('host')}`,
             name: req.query.name || 'Eva',
         });
+
+        return;
     }
 }

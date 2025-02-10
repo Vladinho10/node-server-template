@@ -8,6 +8,7 @@ export class CustomError extends Error {
         if (Error.captureStackTrace) {
             Error.captureStackTrace(this, CustomError);
         }
+
         this.name = 'CustomError';
         this.type = errorObject.type;
         this.field = errorObject.field;

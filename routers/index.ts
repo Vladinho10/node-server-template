@@ -10,12 +10,11 @@ const ext = extname(__filename);
 
 const indexRouter = express.Router();
 indexRouter.use(middlewares.combine);
-fs.readdirSync(__dirname)
+Promise.all(fs.readdirSync(__dirname)
     .filter(file => objects.isNotIndex(file, ext))
-    .forEach(file => {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const { router } = require(`./${file}`);
+    .map(async file => {
+        const { router } = await import(`./${file}`);
         indexRouter.use(router);
-    });
+    }));
 
 export default indexRouter;

@@ -64,6 +64,8 @@ envs/.env.prod.local
 
 # intelij .idea folder
 .idea/
+# visual studio code .vscode folder
+.vscode/
 
 # mac stupid files
 .DS_Store

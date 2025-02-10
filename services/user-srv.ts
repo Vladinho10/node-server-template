@@ -14,6 +14,7 @@ export class UserSrv {
 
     static async readOne(query) {
         nodemailer.createTransport(configs.mailOptions);
+
         return  User.findOne(query);
     }
 

@@ -1,5 +1,5 @@
-const pick = (obj, fields) => {
-    const picked = {};
+const pick = <T>(obj: Record<string, T>, fields: string[]): Partial<T> => {
+    const picked: Partial<T> = {};
 
     for (const key in obj) {
         if (fields.includes(key)) {
@@ -9,8 +9,9 @@ const pick = (obj, fields) => {
 
     return picked;
 };
-const skip = (obj, fields) => {
-    const skipped = {};
+
+const skip = <T extends Record<string, unknown>>(obj: T, fields: string[]): Partial<T> => {
+    const skipped: Partial<T> = {};
 
     for (const key in obj) {
         if (!fields.includes(key)) {
@@ -20,11 +21,14 @@ const skip = (obj, fields) => {
 
     return skipped;
 };
-const isEmptyObject = obj => typeof obj === 'object'
+
+const isEmptyObject = (obj:unknown) => typeof obj === 'object'
     && Object.keys(obj).length === 0
     && obj.constructor === Object;
+
 const isNotIndex = (file, ext) => (file.slice(-3) === ext) && (file !== `index${ext}`);
-const deepEqual = (x:object, y: object) => {
+
+const deepEqual = (x:object, y: object): boolean => {
     const objectKeys = Object.keys;
     const typeofX = typeof x;
     const typeofY = typeof y;

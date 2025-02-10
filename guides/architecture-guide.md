@@ -32,7 +32,6 @@ We'll speak about every small detail.
   1. [index](#index)
   1. [jenkinsfile](#jenkinsfile)
   1. [LICENSE](#LICENSE)
-  1. [barrelExport](#barrelexport)
   1. [package.json](#packagejson)
   1. [README.md](#README)
   1. [yarn.lock](#yarnlock)
@@ -78,25 +77,6 @@ We'll speak about every small detail.
   Ours is MIT License. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files. For more information please take a look in the document. [more](https://github.com/Vladinho10/node-server-template/blob/master/LICENSE)
 
 **[⬆ back to top](#table-of-contents)**  
-
-## barrelExport
-
-   In our software structure we use barrel export. A barrel is a way to rollup exports from several modules into a single convenient module. The barrel itself is a module file that re-exports selected exports of other modules. \
-   Putting those words in action, is creating an index.js file to re-export everything the end user will need: \
-   ```module.exports = require('../barrelExport')(__dirname);```
-   This code using the method `barrelExport.js` which requires and exports modules. 
-   Only in `services` directory you should add modules and export them manually, like the code below. The reason is circular using of modules. As we know in our architecture a service can use other services.
-   ```
-     const objects = require('./objects');
-     const strings = require('./strings');
-     const general = require('./general');
-     
-     module.exports = {
-         objects,
-         strings,
-         general,
-     };
-   ```
 
 ## jenkinsfile
 
@@ -325,7 +305,7 @@ We'll speak about every small detail.
 ## constants
 
   Like `helpers`, these are meant to store global and local constants and enums.
-  We separate constants by specific spheres and again use barrel export. -> spheres -> use cases.  
+  We separate constants by specific spheres and use barrel export. -> spheres -> use cases.  
 **[⬆ back to top](#table-of-contents)**  
 
 ## configs

@@ -8,6 +8,7 @@
 * [Architecture guide](#architecture-guide)
 
 ### General info
+10.02.25. Updates. Migrate to Eslint v9
 25.09.22. Updates. We create a new version of the template. It is already written in Typescript !
 12.03.21 Updates. Great news ! :fire: :heart: \
 In this template every time we manually create 7 files for one CRUD logic. Now you can create your CRUD new files at once just using `rest-resource-file-generator` npm module made by me :tophat: \
@@ -22,14 +23,14 @@ If you haven't, these are their links for installing.
 
 ### Technologies
 Program/lib | version | command for checking\
-Git | 2.39.3 | `git --version`\
-Node.js | v20.8.0 | `node -v` \
-Express | ^4.19.2 | see in app package.json\
-MongoDB | v7.0.2 | `mongosh` (on MacOS)\
-Mongoose | ^8.2.4 | see in this app package.json\
-Mocha | ^10.4.0 | see in this app package.json\
-Eslint | ^8.57.0 | see in this app package.json\
-Yarn | 1.22.19 | `yarn -v`
+Git | 2.39.5 | `git --version`\
+Node.js | v20.18.1 | `node -v` \
+Express | ^4.21.2 | see in app package.json\
+MongoDB | v7.0.2 | `mongosh`, then `db.version()` (on MacOS)\
+Mongoose | ^8.10.0 | see in this app package.json\
+Mocha | ^11.1.0 | see in this app package.json\
+Eslint | ^9.20.0 | see in this app package.json\
+Yarn | 1.22.22 | `yarn -v`
 
 ### Setup
 1. Clone this repository\

@@ -1,4 +1,4 @@
-import * as httpStatus from 'http-status';
+import httpStatus from 'http-status';
 
 const oftenUseCodes = {
     ok: httpStatus.OK,

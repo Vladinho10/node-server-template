@@ -7,7 +7,7 @@ const iv = crypto.scryptSync('ivPassword', 'salt', 16);
 // logger.info({ bufferedKey: Buffer.from(key) });
 // logger.info({ keyConvertToString: key.toString() });
 
-const encrypt = (data: string | Buffer) => {
+const encrypt = (data: string | Buffer): string => {
     const str = typeof data === 'string' ? data : JSON.stringify(data);
     const cipher = crypto.createCipheriv(algorithm, key, iv);
     const encryptedBuffer = cipher.update(str);
@@ -16,7 +16,7 @@ const encrypt = (data: string | Buffer) => {
     return finalEncryptedBuffer.toString('hex');
 };
 
-const decrypt = (message: string) => {
+const decrypt = (message: string): string => {
     const finalEncryptedBuffer = Buffer.from(message, 'hex');
 
     const decipher = crypto.createDecipheriv(algorithm, key, iv);

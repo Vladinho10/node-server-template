@@ -1,10 +1,14 @@
 import { Worker } from  'worker_threads';
 
+import { ObjectId } from 'mongoose';
+
+import { UserI } from '../dal/models';
+
 const sleep = (seconds = 1): void => {
     Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, seconds * 1000);
 };
 // eslint-disable-next-line arrow-body-style
-const putSegmentsInPromise = (segments, childWorkerPath, data = {}) => {
+const putSegmentsInPromise = (segments: unknown[], childWorkerPath: string, data = {}) => {
     return segments.map(segment => new Promise((resolve, reject) => {
         // transfer data to each worker/threads
         const worker = new Worker(childWorkerPath, {
@@ -23,7 +27,8 @@ const putSegmentsInPromise = (segments, childWorkerPath, data = {}) => {
         });
     }));
 };
-const jsonParser = jsonString => {
+
+const jsonParser = (jsonString: string): object => {
     let data = {};
 
     try {
@@ -34,18 +39,19 @@ const jsonParser = jsonString => {
 
     return data;
 };
-const isCurrentUser = (_id, user) => _id.toString() === user._id.toString();
-const isParent = process.send === undefined;
-const getProcessLabel = isParent ? 'parent' : 'child';
+
+const isCurrentUser = (_id: ObjectId, user: UserI) => _id.toString() === user._id.toString();
+const isParentProcess = process.send === undefined;
+const getProcessLabel = isParentProcess ? 'parent' : 'child';
 const getDuration = (endTime: bigint, startTime: bigint): string => `${(endTime - startTime) / BigInt(1_000_000_000)} seconds`;
-const general = {
+const commons = {
     isCurrentUser,
     jsonParser,
     putSegmentsInPromise,
     sleep,
-    isParent,
+    isParentProcess,
     getProcessLabel,
     getDuration,
 };
 
-export { general };
+export { commons };

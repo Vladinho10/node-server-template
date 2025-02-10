@@ -1,8 +1,13 @@
-import * as mongoose from 'mongoose';
+import  { Document, Schema, model } from 'mongoose';
 
-const { Schema } = mongoose;
+interface UserI extends Document {
+    name: string,
+    age: number,
+    gender: string,
+    created: Date,
+}
 
-const userSchema = new Schema({
+const User = model('User', new Schema({
     name: {
         type: String,
         required: true,
@@ -18,8 +23,6 @@ const userSchema = new Schema({
         type: Date,
         default: Date.now,
     },
-});
+}));
 
-const User = mongoose.model('User', userSchema);
-
-export { User };
+export { UserI, User };
