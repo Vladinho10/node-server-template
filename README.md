@@ -8,8 +8,13 @@
 * [Architecture guide](#architecture-guide)
 
 ### General info
-10.02.25. Updates. Migrate to Eslint v9
-25.09.22. Updates. We create a new version of the template. It is already written in Typescript !
+17.02.25. Updates. Added a simple example with RabbitMQ messaging broker. Before testing it you should have installed [RabbitMQ](https://www.rabbitmq.com/tutorials). For testing run the following commands\
+`yarn run rabbitmq:send`\
+Then open a new terminal tab, and there\
+`yarn run rabbitmq:receive`\
+You can see that the data is being sent through TestQueue in send.ts file and it is being received in receive.ts file immediately.\
+10.02.25. Updates. Migrate to Eslint v9 \
+25.09.22. Updates. We created a new version of the template. It is already written in Typescript ! \
 12.03.21 Updates. Great news ! :fire: :heart: \
 In this template every time we manually create 7 files for one CRUD logic. Now you can create your CRUD new files at once just using `rest-resource-file-generator` npm module made by me :tophat: \
 Here is the link of instructions in npm [rest-resource-file-generator](https://www.npmjs.com/package/rest-resource-file-generator) \
@@ -26,8 +31,9 @@ Program/lib | version | command for checking\
 Git | 2.39.5 | `git --version`\
 Node.js | v20.18.1 | `node -v` \
 Express | ^4.21.2 | see in app package.json\
-MongoDB | v7.0.2 | `mongosh`, then `db.version()` (on MacOS)\
+MongoDB | v7.0.2 | `mongod --version` or `mongosh`, then `db.version()` (on MacOS)\
 Mongoose | ^8.10.0 | see in this app package.json\
+RabbitMQ | 4.0.6 | `rabbitmqctl version` (on MacOS)\
 Mocha | ^11.1.0 | see in this app package.json\
 Eslint | ^9.20.0 | see in this app package.json\
 Yarn | 1.22.22 | `yarn -v`

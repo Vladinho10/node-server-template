@@ -34,3 +34,9 @@ export const mailOptions: SMTPTransport.Options = {
     },
 };
 
+export const rabbitmq = {
+    host: 'amqp://localhost',
+    queue: 'TestQueue',
+    send_durable: false,
+    receive_noAck: true,
+};

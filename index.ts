@@ -18,7 +18,6 @@ import routers from './routers';
 
 const logger = log4js.getLogger('ENTRY.index');
 
-mongoose.set('strictQuery', false);
 (async () => await mongoose.connect(db.uri))()
     .catch(err => logger.error({ err }));
 
