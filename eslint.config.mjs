@@ -1,6 +1,6 @@
 import { fixupConfigRules } from "@eslint/compat";
 import filenames from "eslint-plugin-filenames";
-import sortImportsEs6Autofix from "eslint-plugin-sort-imports-es6-autofix";
+import simpleImportSort from "eslint-plugin-simple-import-sort";
 import node from "eslint-plugin-node";
 import globals from "globals";
 import path from "node:path";
@@ -38,7 +38,7 @@ export default [
     {
         plugins: {
             filenames,
-            "sort-imports-es6-autofix": sortImportsEs6Autofix,
+            "simple-import-sort": simpleImportSort,
             node,
         },
         languageOptions: {
@@ -51,7 +51,7 @@ export default [
                 CustomError: "writable",
             },
 
-            ecmaVersion: 5,
+            ecmaVersion: "latest",
             sourceType: "module",
 
             parserOptions: {
@@ -61,6 +61,13 @@ export default [
             },
         },
         rules: {
+            "@typescript-eslint/no-unused-vars": [
+                "error",
+                { 
+                  "argsIgnorePattern": "^_",  // Ignore variables prefixed with _
+                  "varsIgnorePattern": "^_" 
+                }
+            ],
             "padding-line-between-statements": ["error", {
                 blankLine: "always",
                 prev: "*",
@@ -203,7 +210,7 @@ export default [
             "no-restricted-properties": [2, {
                 object: "Math",
                 property: "pow",
-                message: "Please use ** instead.",
+                message: "Use ** instead.",
             }],
 
             // "filenames/match-regex": ["error", "^[a-z][A-Za-z0-9.-]+$"],
@@ -213,17 +220,41 @@ export default [
             "import/no-useless-path-segments": ["error", {
                 noUselessIndex: true,
             }],
-
-            "import/order": ["error", {
-                groups: ["builtin", "external", "parent", "sibling", "index"],
-                "newlines-between": "always",
+            "simple-import-sort/imports": ["error", {
+                groups: [
+                    // 1. Builtin modules (Node.js core)
+                    [
+                        "^(assert|buffer|child_process|cluster|console|constants|crypto|dgram|dns|domain|events|fs|http|https|module|net|os|path|punycode|querystring|readline|repl|stream|string_decoder|sys|timers|tls|tty|url|util|vm|zlib)$",
+                        "^(node:)?(assert|buffer|child_process|cluster|console|constants|crypto|dgram|dns|domain|events|fs|http|https|module|net|os|path|punycode|querystring|readline|repl|stream|string_decoder|sys|timers|tls|tty|url|util|vm|zlib)$"
+                    ],
+                    
+                    // 2. External packages (anything from node_modules)
+                    // Matches: react, lodash, @angular/core, etc.
+                    ["^@?\\w"],
+                    
+                    // 3. Absolute imports (if you use them like '@/components')
+                    // Adjust this based on your alias configuration
+                    // ["^@/"], // For @/ alias
+                    // ["^~"],   // For ~/ alias
+                    
+                    // 4. Parent directory imports (../)
+                    ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+                    
+                    // 5. Same directory imports (./)
+                    ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+                    
+                    // 6. Index imports (./index, ../index)
+                    // This is tricky - simple-import-sort doesn't separate index files well
+                    // You might need to adjust based on your needs
+                    
+                    // 7. Style/asset imports
+                    ["^.+\\.(css|scss|less|sass|styl)$"],
+                    ["^.+\\.(jpg|jpeg|png|gif|svg|ico)$"],
+                    
+                    // 8. Type imports (TypeScript - will be automatically sorted within groups)
+                ]
             }],
-
-            "sort-imports-es6-autofix/sort-imports-es6": ["warn", {
-                ignoreCase: false,
-                ignoreMemberSort: false,
-                memberSyntaxSortOrder: ["none", "all", "multiple", "single"],
-            }],
+            "simple-import-sort/exports": "error",
 
             "node/no-process-env": "error",
         },

@@ -1,6 +1,6 @@
 import * as express from 'express';
-import * as swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
+import * as swaggerUi from 'swagger-ui-express';
 
 import loadSwaggerConfig from '../docs/swagger/swagger-options';
 

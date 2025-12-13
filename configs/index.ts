@@ -1,13 +1,14 @@
-import './logger-config';
 import * as dotEnvFlow from 'dotenv-flow';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 
+import './logger-config';
+
 const rootPath = process.cwd();
 dotEnvFlow.config({ path: `${rootPath}/envs` });
-export const port: number = +process.env.PORT;
+export const port: number | null = process.env.PORT ? +process.env.PORT : null;
 
-if (Number.isNaN(port)) {
-    throw new Error('The port is NaN');
+if (!port) {
+    throw new Error('The port is null');
 }
 
 export const db = {
@@ -24,7 +25,7 @@ export const uploads = `${rootPath}/uploads`;
 
 export const mailOptions: SMTPTransport.Options = {
     host: process.env.SMTP_HOST,
-    port: +process.env.SMTP_PORT,
+    port: process.env.SMTP_PORT ? +process.env.SMTP_PORT : 587,
     tls: {
         rejectUnauthorized: false,
     },

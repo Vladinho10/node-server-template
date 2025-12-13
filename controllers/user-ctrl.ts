@@ -1,11 +1,10 @@
-import { Request } from 'express';
+import { Request, Response } from 'express';
 
-import { CustomResponse } from '../middlewares/respond';
-import { UserSrv } from '../services';
 import { objects } from '../helpers';
+import { UserSrv } from '../services';
 
 export class UserCtrl {
-    static async getMany(req: Request, res: CustomResponse) {
+    static async getMany(req: Request, res: Response) {
         const { query } = req;
         const findCriteria = objects.pick(query, ['name', 'age', 'gender']);
         const options = objects.pick(query, ['limit', 'offset', 'sort']);
@@ -19,7 +18,7 @@ export class UserCtrl {
 
         return;
     }
-    static async getOne(req: Request, res: CustomResponse) {
+    static async getOne(req: Request, res: Response) {
         const user = await UserSrv.readOne({ _id: req.params._id });
 
         res.send({
@@ -28,59 +27,59 @@ export class UserCtrl {
 
         return;
     }
-    static async post(req: Request, res: CustomResponse) {
+    static async post(req: Request, res: Response) {
         const { body } = req;
         const create = Array.isArray(body) ? UserSrv.createMany : UserSrv.createOne;
 
         const data = await create(body);
 
-        res.created({
+        res.status(201).send({
             data,
         });
 
         return;
     }
-    static async putOne(req: Request, res: CustomResponse) {
+    static async putOne(req: Request, res: Response) {
         const user = await UserSrv.updateOne(req.params._id, req.body); // change data
 
         if (user) {
-            res.accepted({ data: user });
+            res.status(20).send({ data: user });
         } else {
-            res.notFound({ errors: [{ message: 'resource not found' }] });
+            res.status(404).send({ errors: [{ message: 'resource not found' }] });
         }
     }
 
-    static async putMany(req: Request, res: CustomResponse) {
+    static async putMany(req: Request, res: Response) {
         const isModified = await UserSrv.updateMany(req.body);
 
         if (isModified) {
-            res.accepted({ data: { message: 'updated user by id' } });
+            res.status(20).send({ data: { message: 'updated user by id' } });
         } else {
-            res.notFound({ errors: [{ message: 'resource not found' }] });
+            res.status(404).send({ errors: [{ message: 'resource not found' }] });
         }
     }
 
-    static async removeOne(req: Request, res: CustomResponse) {
-        const isDeleted = await UserSrv.deleteOne({ _id: req.params._id });
+    static async removeOne(req: Request, res: Response) {
+        const isDeleted = await UserSrv.deleteOne(req.params._id);
 
         if (isDeleted) {
-            res.noContent();
+            res.status(202).send();
         } else {
-            res.notFound({ errors: [{ message: 'resource not found' }] });
+            res.status(404).send({ errors: [{ message: 'resource not found' }] });
         }
     }
 
-    static async removeMany(req: Request, res: CustomResponse) {
+    static async removeMany(req: Request, res: Response) {
         const isDeleted = await UserSrv.deleteMany(req.body.ids);
 
         if (isDeleted) {
-            res.noContent();
+            res.status(202).send();
         } else {
-            res.notFound({ errors: [{ message: 'resource not found' }] });
+            res.status(404).send({ errors: [{ message: 'resource not found' }] });
         }
     }
 
-    static async showEjs(req: Request, res: CustomResponse) {
+    static async showEjs(req: Request, res: Response) {
         res.render('users-page', {
             origin: `${req.protocol}://${req.get('host')}`,
             name: 'Users',

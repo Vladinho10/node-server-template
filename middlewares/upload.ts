@@ -1,7 +1,7 @@
 import multer from 'multer';
 
-import { strings } from '../helpers';
 import { uploads } from '../configs';
+import { strings } from '../helpers';
 
 const storage = multer.diskStorage({
     destination(req, file, cb) {

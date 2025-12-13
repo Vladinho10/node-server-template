@@ -18,6 +18,12 @@ import { rabbitmq } from '../configs';
             console.log(msg);
         }, 3000);
     } catch (error) {
-        console.log('error message', error.message);
+        if (error instanceof Error) {
+            console.error('error message', error.message);
+
+            return;
+        }
+
+        console.log('error', error);
     }
 })();

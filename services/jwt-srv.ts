@@ -20,7 +20,13 @@ export class JwtSrv {
         try {
             return jwt.verify(token, jwtSecret);
         } catch (err) {
-            globalThis.logger.error('error in verifying JWT token', err.message);
+            if (err instanceof Error) {
+                console.error('error message', err.message);
+
+                return {};
+            }
+
+            console.log('error', err);
         }
 
         return {};

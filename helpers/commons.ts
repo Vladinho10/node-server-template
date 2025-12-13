@@ -1,6 +1,5 @@
-import { Worker } from  'worker_threads';
-
 import { ObjectId } from 'mongoose';
+import { Worker } from  'worker_threads';
 
 import { UserI } from '../dal/models';
 
@@ -40,7 +39,7 @@ const jsonParser = (jsonString: string): object => {
     return data;
 };
 
-const isCurrentUser = (_id: ObjectId, user: UserI) => _id.toString() === user._id.toString();
+const isCurrentUser = (_id: ObjectId, user: UserI): boolean => _id.toString() === user._id.toString();
 const isParentProcess = process.send === undefined;
 const getProcessLabel = isParentProcess ? 'parent' : 'child';
 const getDuration = (endTime: bigint, startTime: bigint): string => `${(endTime - startTime) / BigInt(1_000_000_000)} seconds`;

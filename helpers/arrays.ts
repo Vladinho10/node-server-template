@@ -1,7 +1,7 @@
 const isEmptyArray = (arr: unknown[]): boolean => Array.isArray(arr) && (arr.length === 0);
-const getRandomItem = <T>(arr: T[]): T => Array.isArray(arr) && arr.length > 0 ? arr[Math.floor(Math.random() * arr.length)] : null;
-const getFirstItem = <T>(arr: T[]): T => Array.isArray(arr) && arr.length > 0 ? arr[0] : null;
-const getLastItem = <T>(arr: T[]): T => Array.isArray(arr) && arr.length > 0 ? arr[arr.length - 1] : null;
+const getRandomItem = <T>(arr: T[]): T | null => Array.isArray(arr) && arr.length > 0 ? arr[Math.floor(Math.random() * arr.length)] : null;
+const getFirstItem = <T>(arr: T[]): T | null => Array.isArray(arr) && arr.length > 0 ? arr[0] : null;
+const getLastItem = <T>(arr: T[]): T | null => Array.isArray(arr) && arr.length > 0 ? arr[arr.length - 1] : null;
 const getLastIndex = (arr: unknown[]): number => arr.length - 1;
 
 const multiplyItems = (numArray: number[]): number => numArray.reduce((acc, val) => acc * val, 1);

@@ -1,5 +1,5 @@
-import { extname } from 'path';
 import fs from 'fs';
+import { extname } from 'path';
 
 import * as express from 'express';
 

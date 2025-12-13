@@ -1,10 +1,10 @@
 /* eslint-disable import/first  */
 import http from 'http';
 
-import { Server } from 'socket.io';
 import express from 'express';
 import log4js from 'log4js';
 import mongoose from 'mongoose';
+import { Server } from 'socket.io';
 
 const app = express();
 const server = http.createServer(app);
@@ -18,8 +18,11 @@ import routers from './routers';
 
 const logger = log4js.getLogger('ENTRY.index');
 
-(async () => await mongoose.connect(db.uri))()
-    .catch(err => logger.error({ err }));
+(async () => {
+    if (db.uri) {
+        await mongoose.connect(db.uri);
+    }
+})();
 
 // you can specify a path `${origin}/yourPath` or by default it's `${origin}`
 app.use(express.static(files));

@@ -1,4 +1,4 @@
-import  { Document, Schema, model } from 'mongoose';
+import  { Document, model, Schema } from 'mongoose';
 
 interface UserI extends Document {
     name: string,
@@ -25,4 +25,4 @@ const User = model('User', new Schema({
     },
 }));
 
-export { UserI, User };
+export { User, UserI };

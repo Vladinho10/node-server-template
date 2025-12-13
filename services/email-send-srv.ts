@@ -8,7 +8,7 @@ const transporter = nodemailer.createTransport(mailOptions);
 export class EmailSendSrv {
     static async sendLink(email: string, options: {message: string}): Promise<SMTPTransport.SentMessageInfo> {
         const message = {
-            from: mailOptions.auth.user,
+            from: mailOptions.auth ? mailOptions.auth.user : 'Admin',
             to: email,
             subject: 'Message title',
             text: 'Plaintext version of the message',

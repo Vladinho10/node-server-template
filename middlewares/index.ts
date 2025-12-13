@@ -1,21 +1,16 @@
 import * as express from 'express';
-import { compose } from 'compose-middleware';
-import  morgan from 'morgan';
+import morgan from 'morgan';
 
-import { respond } from './respond';
-import errorHandler from './error-handler';
-import uploadSingle  from './upload';
+import uploadSingle from './upload';
 
-const urlencoded = express.urlencoded({ extended: false });
-const json = express.json();
+const router = express.Router();
+
+// Apply middleware in order
+router.use(morgan('combined'));
+router.use(express.urlencoded({ extended: false }));
+router.use(express.json());
+router.use(uploadSingle);
 
 export default {
-    errorHandler,
-    combine: compose([
-        morgan('combined'),
-        urlencoded,
-        json,
-        respond,
-        uploadSingle,
-    ]),
+    combine: router, // Use router instead of compose
 };

@@ -1,6 +1,6 @@
 import { Model } from 'mongoose';
 
-const removeDuplicates = async (model: Model<Document>, duplicateCriteria = []) => {
+const removeDuplicates = async (model: Model<Document>, duplicateCriteria: string[] = []) => {
     /**
      * response includes
      * _id - a document with duplicateCriteria fields
@@ -13,7 +13,7 @@ const removeDuplicates = async (model: Model<Document>, duplicateCriteria = []) 
         },
         {
             $group: {
-                _id: duplicateCriteria.reduce((obj, item) => {
+                _id: duplicateCriteria.reduce((obj: Record<string, string>, item: string) => {
                     obj[item] = `$${item}`;
 
                     return obj;
@@ -27,11 +27,11 @@ const removeDuplicates = async (model: Model<Document>, duplicateCriteria = []) 
         },
     ]).allowDiskUse(true); // for heavy requests
 
-    const duplicateIds = [];
+    const duplicateIds: string[] = [];
 
     response.forEach(doc => {
         doc.ids.pop(); // saving only the last of the duplicates documents
-        doc.ids.forEach(id => duplicateIds.push(id));  // Getting all duplicate ids);
+        doc.ids.forEach((id: string) => duplicateIds.push(id));  // Getting all duplicate ids);
     });
 
     await model.deleteMany({ _id: { $in: duplicateIds } });
