@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import httpStatus from 'http-status';
 
 export class RootCtrl {
     static async getMany(req: Request, res: Response) {
@@ -7,7 +8,7 @@ export class RootCtrl {
         return;
     }
     static async post(req: Request, res: Response) {
-        res.status(201).send({ message: 'create new data' });
+        res.status(httpStatus.CREATED).send({ message: 'create new data' });
 
         return;
     }

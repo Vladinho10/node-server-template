@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import httpStatus from 'http-status';
 
 import { objects } from '../helpers';
 import { UserSrv } from '../services';
@@ -33,7 +34,7 @@ export class UserCtrl {
 
         const data = await create(body);
 
-        res.status(201).send({
+        res.status(httpStatus.CREATED).send({
             data,
         });
 
@@ -43,9 +44,9 @@ export class UserCtrl {
         const user = await UserSrv.updateOne(req.params._id, req.body); // change data
 
         if (user) {
-            res.status(20).send({ data: user });
+            res.status(httpStatus.ACCEPTED).send({ data: user });
         } else {
-            res.status(404).send({ errors: [{ message: 'resource not found' }] });
+            res.status(httpStatus.NOT_FOUND).send({ errors: [{ message: 'resource not found' }] });
         }
     }
 
@@ -53,9 +54,9 @@ export class UserCtrl {
         const isModified = await UserSrv.updateMany(req.body);
 
         if (isModified) {
-            res.status(20).send({ data: { message: 'updated user by id' } });
+            res.status(httpStatus.ACCEPTED).send({ data: { message: 'updated user by id' } });
         } else {
-            res.status(404).send({ errors: [{ message: 'resource not found' }] });
+            res.status(httpStatus.NOT_FOUND).send({ errors: [{ message: 'resource not found' }] });
         }
     }
 
@@ -63,9 +64,9 @@ export class UserCtrl {
         const isDeleted = await UserSrv.deleteOne(req.params._id);
 
         if (isDeleted) {
-            res.status(202).send();
+            res.status(httpStatus.ACCEPTED).send();
         } else {
-            res.status(404).send({ errors: [{ message: 'resource not found' }] });
+            res.status(httpStatus.NOT_FOUND).send({ errors: [{ message: 'resource not found' }] });
         }
     }
 
@@ -73,9 +74,9 @@ export class UserCtrl {
         const isDeleted = await UserSrv.deleteMany(req.body.ids);
 
         if (isDeleted) {
-            res.status(202).send();
+            res.status(httpStatus.ACCEPTED).send();
         } else {
-            res.status(404).send({ errors: [{ message: 'resource not found' }] });
+            res.status(httpStatus.NOT_FOUND).send({ errors: [{ message: 'resource not found' }] });
         }
     }
 
