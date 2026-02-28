@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "amqplib": "^0.10.9",
-    "axios": "^1.13.2",
+    "axios": "^1.13.5",
     "dotenv-flow": "^4.1.0",
     "ejs": "^3.1.10",
     "express": "^5.2.1",
